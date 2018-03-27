@@ -1,0 +1,71 @@
+body {
+	/*background-color: rgb(30, 40, 50);*/ 
+	background-image: url("SERVER_PHP/pictures/serverSiteImages/bg004.jpg");
+}
+
+
+.nev-custom-css{
+	color: white;
+}
+
+#indexLogo-complain-box {
+	background-color: white;
+	border-radius: 50%;
+	height: 40px;
+	width: 40px;
+	top: -10px;
+	position: relative;
+    top: -10px;
+}
+
+#indexLogo-complain-box:hover {
+	background-color: rgb(174, 177, 183);
+}
+
+.myContainer{
+	width: 100%;
+	background-color: black;
+}
+
+.custom-div {
+	width: 100%;
+}
+
+#description-div-custom {
+	background-color: rgb(41, 36, 61);
+}
+
+#paragraph-white-writing {
+	color: white;
+}
+
+#screenShot-image {
+	border-radius: 5%;
+	height: 400px;
+	width: 250px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.icon-image-Div {
+	padding: 15px;
+}
+
+.description-icon {
+	background-color: white;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+}
+
+.description-div {
+	padding: 15px;
+	color: white;
+	text-align: justify;
+}
+
+
+.description-icon:hover {
+	background-color: rgb(174, 177, 183);
+}
+

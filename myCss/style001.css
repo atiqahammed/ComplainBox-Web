@@ -1,0 +1,62 @@
+body {
+	margin: 0;
+	padding: 0;
+	background: url("../pictures/serverSiteImages/bg001.jpg"); 
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	font-family: sans-serif;
+}
+
+.panel {
+	border: 0;
+	background: rgb(0, 0, 0, 0.5);
+	padding: 15px;
+	color: white;
+	text-align: center;
+	padding-top: 50px;
+}
+
+
+/*body {
+	margin: 0;
+	padding: 0;
+	background: url("../pictures/serverSiteImages/bg001.jpg"); 
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	font-family: sans-serif;
+}
+
+.panel {
+	border: 0px;
+	background: rgb(0, 0, 0, 0.5);
+	color: white;
+	text-align: center;
+	padding-top: 50px;
+}
+
+h4 {
+	margin: 0;
+	padding: 0;
+	color: #F9DF05;
+}
+
+.lock {
+	position: absolute;
+	top: -50px;
+	width: 100px;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+	background: linear-gradient(DarkSlateGrey, Cyan);
+	background: -webkit-linear-gradient(DarkSlateGrey, Cyan);
+	background: -webkit-linear-gradient(DarkSlateGrey, Cyan);
+}
+
+/*
+
+.form-group {
+	width: 80%;
+}
+*/
