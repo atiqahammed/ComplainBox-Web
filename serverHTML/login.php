@@ -20,6 +20,23 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+
+    <script type="text/javascript">
+      function myFunction() {
+        var x = document.getElementById("myInput");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }  
+    </script>
+
+
+
+    
+
 
    
   </head>
@@ -28,10 +45,7 @@
 
     
 
-    <div class="container" style="margin-top: 100px">
-
-
-    
+  <div class="container" style="margin-top: 100px">  
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
         <div class="panel panel-default">
@@ -40,16 +54,38 @@
                 <img id="logo" style="height: 70px; width: 70px; margin-bottom: 20px;" src="../pictures/icon/complain.png">
               </div>
               <h4 id="header-information" style="text-align: center;">Login to Complain Box</h4>
+
               <br><hr>
-              <form action="../android/test.php" method="POST">
+              <form action="../serverPHP/adminLoginTest.php" method="POST">
                 <div class="form-group" class="tmp">
                   <h4>Email address</h4>
-                  <input type="email" name="email" class="form-control" placeholder="">
+                  <?php  
+                    if(isset($_GET['error']) == true) {
+                      if($_GET['error'] == 1) {
+                        echo '<p style="color:red;">Wrong admin email provided !!!</p>';
+                      }
+                  
+                    }
+
+                  ?>
+                  <input type="email" name="email" class="form-control" placeholder="" required>
                 </div>
+
+
+                
 
                 <div class="form-group">
                   <h4>Password</h4>
-                  <input type="password" name="password" class="form-control" placeholder="">
+                  <?php  
+                    if(isset($_GET['error']) == true) {
+                      if($_GET['error'] == 2) {
+                        echo '<p style="color:red;">Wrong Password !!!</p>';
+                      }
+                    }
+
+                  ?>
+                  <input type="password" name="password" id="myInput" class="form-control" placeholder="" required>
+                  <input type="checkbox" onclick="myFunction()">Show Password
                 </div>
 
                 <div class="form-group">
@@ -57,19 +93,15 @@
                   <input type="submit" name="submit" class="btn btn-success btn-lg btn-block" value="Login">
                 </div>
                 <a href="forgotPassword.php">Forgot password?</a>
-
+                 
             </form> 
           </div> 
-          <div class="lock"><i class="fa fa-lock fa-3x"></i></div>
-          <div class="label">Login Form</div>
+          <!--<div class="lock"><i class="fa fa-lock fa-3x"></i></div>
+          <div class="label">Login Form</div> -->
         </div> 
       </div> 
     </div> 
   </div> <!-- /container -->
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
   </body>
 </html>
