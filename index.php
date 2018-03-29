@@ -25,7 +25,7 @@
 
 
 	<!--<nav class="navbar navbar-light navbar-fixed-top" style="background-color: rgb(41, 36, 61);"> -->
-	<nav class="navbar navbar-light" style="background-color: rgb(41, 36, 61);">
+	<nav class="navbar navbar-light" style="background-color: #009688;">
 	  	<div class="container-fluid">
 	    	<div class="navbar-header">
 	     		<a class="navbar-brand" href="index.php"><img src="SERVER_PHP/pictures/icon/complain.png" id="indexLogo-complain-box"></a>
@@ -85,7 +85,7 @@
   								<source src="SERVER_PHP/pictures/complainBoxVedio.mp4" type="video/mp4">				
 							</video>
 
-							<a href="" download="SERVER_PHP/pictures/IMG_20180212_173356.jpg">
+							<a href="SERVER_PHP\pictures\Final.pdf" download>
 							<button type="button" class="btn btn-success" style="margin-top: 20px;">Download Complain Box apk</button>
 							</a>
     					</div>
@@ -166,7 +166,7 @@
  		</div> <!-- end of purpose section -->
 
 
- 		<div class="row" id="developers-container" style="background-color: rgb(41, 36, 61);"> <!-- start of developer section -->
+ 		<div class="row" id="developers-container" style="background-color: #009688"> <!-- start of developer section -->
  			
  			<div class="col-sm-4 col-md-4 col-lg-4" style="color: white;">
  				<h3 style="text-align: center;">Supervisor</h3>

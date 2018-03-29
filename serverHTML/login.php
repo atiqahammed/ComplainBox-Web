@@ -41,7 +41,7 @@
               </div>
               <h4 id="header-information" style="text-align: center;">Login to Complain Box</h4>
               <br><hr>
-              <form action="">
+              <form action="../android/test.php" method="POST">
                 <div class="form-group" class="tmp">
                   <h4>Email address</h4>
                   <input type="email" name="email" class="form-control" placeholder="">

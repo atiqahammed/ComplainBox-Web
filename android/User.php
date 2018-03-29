@@ -1,8 +1,5 @@
 <?php  
 
-	/**
-	* 
-	*/
 	class User
 	{
 		
@@ -28,18 +25,7 @@
 			}
 		}
 
-
-
-
 	}
-
-
-//$op = new DBOperation();
-//$op->createUserAccount('Atiq Ahammed', 'bsse0817@iit.du.ac.bd', '123456', '0');
-
-
-
-
 
 
 ?>
