@@ -3,6 +3,7 @@
 class MyEmail
 {
 	
+    
 	function __construct()
 	{
 		require("src/PHPMailer.php");
@@ -28,10 +29,11 @@ class MyEmail
     	$mail->AddAddress($email['to']);
 
      	if(!$mail->Send()) {
-        	//echo "Mailer Error: " . $mail->ErrorInfo;
+     		
     	} else {
-        	//echo 'send succefully';
-        	//header("location: index.php");
+        	if (isset($email['path'])) {
+     			header("location: ".$email['path']);
+     		}
     	}
 	}
 }

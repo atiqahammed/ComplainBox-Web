@@ -17,8 +17,8 @@
 
 
 	<!-- customized -->
-	<link rel="icon" href="SERVER_PHP/pictures/icon/complain.png">
-	<link rel="stylesheet" type="text/css" href="SERVER_PHP/myCss/style002.css">
+	<link rel="icon" href="SERVER/pictures/icon/complain.png">
+	<link rel="stylesheet" type="text/css" href="SERVER/myCss/style002.css">
 
 </head>
 <body>
@@ -28,7 +28,7 @@
 	<nav class="navbar navbar-light" style="background-color: #009688;">
 	  	<div class="container-fluid">
 	    	<div class="navbar-header">
-	     		<a class="navbar-brand" href="index.php"><img src="SERVER_PHP/pictures/icon/complain.png" id="indexLogo-complain-box"></a>
+	     		<a class="navbar-brand" href="index.php"><img src="SERVER/pictures/icon/complain.png" id="indexLogo-complain-box"></a>
 	    	</div>
 	    
 	    	<ul class="nav navbar-nav">				
@@ -39,7 +39,7 @@
 	    	</ul>
 	    	
 	    	<ul class="nav navbar-nav navbar-right">
-	      		<li><a href="SERVER_PHP/serverHTML/login.php" class="nev-custom-css"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	      		<li><a href="SERVER/serverHTML/login.php" class="nev-custom-css"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 	    	</ul>
 	  </div>
 	</nav>
@@ -85,7 +85,7 @@
   								<source src="SERVER_PHP/pictures/complainBoxVedio.mp4" type="video/mp4">				
 							</video>
 
-							<a href="SERVER_PHP\pictures\Final.pdf" download>
+							<a href="SERVER\pictures\Final.pdf" download>
 							<button type="button" class="btn btn-success" style="margin-top: 20px;">Download Complain Box apk</button>
 							</a>
     					</div>
@@ -106,7 +106,7 @@
 	   			</div>
 
 	   			<div class="row">
-	   				    <div class="col-md-2 icon-image-Div"><img class="description-icon" src="SERVER_PHP/pictures/serverSiteImages/icon/emergency.png"></div>
+	   				    <div class="col-md-2 icon-image-Div"><img class="description-icon" src="SERVER/pictures/serverSiteImages/icon/emergency.png"></div>
     					<div class="col-md-10 description-div">
     						<h4>Emergency Support</h4>
     						<p>Our mobile application also provides information of emergency support institution such as police station, fire station, hospital and provide necessary environment to communicate with those institution directly.</p>
@@ -116,7 +116,7 @@
 	   			</div>
 
 	   			<div class="row">
-	   				    <div class="col-md-2 icon-image-Div"><img class="description-icon" src="SERVER_PHP/pictures/serverSiteImages/icon/notice.png"></div>
+	   				    <div class="col-md-2 icon-image-Div"><img class="description-icon" src="SERVER/pictures/serverSiteImages/icon/notice.png"></div>
     					<div class="col-md-10 description-div">
     						<h4>Notice</h4>
     						<p>People can view current notice provide by Dhaka south city corporation using our mobile appkicatoin.</p>
@@ -126,7 +126,7 @@
 	   			</div>
 
 	   			<div class="row">
-	   				    <div class="col-md-2 icon-image-Div"><img class="description-icon" src="SERVER_PHP/pictures/serverSiteImages/icon/event.png"></div>
+	   				    <div class="col-md-2 icon-image-Div"><img class="description-icon" src="SERVER/pictures/serverSiteImages/icon/event.png"></div>
     					<div class="col-md-10 description-div">
     						<h4>Event</h4>
     						<p>Authority of Dhaka south city corporation often arrange events. Using our mobile application user can have the current update of events of DSCCA.</p>
@@ -136,7 +136,7 @@
 	   			</div>
 
 	   			<div class="row">
-	   				    <div class="col-md-2 icon-image-Div"><img class="description-icon" src="SERVER_PHP/pictures/serverSiteImages/icon/applicationForm.png"></div>
+	   				    <div class="col-md-2 icon-image-Div"><img class="description-icon" src="SERVER/pictures/serverSiteImages/icon/applicationForm.png"></div>
     					<div class="col-md-10 description-div">
     						<h4>Application Form</h4>
     						<p>Dhaka south city corporation provide necessary application forms for public. User of our complain Box mobile application can download those application from our application easily.</p>
@@ -160,7 +160,7 @@
 
    		
 	   		<div class="col-sm-4 col-md-4 col-lg-4" style="border-radius: 7%; text-align: center;" >
-	   			<img src="SERVER_PHP/pictures/iitlogo-blue.png" style="height: 100px; padding-top: 20px;">
+	   			<img src="SERVER/pictures/iitlogo-blue.png" style="height: 100px; padding-top: 20px;">
 	   			
 	    	</div>
  		</div> <!-- end of purpose section -->

@@ -103,5 +103,15 @@
     </div> 
   </div> <!-- /container -->
 
+
+  <?php  
+                    if(isset($_GET['message']) == true) {
+                      //if($_GET['error'] == 2) {
+                        echo '<script>window.alert("I am an alert box!");</script>';
+                      //}
+                    }
+
+                  ?>
+
   </body>
 </html>

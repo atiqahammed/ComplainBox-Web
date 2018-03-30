@@ -41,16 +41,21 @@
               </div>
               <h4 id="header-information" style="text-align: center;">Forgot Password</h4>
               <br><hr>
-              <form action="">
+              <form action="../serverPHP/forgotPassword.php" method="POST">
                 <div class="form-group" class="tmp">
                   <h4>Enter Admin's valid email address and we will send you your admin password.</h4>
-                  <input type="email" name="email" class="form-control" placeholder="">
-                </div>
-
-                
-
-                <div class="form-group">
+                  <?php  
+                    if(isset($_GET['error']) == true) {
+                      if($_GET['error'] == 1) {
+                        echo '<p style="color:red;">Wrong admin email provided !!!</p>';
+                      }
                   
+                    }
+
+                  ?>
+                  <input type="email" name="email" class="form-control" placeholder="" required>
+                </div>
+                <div class="form-group">
                   <input type="submit" name="submit" class="btn btn-success btn-lg btn-block" value="Send Password">
                 </div>
                
