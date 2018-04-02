@@ -130,25 +130,26 @@
                             </div>
                             <div class="modal-body">
                             
-                                <form action="../serverPHP/addApplicationForm.php" method="POST">
+                                <form action="../serverPHP/addApplicationForm.php" method="POST" enctype="multipart/form-data">
+
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Application Form Title</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required>
-                                        <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Description</label>
-                                        <textarea class="form-control" rows="5" id="applicationFormDescription"></textarea>
+                                        <input type="text" name="text" maxlength="100" class="form-control" placeholder="" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="exampleInputFile">File input</label>
-                                        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" required>
+                                        <label for="exampleInputPassword1">Description</label>
+                                        <textarea name="description" maxlength="500" class="form-control" rows="5" id="applicationFormDescription" required></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="file" name="file" required>
                                         <small id="fileHelp" class="form-text text-muted">Please upload a pdf file.</small>
                                     </div>
+
+                                   
                                     
-                                    <button type="submit" class="btn btn-primary" style="background-color: #009688;">Add</button>
+                                    <button type="submit" name="submit" class="btn btn-primary" style="background-color: #009688;">Add</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 </form>
                             </div>
@@ -177,7 +178,25 @@
          </script>
     </body>
 
+    <?php  
+    /*
+        if(isset($_GET['message']) == true) {
+                      //if($_GET['error'] == 2) {
+            echo '<script>window.alert("Application added successfully");</script>';
+                      //}
+        }
+*/
 
+        if(isset($_GET['error']) == true) {
+            if($_GET['error'] == 1) {
+                echo '<script>window.alert("Sorry your application form is not added. Please upload a pdf");</script>';
+            }
+            if($_GET['error'] == 2) {
+                echo '<script>window.alert("Sorry your application form is not added. Please upload a small file");</script>';
+            }
+        }
+
+    ?>
 
 
 
