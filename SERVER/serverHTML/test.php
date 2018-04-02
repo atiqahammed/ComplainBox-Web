@@ -4,7 +4,7 @@
     	<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<title>Home - Complain Box</title>
+    	<title>Application Forms - Complain Box</title>
 
 
         
@@ -16,14 +16,24 @@
 
    	 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+
+
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
     	<link rel="icon" href="../pictures/icon/complain.png">
      
 
         <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
         <!-- Our Custom CSS -->
         <!--<link rel="stylesheet" href="style4.css"> -->
         <link rel="stylesheet" href="../myCss/home.css">
+        <link rel="stylesheet" href="../myCss/applicationForm.css">
 
 
     </head>
@@ -40,7 +50,7 @@
                 </div>
 
                 <ul class="list-unstyled components">
-                    <li class="active">
+                    <li >
 
 
                     	<a href="home.php">
@@ -81,8 +91,8 @@
                         </ul>
 
                     	-->
-                    </li>
-                    <li>
+                    </li >
+                    <li >
                         <a href="event.php">
                             <i class="glyphicon glyphicon-calendar"></i>
                             Events
@@ -92,13 +102,13 @@
 
 
 
-                    <li>
+                    <li >
                         <a href="notice.php">
                             <i class="glyphicon glyphicon-list-alt"></i>
                             Notices
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="applicationForm.php">
                             <i class="glyphicon glyphicon-file"></i>
                             Application Forms
@@ -131,7 +141,7 @@
             </nav>
 
             <!-- Page Content Holder -->
-            <div id="content">
+            <div id="content" style="width: 100%">
 
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
@@ -149,7 +159,7 @@
                             <!--<h2 class="nav navbar-nav navbar-right center">Home</h2>--> 
                             <ul class="nav navbar-nav navbar-right">
 
-                            	<li><h2>Home</h2></li>
+                            	<li><h2>Application Forms</h2></li>
                                 <!--<li><a href="#">Page</a></li>
                                 <li><a href="#">Page</a></li>
                                 <li><a href="#">Page</a></li>
@@ -159,28 +169,78 @@
                     </div>
                 </nav>
 
-                <h2>Collapsible Sidebar Using Bootstrap 3</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-                <div class="line"></div>
+                <!-- Button trigger modal -->
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+				  Launch demo modal
+				</button>
 
-                <h2>Lorem Ipsum Dolor</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				        ...
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        
+				        <a href="applicationForm.php">
+				        	<button type="button" class="btn btn-primary">Save changes</button>
+				        </a>
+				      </div>
+				    </div>
+				  </div>
+				</div>
 
-                <div class="line"></div>
+                
 
-                <h2>Lorem Ipsum Dolor</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-                <div class="line"></div>
+                
+                
 
-                <h3>Lorem Ipsum Dolor</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                
             </div>
         </div>
 
 
+
+        <!-- 
+    
+        adding new application form.
+
+
+        
+
+
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                  <p>This is a large modal.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+-->
+
+
+
+    
 
 
 
@@ -197,4 +257,15 @@
              });
          </script>
     </body>
+
+
+
+
+
+
+
+
+
 </html>
+
+

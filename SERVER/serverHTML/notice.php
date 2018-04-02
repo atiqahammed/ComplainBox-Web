@@ -4,7 +4,7 @@
     	<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<title>Home - Complain Box</title>
+    	<title>Notices - Complain Box</title>
 
 
         
@@ -40,7 +40,7 @@
                 </div>
 
                 <ul class="list-unstyled components">
-                    <li class="active">
+                    <li >
 
 
                     	<a href="home.php">
@@ -81,8 +81,8 @@
                         </ul>
 
                     	-->
-                    </li>
-                    <li>
+                    </li >
+                    <li >
                         <a href="event.php">
                             <i class="glyphicon glyphicon-calendar"></i>
                             Events
@@ -92,7 +92,7 @@
 
 
 
-                    <li>
+                    <li class="active">
                         <a href="notice.php">
                             <i class="glyphicon glyphicon-list-alt"></i>
                             Notices
@@ -149,7 +149,7 @@
                             <!--<h2 class="nav navbar-nav navbar-right center">Home</h2>--> 
                             <ul class="nav navbar-nav navbar-right">
 
-                            	<li><h2>Home</h2></li>
+                            	<li><h2>Notices</h2></li>
                                 <!--<li><a href="#">Page</a></li>
                                 <li><a href="#">Page</a></li>
                                 <li><a href="#">Page</a></li>

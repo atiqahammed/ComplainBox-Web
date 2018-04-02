@@ -10,7 +10,8 @@
 
 
 
-	//echo mysqli_num_rows($result);
+
+		//echo mysqli_num_rows($result);
 	if(mysqli_num_rows($result) < 1) {
 		header("location: ../serverHTML/forgotPassword.php?error=1");
 		return;
@@ -20,14 +21,15 @@
     $password = $row[1];
 
 
-
+   // echo $password;
+    
 	$mail = new MyEmail();
 	$email = array();
 	$email['sub'] = 'Response to Forgot Password';
 	$email['body'] = "You have forgot your password and requested me to provide you it. As, you are our valid loyal admin, I am provding you it. your password is: ".$password.". Be careful and don't forget next time. :)";
 	$email['to'] = $row[0];
 	$email['path'] = '../serverHTML/login.php?message=1';
-
+	
 
 
 

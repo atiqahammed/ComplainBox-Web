@@ -20,7 +20,7 @@ class MyEmail
 	    $mail->Port = 465;
 	    $mail->IsHTML(true);
 	    $mail->Username = "khayrul.atiq@gmail.com";
-    	$mail->Password = "08170822";
+    	$mail->Password = "k08170822a";
     	$mail->SetFrom("khayrul.atiq@gmail.com");
     	
 
@@ -28,13 +28,17 @@ class MyEmail
     	$mail->Body = $email['body'];
     	$mail->AddAddress($email['to']);
 
+    	
+
      	if(!$mail->Send()) {
      		
     	} else {
+    		
         	if (isset($email['path'])) {
      			header("location: ".$email['path']);
      		}
     	}
+    	
 	}
 }
 
