@@ -3,11 +3,16 @@
 	require_once('dbConnection.php');
 
 
+	//if($db)
+	//	echo "string";
+
+	
 
 
 	$file = $_FILES['file'];
 	//print_r($file);
 
+	
 
 	$fileName = $_FILES['file']['name'];
 	$fileTmpName = $_FILES['file']['tmp_name'];
@@ -17,6 +22,7 @@
 	
 
 	$fileExt = explode('.', $fileName);
+	//echo $fileExt[0];
 
 	if(isset($_POST['submit'])) {
 		//echo "ok";
@@ -37,12 +43,14 @@
 		//echo $fileActualExt;
 		if($fileActualExt != "pdf") {
 			header("Location: ../serverHTML/applicationForm.php?error=1");
-				return;
+			return;
 
 		}
 
 		if($fileError === 0) {
-			if ($fileSize < 100000000) {
+
+			//echo "string";
+			if ($fileSize < 10000000000) {
 				$fileNameNew = uniqid('', true).'.'.$fileActualExt;
 
 				//echo $fileNameNew;
@@ -72,6 +80,8 @@
 		
 
 	}
+
+	
 
 
 	

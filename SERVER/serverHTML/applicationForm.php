@@ -25,6 +25,9 @@
         <link rel="stylesheet" href="../myCss/applicationForm.css">
 
 
+        <!-- ajax-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     </head>
     <body>
 
@@ -114,9 +117,23 @@
                 </nav>
 
 
+
                 <!-- Button trigger modal -->
+                
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="background-color: #009688;">Add Application Form
                 </button>
+
+                <hr>
+
+
+                <div id="load_data"></div>
+                <div id="load_data_message"></div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -164,6 +181,10 @@
         </div>
 
 
+
+
+
+
         <!-- jQuery CDN -->
          <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
          <!-- Bootstrap Js CDN -->
@@ -179,13 +200,13 @@
     </body>
 
     <?php  
-    /*
+        /*
         if(isset($_GET['message']) == true) {
                       //if($_GET['error'] == 2) {
             echo '<script>window.alert("Application added successfully");</script>';
                       //}
         }
-*/
+        */
 
         if(isset($_GET['error']) == true) {
             if($_GET['error'] == 1) {
@@ -201,5 +222,55 @@
 
 
 </html>
+
+<script>
+    
+    $(document).ready(function(){
+
+        var limit = 5;
+        var start = 0;
+        var action = 'inactive';
+        function load_application_form_data(limit, start) {
+            $.ajax({
+                url: "fetchApplicationForm.php",
+                method: "POST",
+                data:{limit:limit, start:start},
+                cache:false,
+                success:function(data)
+                {
+                    $('#load_data').append(data);
+                    if(data == '') {
+                        $('#load_data_message').html("<hr><button type='button' class = 'btn btn-info'>No data Found</button>");
+                        action = 'active';
+                    } else {
+                        $('#load_data_message').html("<hr><button type='button' class = 'btn btn-waiting'>please wait...</button>");
+                        action = 'inactive';
+                    }
+                }
+            });
+        }
+
+        if(action == 'inactive') {
+            action = 'active';
+            load_application_form_data(limit, start);
+        }
+
+        $(window).scroll(function(){
+           
+            if($(window).scrollTop() + $(window).height() > $("#load_data").height() && action == 'inactive') {
+                    action = 'active';
+                    start = start + limit;
+                    timeOutId = setTimeout(function(){
+                        load_application_form_data(limit, start);
+                    }, 1000);
+            }
+
+        });
+
+
+    });
+
+
+</script>
 
 
