@@ -2,13 +2,9 @@
 
 	require_once('../serverPHP/dbConnection.php');
 
-	//echo "string";
-
 	if(isset($_POST["limit"], $_POST["start"])) {
 
 		$query = "SELECT * FROM applicationform ORDER BY applicationID DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";
-		//echo $query;
-
 
 		$result = mysqli_query($db, $query);
 

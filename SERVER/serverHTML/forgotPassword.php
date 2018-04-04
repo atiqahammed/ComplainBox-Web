@@ -12,7 +12,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <link rel="icon" href="../pictures/icon/complain.png">
-   <!-- <link rel="stylesheet" type="text/css" href="SERVER_PHP/myCss/style002.css"> -->
 
 
     <meta charset="utf-8">
@@ -56,7 +55,7 @@
                   <input type="email" name="email" class="form-control" placeholder="" required>
                 </div>
                 <div class="form-group">
-                  <input type="submit" name="submit" class="btn btn-success btn-lg btn-block" value="Send Password">
+                  <input type="submit" name="submit" class="btn btn-success btn-lg btn-block btn-sm" value="Send Password">
                 </div>
                
 

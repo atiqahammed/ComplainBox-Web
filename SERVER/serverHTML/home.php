@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+
+if(!isset($_SESSION["email"]))
+{
+    header("location: ../../index.php");
+}
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -112,8 +126,14 @@
                         </a>
                     </li>
 
+
+                    
+
+                    
+
+
                     <li>
-                        <a href="login.php">
+                        <a href="logout.php">
                             <i class="glyphicon glyphicon-log-out"></i>
                             Log out
                         </a>

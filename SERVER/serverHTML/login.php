@@ -90,7 +90,7 @@
 
                 <div class="form-group">
                   
-                  <input type="submit" name="submit" class="btn btn-success btn-lg btn-block" value="Login">
+                  <input type="submit" name="submit" class="btn btn-success btn-lg btn-block btn-sm" value="Login">
                 </div>
                 <a href="forgotPassword.php">Forgot password?</a>
                  
@@ -107,7 +107,7 @@
   <?php  
                     if(isset($_GET['message']) == true) {
                       //if($_GET['error'] == 2) {
-                        echo '<script>window.alert("I am an alert box!");</script>';
+                        echo '<script>window.alert("Your password has been sent to your email address.");</script>';
                       //}
                     }
 

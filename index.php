@@ -94,7 +94,7 @@
 								</video>
 
 								<a href="SERVER\pictures\Final.pdf" download>
-								<button type="button" class="btn btn-success" style="margin-top: 20px;">Download Complain Box apk</button>
+									<button type="button" class="btn btn-outline-secondary">Download Complain Box apk</button>
 								</a>
 	    					</div>
 		   			</div>
@@ -104,7 +104,7 @@
 	   		
 		   		<div class="col-sm-6 col-md-6 col-lg-6" style="border-radius: 7%;">
 		   			<div class="row">
-		   				    <div class="col-md-2 icon-image-Div"><img class="description-icon" src="SERVER_PHP/pictures/serverSiteImages/icon/complain.png"></div>
+		   				    <div class="col-md-2 icon-image-Div"><img class="description-icon" src="SERVER/pictures/serverSiteImages/icon/complain.png"></div>
 	    					<div class="col-md-10 description-div">
 	    						<h4>Problem Submission</h4>
 	    						<p>Using our mobile application, user can submit their city problem. To submit their problem they have to select problem category, then take a photo of the problem, add problem description and add problem location. The city corporation authority will take necessary steps to solve their submitted problem.</p>
