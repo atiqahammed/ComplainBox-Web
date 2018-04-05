@@ -1,0 +1,35 @@
+table admin
+	
+	email (50)
+	password (50)
+
+---------------------------------------------------
+
+table applicationform
+	
+	applicationID (int) a.i.
+	applicationTitle (100)
+	applicationDescription (500)
+	applicationFileName (50)
+
+----------------------------------------------------
+
+
+table notice
+
+	noticeID (int) a.i.
+	noticeTitle (100)
+	noticeFileName (100)
+	email (100)
+	date (100)
+
+---------------------------------------------------
+
+table recovery
+	
+	id (100)
+	time (100)
+	used (100)
+	email (100)
+
+----------------------------------------------------

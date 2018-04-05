@@ -115,7 +115,7 @@
                             </div>
                             <div class="modal-body">
                             
-                                <form action="../serverPHP/addNewNotice.php" method="POST" enctype="multipart/form-data">
+                                <form action="../serverPHP/addNewEvent.php" method="POST" enctype="multipart/form-data">
 
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Event Name</label>
@@ -138,14 +138,6 @@
                                         <label for="exampleInputPassword1">Description</label>
                                         <textarea name="description" maxlength="500" class="form-control" rows="5" id="applicationFormDescription" required></textarea>
                                     </div>
-
-
-
-
-
-
-
-
                                     
 
                                     <button type="submit" name="submit" class="btn btn-primary" style="background-color: #009688;">Add</button>
