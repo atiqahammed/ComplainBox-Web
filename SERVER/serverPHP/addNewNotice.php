@@ -28,8 +28,13 @@
 				$file_destination = '../noticeFiles/'.$file_name_new;
 				move_uploaded_file($file_tmp_name, $file_destination);
 				$title = $_POST["text"];
+				$date_and_time = $_POST["dateAndTime"];
+
+				//echo $date_and_time;
+
+				
 				$admin_email = $_SESSION["email"];
-				$sql="INSERT INTO notice (noticeTitle, noticeFileName, email) values ('$title','$file_name_new','$admin_email')";
+				$sql="INSERT INTO notice (noticeTitle, noticeFileName, email, date) values ('$title','$file_name_new','$admin_email', '$date_and_time')";
 				$query=mysqli_query($db, $sql);
 
 				header("Location: ../serverHTML/notice.php?message=file-upload-sucessfully");

@@ -2,50 +2,17 @@
     include 'includesAdminPanel/sessionSrartForAdmin.php';
 ?>
 
-
-
-
-
 <!DOCTYPE html>
 <html>
     <head>
-    	<meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="icon" href="../pictures/icon/complain.png">
-        <!-- Bootstrap CSS CDN -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <!-- Our Custom CSS -->
-        <link rel="stylesheet" href="../myCss/home.css">
-        
+    	<?php  
+            include 'includesAdminPanel/headerPart1.php';
+        ?>
 
-
-        <!-- ajax-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-
-        <!--<link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">-->
         <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-
-
-
-
- 
-
-
-
         <title>Notices - Complain Box</title>
-
-
     </head>
     <body>
-
-
 
         <div class="wrapper">
             <!-- Sidebar Holder --> <!-- start of nav bar -->
@@ -137,7 +104,15 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="background-color: #009688;">Add New Notice</button>
                 <hr>
 
-                
+                <div id="load_data"></div>
+                <div id="load_data_message"></div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -159,17 +134,16 @@
                                     </div>
 
 
+                                    
                                     <div class="form-group">
-                                        <label class="control-label">DateTime Picking</label>
+                                        <label class="control-label">Publishing Date & Time</label>
                                         <div class="controls input-append date form_datetime" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
-                                            <input size="16" class="form-control" type="text" value="" readonly>
+                                            <input name="dateAndTime" size="16" class="form-control" type="text" required>
                                             <span class="add-on"><i class="icon-remove"></i></span>
                                             <span class="add-on"><i class="icon-th"></i></span> 
                                         </div>
                                         <input type="hidden" id="dtp_input1" value="" /><br/>
                                     </div>
-    
-                                    
 
                                     
 
@@ -215,43 +189,12 @@
 
 
 
-         <script type="text/javascript" src="./jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
-<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-<script type="text/javascript" src="../js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
-<script type="text/javascript">
-    $('.form_datetime').datetimepicker({
-        //language:  'fr',
-        weekStart: 1,
-        todayBtn:  1,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        forceParse: 0,
-        showMeridian: 1
-    });
-    $('.form_date').datetimepicker({
-        language:  'fr',
-        weekStart: 1,
-        todayBtn:  1,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        minView: 2,
-        forceParse: 0
-    });
-    $('.form_time').datetimepicker({
-        language:  'fr',
-        weekStart: 1,
-        todayBtn:  1,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 1,
-        minView: 0,
-        maxView: 1,
-        forceParse: 0
-    });
-</script>
+
+
+
+
+
+
 
 
 
@@ -283,3 +226,93 @@
 </html>
 
 
+<script>
+    
+    $(document).ready(function(){
+
+        var limit = 5;
+        var start = 0;
+        var action = 'inactive';
+        function load_notice_data(limit, start) {
+            $.ajax({
+                url: "fetchNotice.php",
+                method: "POST",
+                data:{limit:limit, start:start},
+                cache:false,
+                success:function(data)
+                {
+                    $('#load_data').append(data);
+                    if(data == '') {
+                        $('#load_data_message').html("<hr><button type='button' class = 'btn btn-info'>No Data Found</button>");
+                        action = 'active';
+                    } else {
+                        $('#load_data_message').html("<hr><button type='button' class = 'btn btn-waiting'>Loading ...</button>");
+                        action = 'inactive';
+                    }
+                }
+            });
+        }
+
+        if(action == 'inactive') {
+            action = 'active';
+            load_notice_data(limit, start);
+        }
+
+        $(window).scroll(function(){
+           
+            if($(window).scrollTop() + $(window).height() > $("#load_data").height() && action == 'inactive') {
+                    action = 'active';
+                    start = start + limit;
+                    timeOutId = setTimeout(function(){
+                        load_notice_data(limit, start);
+                    }, 1000);
+            }
+
+        });
+
+
+    });
+
+
+</script>
+
+
+
+
+        <!--<script type="text/javascript" src="./jquery/jquery-1.8.3.min.js" charset="UTF-8"></script> -->
+        <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+        <script type="text/javascript" src="../js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+        <script type="text/javascript">
+            $('.form_datetime').datetimepicker({
+                //language:  'fr',
+                weekStart: 1,
+                todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                forceParse: 0,
+                showMeridian: 1
+            });
+            $('.form_date').datetimepicker({
+                language:  'fr',
+                weekStart: 1,
+                todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0
+            });
+            $('.form_time').datetimepicker({
+                language:  'fr',
+                weekStart: 1,
+                todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 1,
+                minView: 0,
+                maxView: 1,
+                forceParse: 0
+            });
+        </script>

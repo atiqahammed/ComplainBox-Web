@@ -20,21 +20,8 @@
 
 	$row=mysqli_fetch_array($result, MYSQLI_NUM);
 	
-	if($row[1]==$password) {
-		
-		
+	if($row[1]==md5($password)) {
 		$_SESSION["email"] = $row[0];
-		//$_SESSION["user"] = $_REQUEST["email"];
-		
-		/*if(isset($_SESSION["email"])) {
-			echo "string";
-		}*/
-
-		//unset($_SESSION);
-		//unset($_SESSION['name']); 
-		/*if(!isset($_SESSION)) {
-			echo "session destroyed";
-		}*/
 
 		header("location: ../serverHTML/home.php");
 		//header("location: test.php");

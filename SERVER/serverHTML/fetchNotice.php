@@ -9,13 +9,12 @@
 
 		$result = mysqli_query($db, $query);
 
-		/*
-
 		while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
 			echo '
 			
 				<div>
   					<h3>'.$row[1].'</h3>
+  					<p>Publishing date: '.$row[4].'</p>
   					
   					<a href="../noticeFiles/'.$row[2].'">
   						<button type="button" class="btn btn-primary btn-sm" style="background-color: #4DB6AC;">View Notice</button>
@@ -27,8 +26,6 @@
 			
 			';
 		}
-
-		*/
 
 	}
 

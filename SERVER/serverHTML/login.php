@@ -107,7 +107,7 @@
   <?php  
                     if(isset($_GET['message']) == true) {
                       //if($_GET['error'] == 2) {
-                        echo '<script>window.alert("Your password has been sent to your email address.");</script>';
+                        echo '<script>window.alert("Recover password link has been sent to your email address. Please recover your password from that link.");</script>';
                       //}
                     }
 

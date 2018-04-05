@@ -4,37 +4,37 @@
 	require_once('../mail/MyEmail.php');
 
 	$email = $_POST['email'];
-	//echo $email;
 	$sql = "SELECT * FROM admin WHERE email = '$email'";
 	$result = mysqli_query($db,$sql);
 
 
-
-
-		//echo mysqli_num_rows($result);
 	if(mysqli_num_rows($result) < 1) {
 		header("location: ../serverHTML/forgotPassword.php?error=1");
 		return;
 	}
 
 	$row = mysqli_fetch_array($result, MYSQLI_NUM);
-    $password = $row[1];
 
 
-   // echo $password;
-    
+	$new_id = uniqid('', true);
+	$new_time = date('m/d/Y h:i:s a', time());
+	$used = 'no';
+	$admin_email_address =  $row[0];
+
+
+
+	$sql="INSERT INTO recovery (id, time, used, email) values ('$new_id','$new_time','$used', '$admin_email_address')";
+	$query=mysqli_query($db, $sql);
+
+
+
 	$mail = new MyEmail();
 	$email = array();
-	$email['sub'] = 'Response to Forgot Password';
-	$email['body'] = "You have forgot your password and requested me to provide you it. As, you are our valid loyal admin, I am provding you it. your password is: ".$password.". Be careful and don't forget next time. :)";
+	$email['sub'] = 'Reset Password';
+	$email['body'] = "You can recover your account from the following link. This link will be valid for 2 hours only. 10.100.104.14/SERVER/serverHTML/resetPassword.php?recoveryid=".$new_id."";
 	$email['to'] = $row[0];
-	$email['path'] = '../serverHTML/login.php?message=1';
-	
-
-
-
+	//$email['path'] = '../serverHTML/login.php?message=1';
+	$email['path'] = '../serverHTML/login.php?message=recover-pasword-mail-has-been sent';
 	$mail->sendEmail($email);
-
-
 
 ?>  
