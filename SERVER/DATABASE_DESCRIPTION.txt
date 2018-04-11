@@ -33,3 +33,15 @@ table recovery
 	email (100)
 
 ----------------------------------------------------
+
+table event
+	
+	eventID (int) a.i.
+	eventName (100)
+	eventDateTime (100)
+	eventDescription (500)
+	eventPublishingDate (100)
+	email (100)
+
+----------------------------------------------------
+

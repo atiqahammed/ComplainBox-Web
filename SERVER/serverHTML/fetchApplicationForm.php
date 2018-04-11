@@ -21,7 +21,7 @@
   					<a href="../applicationForms/'.$row[3].'" download>
 						<button type="button" class="btn btn-primary btn-sm" style="background-color: #4DB6AC;">Download Application Form</button>
 					</a>
-				</div	
+				</div>	
 			
 			';
 		}

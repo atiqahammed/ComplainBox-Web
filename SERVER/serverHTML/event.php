@@ -13,6 +13,59 @@
         <title>Events - Complain Box</title>
 
 
+        <style type="text/css">
+    
+
+            time.icon span
+            {
+              font-size: 2.8em;
+              letter-spacing: -0.05em;
+              padding-top: 0.8em;
+              color: #2f2f2f;
+            }
+
+            time.icon em
+            {
+              position: absolute;
+              bottom: 0.3em;
+              color: #fd9f1b;
+            }
+            time.icon strong
+            {
+              position: absolute;
+              top: 0;
+              padding: 0.4em 0;
+              color: #fff;
+              background-color: #fd9f1b;
+              border-bottom: 1px dashed #f37302;
+              box-shadow: 0 2px 0 #fd9f1b;
+            }
+
+            time.icon *
+            {
+              display: block;
+              width: 100%;
+              font-size: 1em;
+              font-weight: bold;
+              font-style: normal;
+              text-align: center;
+            }
+
+            time.icon
+            {
+              font-size: 1em; /* change icon size */
+              display: block;
+              position: relative;
+              width: 7em;
+              height: 7em;
+              background-color: #fff;
+              border-radius: 0.6em;
+              box-shadow: 0 1px 0 #bdbdbd, 0 2px 0 #fff, 0 3px 0 #bdbdbd, 0 4px 0 #fff, 0 5px 0 #bdbdbd, 0 0 0 1px #bdbdbd;
+              overflow: hidden;
+            }
+    </style>
+
+
 
 
     </head>
@@ -102,6 +155,42 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="background-color: #009688;">Add New Event</button>
                 <hr>
 
+                <div id="load_data"></div>
+                <div id="load_data_message"></div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+
+
+                
+                <!--
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-10">
+
+                        <h3>event name</h3>
+                        <p>event descriotion<p>
+                        <p>publishing date</p>
+
+                        </div>
+                        <div class="col-md-2">
+                            
+                            <time datetime="2014-09-20" class="icon">
+                                
+                                <em>9:0ap</em>
+                                <strong>September</strong>
+                                <span>20</span>
+                            </time>
+
+
+                        </div>
+                    </div>
+                </div>
+            -->
+
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -125,7 +214,7 @@
 
                                     <div class="form-group">
                                         <label class="control-label">Event Date & Time</label>
-                                        <div class="controls input-append date form_datetime" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                                        <div class="controls input-append date form_datetime" data-date="2018-01-01T05:25:07Z" data-date-format="dd/MM/yyyy - HH:ii p" data-link-field="dtp_input1">
                                             <input name="dateAndTime" size="16" class="form-control" type="text" required>
                                             <span class="add-on"><i class="icon-remove"></i></span>
                                             <span class="add-on"><i class="icon-th"></i></span> 
@@ -176,6 +265,59 @@
          </script>
     </body>
 </html>
+
+
+<script>
+    
+    $(document).ready(function(){
+
+        var limit = 5;
+        var start = 0;
+        var action = 'inactive';
+        function load_event_data(limit, start) {
+            $.ajax({
+                url: "fetchEvent.php",
+                method: "POST",
+                data:{limit:limit, start:start},
+                cache:false,
+                success:function(data)
+                {
+                    $('#load_data').append(data);
+                    if(data == '') {
+                        $('#load_data_message').html("<hr><button type='button' class = 'btn btn-info'>No Data Found</button>");
+                        action = 'active';
+                    } else {
+                        $('#load_data_message').html("<hr><button type='button' class = 'btn btn-waiting'>Loading ...</button>");
+                        action = 'inactive';
+                    }
+                }
+            });
+        }
+
+        if(action == 'inactive') {
+            action = 'active';
+            load_event_data(limit, start);
+        }
+
+        $(window).scroll(function(){
+           
+            if($(window).scrollTop() + $(window).height() > $("#load_data").height() && action == 'inactive') {
+                    action = 'active';
+                    start = start + limit;
+                    timeOutId = setTimeout(function(){
+                        load_event_data(limit, start);
+                    }, 1000);
+            }
+
+        });
+
+
+    });
+
+
+</script>
+
+
 
 
 

@@ -136,7 +136,7 @@
 
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -33.8688, lng: 151.2195},
+          center: {lat: 23.81053426236296, lng: 90.41348926318358},
           zoom: 13
         });
         var card = document.getElementById('pac-card');
@@ -148,6 +148,8 @@
 
         var autocomplete = new google.maps.places.Autocomplete(input);
 
+        //alert(autocomplete)***
+
         // Bind the map's bounds (viewport) property to the autocomplete object,
         // so that the autocomplete requests use the current map bounds for the
         // bounds option in the request.
@@ -158,9 +160,36 @@
         infowindow.setContent(infowindowContent);
         var marker = new google.maps.Marker({
           map: map,
-          anchorPoint: new google.maps.Point(0, -29)
+          anchorPoint: new google.maps.Point(0, -29),
+          draggable: true
         });
 
+        
+        /*document.getElementById("lat").value= marker.getPosition().lat();
+        document.getElementById("lan").value= marker.getPosition().lng();
+        */
+
+
+
+         google.maps.event.addListener(map, 'center_changed', function () {
+            //alert("paichi");
+            //map.setCenter(marker.getPosition());
+            var location = map.getCenter();
+            document.getElementById("lat").value=location.lat();
+            document.getElementById("lan").value=location.lng(); 
+
+            //document.getElementById("lat").value= marker.getPosition().lat();
+            //document.getElementById("lan").value= marker.getPosition().lng();
+
+            /*var location = map.getCenter();
+            document.getElementById("lat").innerHTML = location.lat();
+
+            document.getElementById("lon").innerHTML = location.lng();
+            // call function to reposition marker location
+            placeMarker(location);*/
+        });
+
+/*
 
         google.maps.event.addListener(map, 'click', function(event) {
 			//alert(event.latLng.lat() + ", " + event.latLng.lng());
@@ -171,17 +200,25 @@
 			/*var marker = new google.maps.Marker({
 				position: location,
 				map, map
-			});*/
+			});
 
-			document.getElementById("lat").value=event.latLng.lat();
-			document.getElementById("lan").value=event.latLng.lng();
-		});
+			   document.getElementById("lat").value=event.latLng.lat();
+			   document.getElementById("lan").value=event.latLng.lng(); 
+		  });*/
+
+        google.maps.event.addListener(marker, 'dragend', function(event) {
+            document.getElementById("lat").value=event.latLng.lat();
+            document.getElementById("lan").value=event.latLng.lng();
+
+            //alert( 'Lat: ' + event.latLng.lat() + ' and Longitude is: ' + event.latLng.lng() );
+        });
+
 
 
 
         autocomplete.addListener('place_changed', function() {
           infowindow.close();
-          marker.setVisible(false);
+          marker.setVisible(true);
           var place = autocomplete.getPlace();
           if (!place.geometry) {
             // User entered the name of a Place that was not suggested and
@@ -244,7 +281,8 @@
      </div>
 
 
-     <input type="text" id="lat" name="latitude">
+     <input type="text" id="lat" name="latitude" readonly>
 <input type="text" id="lan" name="longitude">
+<hr><hr><hr><hr><hr>
   </body>
 </html>

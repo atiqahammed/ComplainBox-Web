@@ -22,7 +22,7 @@
   					<a href="../noticeFiles/'.$row[2].'" download>
 						<button type="button" class="btn btn-primary btn-sm" style="background-color: #4DB6AC;">Download Notice</button>
 					</a>
-				</div	
+				</div>	
 			
 			';
 		}
