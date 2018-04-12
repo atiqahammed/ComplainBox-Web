@@ -1,3 +1,8 @@
+<?php  
+    include 'includesAdminPanel/sessionSrartForAdmin.php';
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -48,19 +53,6 @@
                             Home
                         </a>
 
-                        <!--
-
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
-                            <i class="glyphicon glyphicon-home"></i>
-                            Home
-                        </a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li><a href="#">Home 1</a></li>
-                            <li><a href="#">Home 2</a></li>
-                            <li><a href="#">Home 3</a></li>
-                        </ul>
-						-->
-
                     </li>
 
 
@@ -69,18 +61,6 @@
                              <i class="glyphicon glyphicon-exclamation-sign"></i>
                             Problems
                         </a>
-                        <!--
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-                            <i class="glyphicon glyphicon-duplicate"></i>
-                            Pages
-                        </a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li><a href="#">Page 1</a></li>
-                            <li><a href="#">Page 2</a></li>
-                            <li><a href="#">Page 3</a></li>
-                        </ul>
-
-                    	-->
                     </li >
                     <li >
                         <a href="event.php">
@@ -112,26 +92,19 @@
                         </a>
                     </li>
 
-                    <li>
-                        <a href="login.php">
-                            <i class="glyphicon glyphicon-log-out"></i>
-                            Log out
-                        </a>
-                    </li>
+                    <?php
+                        include 'includesAdminPanel/adminLogout.php';
+                    ?>
 
 
                 </ul>
 
 
-                <!--
-                <ul class="list-unstyled CTAs">
-                    <li><a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a></li>
-                    <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li>
-                </ul> -->
+                
             </nav>
 
             <!-- Page Content Holder -->
-            <div id="content">
+            <div id="content" style="width: 100%">
 
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
@@ -146,19 +119,18 @@
 
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             
-                            <!--<h2 class="nav navbar-nav navbar-right center">Home</h2>--> 
+                           
                             <ul class="nav navbar-nav navbar-right">
 
                             	<li><h2>Emergency Support</h2></li>
-                                <!--<li><a href="#">Page</a></li>
-                                <li><a href="#">Page</a></li>
-                                <li><a href="#">Page</a></li>
-                                <li><a href="#">Page</a></li>-->
                             </ul>
                         </div>
                     </div>
                 </nav>
 
+
+
+                <!--
                 <h2>Collapsible Sidebar Using Bootstrap 3</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -177,6 +149,9 @@
 
                 <h3>Lorem Ipsum Dolor</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                -->
+
+
             </div>
         </div>
 
