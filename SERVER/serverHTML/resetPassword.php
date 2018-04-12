@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -44,7 +36,7 @@
     
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
-        <div class="panel panel-default">
+        <div class="panel panel-default" style="border-color: #26A69A;">
           <div class="panel-body">
               <div id="header-div" style="text-align: center;">
                 <img id="logo" style="height: 70px; width: 70px; margin-bottom: 20px;" src="../pictures/icon/complain.png">
@@ -117,7 +109,7 @@
                   <input type="password" name="password" class="form-control" placeholder="" required>
                 </div>
                 <div class="form-group">
-                  <input type="submit" name="submit" class="btn btn-success btn-lg btn-block btn-sm" value="Reset New Password">
+                  <input type="submit" name="submit" class="btn btn-success btn-lg btn-block btn-sm" value="Reset New Password" style="background-color: #009688;">
                 </div>
                
 

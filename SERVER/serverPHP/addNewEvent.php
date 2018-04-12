@@ -8,7 +8,11 @@
 		
 		$event_name = $_POST['text'];
 		$event_date = $_POST['dateAndTime'];
-		$event_publishing_date = date('m/d/Y h:i:s a', time());
+
+		//date_default_timezone_set('Bangladesh/Dhaka');
+		//$date = date('m/d/Y h:i:s a', time());
+
+		$event_publishing_date = date('m/d/Y h:i:s a', time()+ 4*3600);
 		$event_description =  $_POST['description'];
 		$admin_email = $_SESSION['email'];
 

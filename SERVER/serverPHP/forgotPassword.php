@@ -31,9 +31,8 @@
 	$mail = new MyEmail();
 	$email = array();
 	$email['sub'] = 'Reset Password';
-	$email['body'] = "You can recover your account from the following link. This link will be valid for 2 hours only. 10.100.104.14/SERVER/serverHTML/resetPassword.php?recoveryid=".$new_id."";
+	$email['body'] = "You can recover your account from the following link. This link will be valid for 2 hours only. 192.168.1.103/SERVER/serverHTML/resetPassword.php?recoveryid=".$new_id."";
 	$email['to'] = $row[0];
-	//$email['path'] = '../serverHTML/login.php?message=1';
 	$email['path'] = '../serverHTML/login.php?message=recover-pasword-mail-has-been sent';
 	$mail->sendEmail($email);
 
