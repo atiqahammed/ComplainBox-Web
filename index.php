@@ -27,7 +27,7 @@
 	<nav class="navbar navbar-light" style="background-color: #009688;">
 	  	<div class="container-fluid">
 	    	<div class="navbar-header">
-	     		<a class="navbar-brand" href="index.php"><img src="SERVER/pictures/icon/complain.png" id="indexLogo-complain-box"></a>
+	     		<a class="navbar-brand" href="SERVER/serverHTML/home.php"><img src="SERVER/pictures/icon/complain.png" id="indexLogo-complain-box"></a>
 	    	</div>
 	    
 	    	<ul class="nav navbar-nav">				
@@ -36,10 +36,24 @@
 	      		<li><a href="#purpose-container" class="nev-custom-css">Purpose</a></li>
 	      		<li><a href="#developers-container" class="nev-custom-css">Supervisor & Developers</a></li>
 	    	</ul>
+
+
+	    	<?php
+				session_start();
+				if(!isset($_SESSION["email"]))
+				{
+    				echo '
+
+    					<ul class="nav navbar-nav navbar-right">
+	      					<li><a href="SERVER/serverHTML/login.php" class="nev-custom-css"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	    				</ul>
+
+    				';
+				}
+
+			?>
 	    	
-	    	<ul class="nav navbar-nav navbar-right">
-	      		<li><a href="SERVER/serverHTML/login.php" class="nev-custom-css"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-	    	</ul>
+	    	
 	  </div>
 	</nav><!-- end of nevigation -->
 

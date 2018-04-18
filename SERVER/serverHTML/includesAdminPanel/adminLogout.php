@@ -1,6 +1,3 @@
-<li>
-    <a href="logout.php">
-        <i class="glyphicon glyphicon-log-out"></i>
-        Log out
-    </a>
-</li>
+<ul class="nav navbar-nav navbar-right">
+    <li><a href="logout.php" class="nev-custom-css"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+</ul>
