@@ -79,11 +79,9 @@ if(!isset($_SESSION["email"]))
         }
 
         .navbar {
-            /*padding: 15px 10px;*/
             background: #fff;
             border: none;
             border-radius: 0;
-            /*margin-bottom: 40px;*/
             box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
 
@@ -116,7 +114,6 @@ if(!isset($_SESSION["email"]))
         #sidebar {
             min-width: 250px;
             max-width: 250px;
-            /*background: #7386D5;*/
             background: #009688; 
             color: #fff;
             transition: all 0.3s;
@@ -171,7 +168,6 @@ if(!isset($_SESSION["email"]))
         #sidebar .sidebar-header {
             margin-top: -20px;
             padding: 20px;
-            /*background: #6d7fcc;*/
             background: #00897B;
         }
 
@@ -182,7 +178,6 @@ if(!isset($_SESSION["email"]))
 
         #sidebar ul.components {
             padding: 20px 0;
-            /*border-bottom: 1px solid #47748b;*/
         }
 
         #sidebar ul li a {
@@ -191,7 +186,6 @@ if(!isset($_SESSION["email"]))
             display: block;
         }
         #sidebar ul li a:hover {
-            /*color: #7386D5;*/
             color: #00897B;
             background: #fff;
         }
@@ -201,7 +195,6 @@ if(!isset($_SESSION["email"]))
 
         #sidebar ul li.active > a, a[aria-expanded="true"] {
             color: #fff;
-            /*background: #6d7fcc;*/
             background: #00897B; 
 
         }
@@ -227,7 +220,6 @@ if(!isset($_SESSION["email"]))
         ul ul a {
             font-size: 0.9em !important;
             padding-left: 30px !important;
-            /*background: #6d7fcc;*/
             background: #00897B; 
         }
 
@@ -253,7 +245,7 @@ if(!isset($_SESSION["email"]))
             color: #fff !important;
         }
 
-             /* ---------------------------------------------------
+        /* ---------------------------------------------------
             CONTENT STYLE
         ----------------------------------------------------- */
         #content {
@@ -263,7 +255,7 @@ if(!isset($_SESSION["email"]))
         }
 
 
-                 /* ---------------------------------------------------
+        /* ---------------------------------------------------
             MEDIAQUERIES
         ----------------------------------------------------- */
         @media (max-width: 768px) {
@@ -328,26 +320,25 @@ if(!isset($_SESSION["email"]))
 
         
         <!-- my navigation -->
-    <nav class="navbar navbar-light" style="background-color: #009688;">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="../../index.php"><img src="../pictures/icon/complain.png" id="indexLogo-complain-box"></a>
-            </div>
-        
-            <ul class="nav navbar-nav">             
-                <!--<li><a href="../../index.php#complainBoxDev" class="nev-custom-css">Complain Box</a></li>-->
-                <li><a href="../../index.php#description-div-custom" class="nev-custom-css" id="ourAppAnc">Our App</a></li>
-                <li><a href="../../index.php#purpose-container" class="nev-custom-css">Purpose</a></li>
-                <li><a href="../../index.php#developers-container" class="nev-custom-css">Supervisor & Developers</a></li>
-            </ul>
-
-
-            <?php
-                include 'includesAdminPanel/adminLogout.php';
-            ?>
+        <nav class="navbar navbar-light" style="background-color: #009688;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="../../index.php"><img src="../pictures/icon/complain.png" id="indexLogo-complain-box"></a>
+                </div>
             
-      </div>
-    </nav><!-- end of nevigation -->
+                <ul class="nav navbar-nav">             
+                    <li><a href="../../index.php#description-div-custom" class="nev-custom-css" id="ourAppAnc">Our App</a></li>
+                    <li><a href="../../index.php#purpose-container" class="nev-custom-css">Purpose</a></li>
+                    <li><a href="../../index.php#developers-container" class="nev-custom-css">Supervisor & Developers</a></li>
+                </ul>
+
+
+                <?php
+                    include 'includesAdminPanel/adminLogout.php';
+                ?>
+                
+          </div>
+        </nav><!-- end of nevigation -->
 
 
 

@@ -64,12 +64,47 @@
               overflow: hidden;
             }
     </style>
+    
 
 
 
 
     </head>
     <body>
+
+
+        <!-- my navigation -->
+        <nav class="navbar navbar-light" style="background-color: #009688;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="../../index.php"><img src="../pictures/icon/complain.png" id="indexLogo-complain-box"></a>
+                </div>
+            
+                <ul class="nav navbar-nav">             
+                    <li><a href="../../index.php#description-div-custom" class="nev-custom-css" id="ourAppAnc">Our App</a></li>
+                    <li><a href="../../index.php#purpose-container" class="nev-custom-css">Purpose</a></li>
+                    <li><a href="../../index.php#developers-container" class="nev-custom-css">Supervisor & Developers</a></li>
+                </ul>
+
+
+                <?php
+                    include 'includesAdminPanel/adminLogout.php';
+                ?>
+                
+          </div>
+        </nav><!-- end of nevigation -->
+
+
+
+
+
+
+
+
+
+
+
+
 
         <div class="wrapper">
             <nav id="sidebar">
@@ -122,9 +157,7 @@
                         </a>
                     </li>
 
-                    <?php
-                        include 'includesAdminPanel/adminLogout.php';
-                    ?>
+                    
 
                 </ul>
             </nav>
@@ -166,30 +199,7 @@
 
 
                 
-                <!--
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-10">
-
-                        <h3>event name</h3>
-                        <p>event descriotion<p>
-                        <p>publishing date</p>
-
-                        </div>
-                        <div class="col-md-2">
-                            
-                            <time datetime="2014-09-20" class="icon">
-                                
-                                <em>9:0ap</em>
-                                <strong>September</strong>
-                                <span>20</span>
-                            </time>
-
-
-                        </div>
-                    </div>
-                </div>
-            -->
+                
 
 
                 <!-- Modal -->

@@ -49,6 +49,16 @@
 	    				</ul>
 
     				';
+				} else {
+
+
+					echo '
+
+						<ul class="nav navbar-nav navbar-right">
+    						<li><a href="SERVER/serverHTML/logout.php" class="nev-custom-css"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+						</ul>
+
+					';
 				}
 
 			?>
