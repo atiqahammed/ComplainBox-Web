@@ -331,24 +331,21 @@ if(!isset($_SESSION["email"]))
     <nav class="navbar navbar-light" style="background-color: #009688;">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.php"><img src="SERVER/pictures/icon/complain.png" id="indexLogo-complain-box"></a>
+                <a class="navbar-brand" href="../../index.php"><img src="../pictures/icon/complain.png" id="indexLogo-complain-box"></a>
             </div>
         
             <ul class="nav navbar-nav">             
-                <li><a href="#complainBoxDev" class="nev-custom-css">Complain Box</a></li>
-                <li><a href="#description-div-custom" class="nev-custom-css" id="ourAppAnc">Our App</a></li>
-                <li><a href="#purpose-container" class="nev-custom-css">Purpose</a></li>
-                <li><a href="#developers-container" class="nev-custom-css">Supervisor & Developers</a></li>
+                <!--<li><a href="../../index.php#complainBoxDev" class="nev-custom-css">Complain Box</a></li>-->
+                <li><a href="../../index.php#description-div-custom" class="nev-custom-css" id="ourAppAnc">Our App</a></li>
+                <li><a href="../../index.php#purpose-container" class="nev-custom-css">Purpose</a></li>
+                <li><a href="../../index.php#developers-container" class="nev-custom-css">Supervisor & Developers</a></li>
             </ul>
 
 
             <?php
-                        include 'includesAdminPanel/adminLogout.php';
+                include 'includesAdminPanel/adminLogout.php';
             ?>
-            <!--
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="includesAdminPanel/logout.php" class="nev-custom-css"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-            </ul> -->
+            
       </div>
     </nav><!-- end of nevigation -->
 
@@ -357,10 +354,14 @@ if(!isset($_SESSION["email"]))
     <div class="wrapper">
             <!-- Sidebar Holder -->
             <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>Complain Box</h3>
-                    <strong>CB</strong>
-                </div>
+                
+                <a href="../../index.php#complainBoxDev">
+                    <div class="sidebar-header">
+                        <h3>Complain Box</h3>
+                        <strong>CB</strong>
+                    </div>
+                </a>
+
 
                 <ul class="list-unstyled components">
                     <li class="active">
@@ -412,12 +413,7 @@ if(!isset($_SESSION["email"]))
                     </li>
 
 
-                    <li>
-                        <a href="logout.php">
-                            <i class="glyphicon glyphicon-log-out"></i>
-                            Log out
-                        </a>
-                    </li>
+                    
 
 
                 </ul>
