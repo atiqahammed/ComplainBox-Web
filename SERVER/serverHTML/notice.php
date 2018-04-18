@@ -14,6 +14,39 @@
     </head>
     <body>
 
+
+
+    	<!-- my navigation -->
+        <nav class="navbar navbar-light" style="background-color: #009688;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="../../index.php"><img src="../pictures/icon/complain.png" id="indexLogo-complain-box"></a>
+                </div>
+            
+                <ul class="nav navbar-nav">             
+                    <li><a href="../../index.php#description-div-custom" class="nev-custom-css" id="ourAppAnc">Our App</a></li>
+                    <li><a href="../../index.php#purpose-container" class="nev-custom-css">Purpose</a></li>
+                    <li><a href="../../index.php#developers-container" class="nev-custom-css">Supervisor & Developers</a></li>
+                </ul>
+
+
+                <?php
+                    include 'includesAdminPanel/adminLogout.php';
+                ?>
+                
+          </div>
+        </nav><!-- end of nevigation -->
+
+
+
+
+
+
+
+
+
+
+
         <div class="wrapper">
             <!-- Sidebar Holder --> <!-- start of nav bar -->
             <nav id="sidebar">
@@ -66,9 +99,7 @@
                     </li>
 
                     
-                    <?php
-                        include 'includesAdminPanel/adminLogout.php';
-                    ?>
+                    
 
                 </ul>
 
@@ -134,7 +165,7 @@
                                     </div>
 
 
-                                    
+                                    <!--
                                     <div class="form-group">
                                         <label class="control-label">Publishing Date & Time</label>
                                         <div class="controls input-append date form_datetime" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
@@ -144,7 +175,7 @@
                                         </div>
                                         <input type="hidden" id="dtp_input1" value="" /><br/>
                                     </div>
-
+									-->
                                     
 
 

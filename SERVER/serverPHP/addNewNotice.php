@@ -28,7 +28,9 @@
 				$file_destination = '../noticeFiles/'.$file_name_new;
 				move_uploaded_file($file_tmp_name, $file_destination);
 				$title = $_POST["text"];
-				$date_and_time = $_POST["dateAndTime"];
+				$date_and_time = date('m/d/Y h:i:s a', time()+ 4*3600); 
+
+				//$_POST["dateAndTime"];
 
 				//echo $date_and_time;
 
