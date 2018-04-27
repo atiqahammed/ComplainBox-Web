@@ -19,9 +19,9 @@ class MyEmail
 	    $mail->Host = "smtp.gmail.com";
 	    $mail->Port = 465;
 	    $mail->IsHTML(true);
-	    $mail->Username = "khayrul.atiq@gmail.com";
-    	$mail->Password = "k08170822a";
-    	$mail->SetFrom("khayrul.atiq@gmail.com");
+	    $mail->Username = "complainbox.a.k@gmail.com";
+    	$mail->Password = "complainbox123456789";
+    	$mail->SetFrom("complainbox.a.k@gmail.com");
     	
 
     	$mail->Subject = $email['sub'];

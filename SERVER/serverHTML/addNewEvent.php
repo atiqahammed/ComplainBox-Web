@@ -10,7 +10,7 @@
             include 'includesAdminPanel/headerPart1.php';
         ?>
         <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-        <title>Events - Complain Box</title>
+        <title>New Event - Complain Box</title>
 
 
         <style type="text/css">
@@ -94,6 +94,7 @@
           </div>
         </nav><!-- end of nevigation -->
 
+
         <div class="wrapper">
             <nav id="sidebar">
                 <div class="sidebar-header">
@@ -160,11 +161,11 @@
                                 <i class="glyphicon glyphicon-align-left"></i>
                             </button></div>
                         <div class="col-md-5">
-                            <h1>Events</h1>
+                            <h1>New Event</h1>
                         </div>
 
                         <div class="col-md-2">
-                            <iframe scrolling="no" frameborder="no" clocktype="html5" style="overflow:hidden;border:0;margin:0;padding:0;width:150px;height:150px;"src="https://www.clocklink.com/html5embed.php?clock=041&timezone=Bangladesh_Dhaka&color=green&size=150&Title=&Message=&Target=&From=2018,1,1,0,0,0&Color=#009688"></iframe>
+                            <!--<iframe scrolling="no" frameborder="no" clocktype="html5" style="overflow:hidden;border:0;margin:0;padding:0;width:150px;height:150px;"src="https://www.clocklink.com/html5embed.php?clock=041&timezone=Bangladesh_Dhaka&color=green&size=150&Title=&Message=&Target=&From=2018,1,1,0,0,0&Color=#009688"></iframe>-->
                         </div>
 
 
@@ -172,21 +173,40 @@
                     <hr>
                 </div>
 
-
-                <a href="addNewEvent.php">
-                    <button type="button" class="btn btn-primary btn-sm" style="background-color: #009688;">New Event</button>
-                </a>
                
-                <hr>
 
-                <div id="load_data"></div>
-                <div id="load_data_message"></div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
+                <form action="../serverPHP/addNewEvent.php" method="POST" enctype="multipart/form-data">
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Event Name</label>
+                                        <input type="text" name="text" maxlength="100" class="form-control" placeholder="" required>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="control-label">Event Date & Time</label>
+                                        <div class="controls input-append date form_datetime" data-date="2018-01-01T05:25:07Z" data-date-format="dd/MM/yyyy - HH:ii p" data-link-field="dtp_input1">
+                                            <input name="dateAndTime" size="16" class="form-control" type="text" required>
+                                            <span class="add-on"><i class="icon-remove"></i></span>
+                                            <span class="add-on"><i class="icon-th"></i></span> 
+                                        </div>
+                                        <input type="hidden" id="dtp_input1" value="" />
+                                    </div>
+                                    
+
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Description</label>
+                                        <textarea name="description" maxlength="500" class="form-control" rows="5" id="applicationFormDescription" required></textarea>
+                                    </div>
+                                    
+
+                                    <button type="submit" name="submit" class="btn btn-primary" style="background-color: #009688;">Add</button>
+                                    <a href="event.php">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button></a>
+                                </form>
+
+
+
 
 
             </div>
@@ -212,55 +232,16 @@
 </html>
 
 
-<script>
-    
-    $(document).ready(function(){
-
-        var limit = 5;
-        var start = 0;
-        var action = 'inactive';
-        function load_event_data(limit, start) {
-            $.ajax({
-                url: "fetchEvent.php",
-                method: "POST",
-                data:{limit:limit, start:start},
-                cache:false,
-                success:function(data)
-                {
-                    $('#load_data').append(data);
-                    if(data == '') {
-                        $('#load_data_message').html("<hr><button type='button' class = 'btn btn-info'>No Data Found</button>");
-                        action = 'active';
-                    } else {
-                        $('#load_data_message').html("<hr><button type='button' class = 'btn btn-waiting'>Loading ...</button>");
-                        action = 'inactive';
-                    }
-                }
-            });
-        }
-
-        if(action == 'inactive') {
-            action = 'active';
-            load_event_data(limit, start);
-        }
-
-        $(window).scroll(function(){
-           
-            if($(window).scrollTop() + $(window).height() > $("#load_data").height() && action == 'inactive') {
-                    action = 'active';
-                    start = start + limit;
-                    timeOutId = setTimeout(function(){
-                        load_event_data(limit, start);
-                    }, 1000);
-            }
-
-        });
 
 
-    });
 
 
-</script>
+
+
+
+
+
+        <!--<script type="text/javascript" src="./jquery/jquery-1.8.3.min.js" charset="UTF-8"></script> -->
         <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
         <script type="text/javascript" src="../js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
