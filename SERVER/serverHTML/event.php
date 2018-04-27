@@ -12,7 +12,6 @@
         <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
         <title>Events - Complain Box</title>
 
-
         <style type="text/css">
     
 
