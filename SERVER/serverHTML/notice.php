@@ -38,22 +38,14 @@
         </nav><!-- end of nevigation -->
 
 
-
-
-
-
-
-
-
-
-
         <div class="wrapper">
-            <!-- Sidebar Holder --> <!-- start of nav bar -->
             <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>Complain Box</h3>
-                    <strong>CB</strong>
-                </div>
+                <a href="../../index.php#complainBoxDev">
+                    <div class="sidebar-header">
+                        <h3>Complain Box</h3>
+                        <strong>CB</strong>
+                    </div>
+                </a>
 
                 <ul class="list-unstyled components">
                     <li >

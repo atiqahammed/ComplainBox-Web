@@ -9,7 +9,7 @@
             include 'includesAdminPanel/headerPart1.php';
         ?>
         <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-        <title>New Event - Complain Box</title>
+        <title>Update Event - Complain Box</title>
     </head>
     
     <body>
