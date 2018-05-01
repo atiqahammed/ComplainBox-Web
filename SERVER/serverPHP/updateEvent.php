@@ -38,8 +38,6 @@
 		}
 
 		$value = $value + (int)$hour_string;
-
-
 		$value = $value * 60;
 		$value = $value + (int)$min_segment[0];
 
