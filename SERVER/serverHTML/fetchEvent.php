@@ -22,6 +22,8 @@
 		    $row[1] = base64_decode($row[1]);
 		    $row[3] = base64_decode($row[3]);
 
+		    mysqli_close($db);
+
 
 			echo '
 			

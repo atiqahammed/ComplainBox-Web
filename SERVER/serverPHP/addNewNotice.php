@@ -36,7 +36,7 @@
 
 				
 				$admin_email = $_SESSION["email"];
-				$sql="INSERT INTO notice (noticeTitle, noticeFileName, email, date) values ('$title','$file_name_new','$admin_email', '$date_and_time')";
+				$sql="INSERT INTO notice (noticeTitle, noticeFileName, email, date, visibility) values ('$title','$file_name_new','$admin_email', '$date_and_time', 1)";
 				$query=mysqli_query($db, $sql);
 
 				header("Location: ../serverHTML/notice.php?message=file-upload-sucessfully");
