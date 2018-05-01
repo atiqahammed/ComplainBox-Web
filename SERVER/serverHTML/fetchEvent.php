@@ -8,6 +8,7 @@
 
 
 		$result = mysqli_query($db, $query);
+		mysqli_close($db);
 
 		while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
 
@@ -22,7 +23,7 @@
 		    $row[1] = base64_decode($row[1]);
 		    $row[3] = base64_decode($row[3]);
 
-		    mysqli_close($db);
+
 
 
 			echo '
