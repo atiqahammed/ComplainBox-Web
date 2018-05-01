@@ -22,6 +22,7 @@ table notice
 	noticeFileName (100)
 	email (100)
 	date (100)
+	visibility (int)
 
 ---------------------------------------------------
 

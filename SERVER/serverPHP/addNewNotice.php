@@ -28,21 +28,21 @@
 				$file_destination = '../noticeFiles/'.$file_name_new;
 				move_uploaded_file($file_tmp_name, $file_destination);
 				$title = $_POST["text"];
-				$date_and_time = date('m/d/Y h:i:s a', time()+ 4*3600); 
-
-				//$_POST["dateAndTime"];
-
-				//echo $date_and_time;
-
+				$title = base64_encode($title);
 				
+
+
+				$date_and_time = date('m/d/Y h:i:s a', time()+ 4*3600);
+
 				$admin_email = $_SESSION["email"];
 				$sql="INSERT INTO notice (noticeTitle, noticeFileName, email, date, visibility) values ('$title','$file_name_new','$admin_email', '$date_and_time', 1)";
 				$query=mysqli_query($db, $sql);
-
+				mysqli_close($db);
 				header("Location: ../serverHTML/notice.php?message=file-upload-sucessfully");
 				return;
 				
 			} else {
+				mysqli_close($db);
 				header("Location: ../serverHTML/notice.php?error=2");
 				return;
 			}
