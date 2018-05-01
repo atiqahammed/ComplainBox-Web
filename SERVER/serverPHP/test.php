@@ -1,18 +1,8 @@
-<?php  
-
-session_start();
-  echo "loged in";
-
-  if(isset($_SESSION["email"])) {
-    echo "session setted";
-  }
-  else {
-    echo "session is not setted";
-  }
-
-
-
-
-
+<?php
+$key = "HaiHello";
+$enc = base64_encode ($key);
+$dec = base64_decode ($enc);
+echo 'Encrypted : '.$enc.'<br>';
+echo 'Decrypted : '.$dec.'<br>';
 
 ?>

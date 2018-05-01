@@ -13,8 +13,6 @@
         <title>Events - Complain Box</title>
 
         <style type="text/css">
-    
-
             time.icon span
             {
               font-size: 2.8em;
@@ -63,10 +61,6 @@
               overflow: hidden;
             }
     </style>
-    
-
-
-
 
     </head>
     <body>
@@ -95,10 +89,12 @@
 
         <div class="wrapper">
             <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>Complain Box</h3>
-                    <strong>CB</strong>
-                </div>
+                <a href="../../index.php#complainBoxDev">
+                    <div class="sidebar-header">
+                        <h3>Complain Box</h3>
+                        <strong>CB</strong>
+                    </div>
+                </a>
 
                 <ul class="list-unstyled components">
                     <li >
@@ -143,9 +139,6 @@
                             Emergency Support
                         </a>
                     </li>
-
-                    
-
                 </ul>
             </nav>
 
@@ -190,10 +183,6 @@
 
             </div>
         </div>
-
-
-
-
 
         <!-- jQuery CDN -->
          <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>

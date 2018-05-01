@@ -125,6 +125,10 @@
                     		$name = $row[1];
                     		mysqli_close($db);
 
+                            $name = base64_decode($name);
+                            $description = base64_decode($description);
+
+
                     		echo '
                     			<div class="form-group">
                                         <label for="exampleInputEmail1">Event Name: '.$name.'</label>

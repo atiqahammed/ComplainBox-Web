@@ -12,63 +12,6 @@
         <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
         <title>New Event - Complain Box</title>
 
-
-        <style type="text/css">
-    
-
-            time.icon span
-            {
-              font-size: 2.8em;
-              letter-spacing: -0.05em;
-              padding-top: 0.8em;
-              color: #2f2f2f;
-            }
-
-            time.icon em
-            {
-              position: absolute;
-              bottom: 0.3em;
-              color: #fd9f1b;
-            }
-            time.icon strong
-            {
-              position: absolute;
-              top: 0;
-              padding: 0.4em 0;
-              color: #fff;
-              background-color: #fd9f1b;
-              border-bottom: 1px dashed #f37302;
-              box-shadow: 0 2px 0 #fd9f1b;
-            }
-
-            time.icon *
-            {
-              display: block;
-              width: 100%;
-              font-size: 1em;
-              font-weight: bold;
-              font-style: normal;
-              text-align: center;
-            }
-
-            time.icon
-            {
-              font-size: 1em; /* change icon size */
-              display: block;
-              position: relative;
-              width: 7em;
-              height: 7em;
-              background-color: #fff;
-              border-radius: 0.6em;
-              box-shadow: 0 1px 0 #bdbdbd, 0 2px 0 #fff, 0 3px 0 #bdbdbd, 0 4px 0 #fff, 0 5px 0 #bdbdbd, 0 0 0 1px #bdbdbd;
-              overflow: hidden;
-            }
-    </style>
-    
-
-
-
-
     </head>
     <body>
 
@@ -97,10 +40,12 @@
 
         <div class="wrapper">
             <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>Complain Box</h3>
-                    <strong>CB</strong>
-                </div>
+                <a href="../../index.php#complainBoxDev">
+                    <div class="sidebar-header">
+                        <h3>Complain Box</h3>
+                        <strong>CB</strong>
+                    </div>
+                </a>
 
                 <ul class="list-unstyled components">
                     <li >
@@ -176,43 +121,36 @@
 
                 <form action="../serverPHP/addNewEvent.php" method="POST" enctype="multipart/form-data">
 
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Event Name</label>
-                                        <input type="text" name="text" maxlength="100" class="form-control" placeholder="" required>
-                                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Event Name</label>
+                        <input type="text" name="text" maxlength="100" class="form-control" placeholder="" required>
+                    </div>
 
-
-                                    <div class="form-group">
-                                        <label class="control-label">Event Date & Time</label>
-                                        <div class="controls input-append date form_datetime" data-date="2018-01-01T05:25:07Z" data-date-format="dd/MM/yyyy - HH:ii p" data-link-field="dtp_input1">
-                                            <input name="dateAndTime" size="16" value="01/January/2018 - 12:00 am" class="form-control" type="text" readonly>
-                                            <span class="add-on"><i class="icon-remove"></i></span>
-                                            <span class="add-on"><i class="icon-th"></i></span> 
-                                        </div>
-                                        <input type="hidden" id="dtp_input1" value="" />
-                                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Event Date & Time</label>
+                        <div class="controls input-append date form_datetime" data-date="2018-01-01T05:25:07Z" data-date-format="dd/MM/yyyy - HH:ii p" data-link-field="dtp_input1">
+                            <input name="dateAndTime" size="16" value="01/January/2018 - 12:00 am" class="form-control" type="text" readonly>
+                            <span class="add-on"><i class="icon-remove"></i></span>
+                            <span class="add-on"><i class="icon-th"></i></span> 
+                        </div>
+                        <input type="hidden" id="dtp_input1" value="" />
+                    </div>
                                     
 
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Description</label>
-                                        <textarea name="description" maxlength="500" class="form-control" rows="5" id="applicationFormDescription" required></textarea>
-                                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Description</label>
+                        <textarea name="description" maxlength="500" class="form-control" rows="5" id="applicationFormDescription" required></textarea>
+                    </div>
                                     
 
-                                    <button type="submit" name="submit" class="btn btn-primary" style="background-color: #009688;">Add</button>
-                                    <a href="event.php">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button></a>
-                                </form>
-
-
-
-
+                    <button type="submit" name="submit" class="btn btn-primary" style="background-color: #009688;">Add</button>
+                        <a href="event.php">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                        </a>
+                </form>
 
             </div>
         </div>
-
-
-
 
 
         <!-- jQuery CDN -->
@@ -231,16 +169,6 @@
 </html>
 
 
-
-
-
-
-
-
-
-
-
-        <!--<script type="text/javascript" src="./jquery/jquery-1.8.3.min.js" charset="UTF-8"></script> -->
         <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
         <script type="text/javascript" src="../js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
@@ -276,4 +204,4 @@
                 maxView: 1,
                 forceParse: 0
             });
-</script>
+        </script>

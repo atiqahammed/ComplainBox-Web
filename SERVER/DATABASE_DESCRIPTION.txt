@@ -42,6 +42,8 @@ table event
 	eventDescription (500)
 	eventPublishingDate (100)
 	email (100)
+	timeValue (int)
+	visibility (int)
 
 ----------------------------------------------------
 

@@ -4,7 +4,7 @@
 
 	if(isset($_POST["limit"], $_POST["start"])) {
 
-		$query = "SELECT * FROM event ORDER BY eventID DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";
+		$query = "SELECT * FROM event WHERE visibility = 1 ORDER BY timeValue LIMIT ".$_POST["start"].", ".$_POST["limit"]."";
 
 
 		$result = mysqli_query($db, $query);
@@ -19,6 +19,10 @@
 		    $month = $date[1];
 		    $year = $date[2];
 
+		    $row[1] = base64_decode($row[1]);
+		    $row[3] = base64_decode($row[3]);
+
+
 			echo '
 			
 				<div class="container-fluid">
@@ -30,7 +34,11 @@
 	                        <p>Published on: '.$row[4].'</p>
 
                             <a href="updateEvent.php?id='.$row[0].'">
-                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #009688;">update</button>
+                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #2E7D32;">update</button>
+                            </a>
+
+                            <a href="hideEvent.php?id='.$row[0].'">
+                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #D32F2F;">hide</button>
                             </a>
                         </div>
                         <div class="col-md-2">
@@ -40,20 +48,13 @@
                                 <em>'.$time.'</em>
                                 <strong>'.$month.'</strong>
                                 <span>'.$day.'</span>
-
-
                             </time>
-
                         </div>
-
                     </div>
                 </div>	
                 <hr>
 			
 			';
-
-
-
 
 		}
 
