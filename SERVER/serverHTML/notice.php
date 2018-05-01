@@ -89,42 +89,33 @@
                             Emergency Support
                         </a>
                     </li>
-
-                    
-                    
-
                 </ul>
 
             </nav>
             <!-- end of nav bar -->
 
 
-
-
             <!-- Page Content Holder -->
             <div id="content" style="width: 100%">
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-
-                        <div class="navbar-header">
+                <div class="container-fluid">
+                    <div class="row no-gutters">
+                        <div class="col-md-5" style="height: 100px;">
                             <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn" style="background-color: #009688;">
                                 <i class="glyphicon glyphicon-align-left"></i>
-                                <!--<span>Toggle Sidebar</span>-->
-                            </button>
-                            
+                            </button></div>
+                        <div class="col-md-5">
+                            <h1>Notice</h1>
                         </div>
 
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
-                            <ul class="nav navbar-nav navbar-right">
-
-                            	<li><h2>Notices</h2></li>
-                            </ul>
+                        <div class="col-md-2">
                         </div>
                     </div>
-                </nav>
+                    <hr>
+                </div>
 
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="background-color: #009688;">Add New Notice</button>
+                <a href="addNewNotice.php">
+                    <button type="button" class="btn btn-primary btn-sm" style="background-color: #009688;">New Notice</button>
+                </a>
                 <hr>
 
                 <div id="load_data"></div>
