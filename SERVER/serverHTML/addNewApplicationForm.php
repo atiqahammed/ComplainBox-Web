@@ -2,21 +2,21 @@
     include 'includesAdminPanel/sessionSrartForAdmin.php';
 ?>
 
+
 <!DOCTYPE html>
 <html>
     <head>
-    	<?php  
+        <?php  
             include 'includesAdminPanel/headerPart1.php';
         ?>
-
         <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-        <title>Notices - Complain Box</title>
+        <title>New Application Form - Complain Box</title>
+
     </head>
     <body>
 
 
-
-    	<!-- my navigation -->
+        <!-- my navigation -->
         <nav class="navbar navbar-light" style="background-color: #009688;">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -54,49 +54,51 @@
                             Home
                         </a>
                     </li>
+
+
                     <li>
                         <a href="problem.php">
                              <i class="glyphicon glyphicon-exclamation-sign"></i>
                             Problems
                         </a>
                     </li >
-                    <li >
+
+                    
+                    <li>
                         <a href="event.php">
                             <i class="glyphicon glyphicon-calendar"></i>
                             Events
                         </a>
                     </li>
 
-                    <!-- active session for notice -->
-                    <li class="active">
+                    <li>
                         <a href="notice.php">
                             <i class="glyphicon glyphicon-list-alt"></i>
                             Notices
                         </a>
                     </li>
-
-
-
-                    <li>
+                    <li class="active">
                         <a href="applicationForm.php">
                             <i class="glyphicon glyphicon-file"></i>
                             Application Forms
                         </a>
                     </li>
+
                     <li>
                         <a href="emergencySupport.php">
                             <i class="glyphicon glyphicon-bell"></i>
                             Emergency Support
                         </a>
                     </li>
+
+                    
+
                 </ul>
-
             </nav>
-            <!-- end of nav bar -->
-
 
             <!-- Page Content Holder -->
             <div id="content" style="width: 100%">
+                
                 <div class="container-fluid">
                     <div class="row no-gutters">
                         <div class="col-md-5" style="height: 100px;">
@@ -104,42 +106,51 @@
                                 <i class="glyphicon glyphicon-align-left"></i>
                             </button></div>
                         <div class="col-md-5">
-                            <h1>Notice</h1>
+                            <h1>New Application Form</h1>
                         </div>
 
                         <div class="col-md-2">
                         </div>
+
+
                     </div>
                     <hr>
                 </div>
 
-                <a href="addNewNotice.php">
-                    <button type="button" class="btn btn-primary btn-sm" style="background-color: #009688;">New Notice</button>
-                </a>
-                <hr>
+               
 
-                <div id="load_data"></div>
-                <div id="load_data_message"></div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
+                <form action="../serverPHP/addApplicationForm.php" method="POST" enctype="multipart/form-data">
 
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Application Form Title</label>
+                        <input type="text" name="text" maxlength="100" class="form-control" placeholder="" required>
+                    </div>
 
-                
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Description</label>
+                        <textarea name="description" maxlength="500" class="form-control" rows="5" id="applicationFormDescription" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="file" name="file" required>
+                        <small id="fileHelp" class="form-text text-muted">Please upload a pdf file.</small>
+                    </div>
+                                    
+
+                    <button type="submit" name="submit" class="btn btn-primary" style="background-color: #009688;">Add</button>
+                        <a href="applicationForm.php">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                        </a>
+                </form>
+
+            </div>
         </div>
 
         <?php  
             include 'includesAdminPanel/pdfFileError.php';
         ?>
-
-
-
-        <!-- jQuery CDN -->
+        
          <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-         <!-- Bootstrap Js CDN -->
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
          <script type="text/javascript">
@@ -149,101 +160,7 @@
                  });
              });
          </script>
-
-
     </body>
-    
-
 </html>
 
 
-<script>
-    
-    $(document).ready(function(){
-
-        var limit = 5;
-        var start = 0;
-        var action = 'inactive';
-        function load_notice_data(limit, start) {
-            $.ajax({
-                url: "fetchNotice.php",
-                method: "POST",
-                data:{limit:limit, start:start},
-                cache:false,
-                success:function(data)
-                {
-                    $('#load_data').append(data);
-                    if(data == '') {
-                        $('#load_data_message').html("<hr><button type='button' class = 'btn btn-info'>No Data Found</button>");
-                        action = 'active';
-                    } else {
-                        $('#load_data_message').html("<hr><button type='button' class = 'btn btn-waiting'>Loading ...</button>");
-                        action = 'inactive';
-                    }
-                }
-            });
-        }
-
-        if(action == 'inactive') {
-            action = 'active';
-            load_notice_data(limit, start);
-        }
-
-        $(window).scroll(function(){
-           
-            if($(window).scrollTop() + $(window).height() > $("#load_data").height() && action == 'inactive') {
-                    action = 'active';
-                    start = start + limit;
-                    timeOutId = setTimeout(function(){
-                        load_notice_data(limit, start);
-                    }, 1000);
-            }
-
-        });
-
-
-    });
-
-
-</script>
-
-
-
-
-        <!--<script type="text/javascript" src="./jquery/jquery-1.8.3.min.js" charset="UTF-8"></script> -->
-        <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-        <script type="text/javascript" src="../js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
-        <script type="text/javascript">
-            $('.form_datetime').datetimepicker({
-                //language:  'fr',
-                weekStart: 1,
-                todayBtn:  1,
-                autoclose: 1,
-                todayHighlight: 1,
-                startView: 2,
-                forceParse: 0,
-                showMeridian: 1
-            });
-            $('.form_date').datetimepicker({
-                language:  'fr',
-                weekStart: 1,
-                todayBtn:  1,
-                autoclose: 1,
-                todayHighlight: 1,
-                startView: 2,
-                minView: 2,
-                forceParse: 0
-            });
-            $('.form_time').datetimepicker({
-                language:  'fr',
-                weekStart: 1,
-                todayBtn:  1,
-                autoclose: 1,
-                todayHighlight: 1,
-                startView: 1,
-                minView: 0,
-                maxView: 1,
-                forceParse: 0
-            });
-        </script>

@@ -113,7 +113,7 @@
                     <hr>
                 </div>
 
-                <a href="addNewNotice.php">
+                <a href="addNewApplicationForm.php">
                     <button type="button" class="btn btn-primary btn-sm" style="background-color: #009688;">New Application Form</button>
                 </a>
                 <hr>
@@ -222,7 +222,9 @@
         </div> -->
 
 
-
+        <?php  
+            include 'includesAdminPanel/pdfFileError.php';
+        ?>
 
 
 
@@ -239,29 +241,6 @@
              });
          </script>
     </body>
-
-    
-
-
-    <?php  
-        /*
-        if(isset($_GET['message']) == true) {
-                      //if($_GET['error'] == 2) {
-            echo '<script>window.alert("Application added successfully");</script>';
-                      //}
-        }
-        */
-
-        if(isset($_GET['error']) == true) {
-            if($_GET['error'] == 1) {
-                echo '<script>window.alert("Sorry your application form is not added. Please upload a pdf");</script>';
-            }
-            if($_GET['error'] == 2) {
-                echo '<script>window.alert("Sorry your application form is not added. Please upload a small file");</script>';
-            }
-        }
-
-    ?>
 
 
 

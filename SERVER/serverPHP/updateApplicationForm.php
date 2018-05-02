@@ -1,11 +1,16 @@
 <?php  
-	
+
 	include '../serverHTML/includesAdminPanel/sessionSrartForAdmin.php';
 	require_once('dbConnection.php');
 
 	if(isset($_POST['submit'])) {
 
-		$notice_id = $_POST['notice_id'];
+		$ap_description =  $_POST['description'];
+		$ap_id = $_POST['id'];
+
+		$ap_description = base64_encode($ap_description);
+
+
 
 		$file = $_FILES['file'];
 		$file_name = $_FILES['file']['name'];
@@ -20,7 +25,7 @@
 		
 		if($file_actual_ext != "pdf") {
 			mysqli_close($db);
-			header("Location: ../serverHTML/notice.php?error=1");
+			header("Location: ../serverHTML/applicationForm.php?error=1");
 			return; 
 		}
 
@@ -30,25 +35,19 @@
 				$file_destination = '../noticeFiles/'.$file_name_new;
 				move_uploaded_file($file_tmp_name, $file_destination);
 				
-				$sql = "UPDATE notice SET noticeFileName='$file_name_new' WHERE noticeID=$notice_id";
+				$sql = "UPDATE applicationform SET applicationFileName='$file_name_new', applicationDescription='$ap_description' WHERE applicationID=$ap_id";
 				$query=mysqli_query($db, $sql);
 				mysqli_close($db);
-				header("Location: ../serverHTML/notice.php?message=file-upload-sucessfully");
+				header("Location: ../serverHTML/applicationForm.php?message=file-upload-sucessfully");
 				return;
 				
 			} else {
 				mysqli_close($db);
-				header("Location: ../serverHTML/notice.php?error=2");
+				header("Location: ../serverHTML/applicationForm.php?error=2");
 				return;
 			}
 		}
 
-
-
-
 	}
-
-
-
 
 ?>

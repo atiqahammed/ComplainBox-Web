@@ -31,7 +31,8 @@
 		$fileActualExt = strtolower(end($fileExt));
 		//echo $fileActualExt;
 		if($fileActualExt != "pdf") {
-			header("Location: ../serverHTML/applicationForm.php?error=1");
+			mysqli_close($db);
+			header("Location: ../serverHTML/addNewApplicationForm.php?error=1");
 			return;
 
 		}
@@ -50,17 +51,20 @@
 				$title = $_POST["text"];
 				$description = $_POST["description"];
 
+				$title = base64_encode($title);
+				$description = base64_encode($description);
 
-				$sql="INSERT INTO applicationform (applicationTitle, applicationDescription, applicationFileName) values ('$title','$description','$fileNameNew')";
+				$sql="INSERT INTO applicationform (applicationTitle, applicationDescription, applicationFileName, visibility) values ('$title','$description','$fileNameNew', 1)";
 
 				$query=mysqli_query($db, $sql);
 
-
+				mysqli_close($db);
 				header("Location: ../serverHTML/applicationForm.php?message=file-upload-sucessfully");
 				return;
 				
 			} else {
-				header("Location: ../serverHTML/applicationForm.php?error=2");
+				mysqli_close($db);
+				header("Location: ../serverHTML/addNewApplicationForm.php?error=1");
 				return;
 			}
 		}

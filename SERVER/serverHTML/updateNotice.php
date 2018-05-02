@@ -141,7 +141,7 @@
                 	?>
 
                     <button type="submit" name="submit" class="btn btn-primary" style="background-color: #009688;">Update</button>                
-                    <a href="event.php">
+                    <a href="notice.php">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
                     </a>
                 </form>

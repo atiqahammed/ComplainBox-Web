@@ -11,6 +11,7 @@ table applicationform
 	applicationTitle (100)
 	applicationDescription (500)
 	applicationFileName (50)
+	visibility (int)
 
 ----------------------------------------------------
 
