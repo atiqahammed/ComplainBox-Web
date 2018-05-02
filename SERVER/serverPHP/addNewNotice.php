@@ -17,7 +17,7 @@
 		$file_actual_ext = strtolower(end($file_ext));
 		
 		if($file_actual_ext != "pdf") {
-			header("Location: ../serverHTML/notice.php?error=1");
+			header("Location: ../serverHTML/addNewNotice.php?error=1");
 			return; 
 		}
 
@@ -43,7 +43,7 @@
 				
 			} else {
 				mysqli_close($db);
-				header("Location: ../serverHTML/notice.php?error=2");
+				header("Location: ../serverHTML/addNewNotice.php?error=2");
 				return;
 			}
 		}

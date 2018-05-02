@@ -5,35 +5,35 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="icon" href="../pictures/icon/complain.png">
-        <!-- Bootstrap CSS CDN -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <!-- Our Custom CSS -->
-        <link rel="stylesheet" href="../myCss/home.css">
-        
+        <?php  
+            include 'includesAdminPanel/headerPart1.php';
+        ?>
 
-
-        <!-- ajax-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-
-
-
-        <title>Application Forms - Complain Box</title>
-
+        <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+        <title>Application Form - Complain Box</title>
     </head>
     <body>
 
+        <!-- my navigation -->
+        <nav class="navbar navbar-light" style="background-color: #009688;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="../../index.php"><img src="../pictures/icon/complain.png" id="indexLogo-complain-box"></a>
+                </div>
+            
+                <ul class="nav navbar-nav">             
+                    <li><a href="../../index.php#description-div-custom" class="nev-custom-css" id="ourAppAnc">Our App</a></li>
+                    <li><a href="../../index.php#purpose-container" class="nev-custom-css">Purpose</a></li>
+                    <li><a href="../../index.php#developers-container" class="nev-custom-css">Supervisor & Developers</a></li>
+                </ul>
 
+
+                <?php
+                    include 'includesAdminPanel/adminLogout.php';
+                ?>
+                
+          </div>
+        </nav><!-- end of nevigation -->
 
 
 
@@ -41,10 +41,12 @@
         <div class="wrapper">
             <!-- Sidebar Holder -->
             <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>Complain Box</h3>
-                    <strong>CB</strong>
-                </div>
+                <a href="../../index.php#complainBoxDev">
+                    <div class="sidebar-header">
+                        <h3>Complain Box</h3>
+                        <strong>CB</strong>
+                    </div>
+                </a>
 
                 <ul class="list-unstyled components">
                     <li>
@@ -88,14 +90,48 @@
                             Emergency Support
                         </a>
                     </li>
-
-                    <?php
-                        include 'includesAdminPanel/adminLogout.php';
-                    ?>
                 </ul>
             </nav>
 
+
+
             <!-- Page Content Holder -->
+            <div id="content" style="width: 100%">
+                <div class="container-fluid">
+                    <div class="row no-gutters">
+                        <div class="col-md-5" style="height: 100px;">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn" style="background-color: #009688;">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                            </button></div>
+                        <div class="col-md-5">
+                            <h1>Application Form</h1>
+                        </div>
+
+                        <div class="col-md-2">
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+
+                <a href="addNewNotice.php">
+                    <button type="button" class="btn btn-primary btn-sm" style="background-color: #009688;">New Application Form</button>
+                </a>
+                <hr>
+
+                <div id="load_data"></div>
+                <div id="load_data_message"></div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+
+
+                
+        </div>
+
+            <!-- Page Content Holder 
             <div id="content" style="width: 100%">
 
                 <nav class="navbar navbar-default">
@@ -104,7 +140,7 @@
                         <div class="navbar-header">
                             <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn" style="background-color: #009688;">
                                 <i class="glyphicon glyphicon-align-left"></i>
-                                <!--<span>Toggle Sidebar</span>-->
+                                
                             </button>
                             
                         </div>
@@ -120,7 +156,12 @@
 
 
 
-                <!-- Button trigger modal -->
+
+
+
+
+
+                <!-- Button trigger modal 
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="background-color: #009688;">Add Application Form
                 </button>
                 <hr>
@@ -135,7 +176,7 @@
                 <br>
                 <br>
 
-                <!-- Modal -->
+            
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -178,7 +219,7 @@
                   </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
 

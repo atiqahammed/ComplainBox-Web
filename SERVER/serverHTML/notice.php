@@ -149,42 +149,7 @@
          </script>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </body>
-
-
-    <?php  
-        include 'includesAdminPanel/pdfFileError.php';
-    ?>
-
-
-
 </html>
 
 
