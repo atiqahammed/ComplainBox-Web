@@ -49,3 +49,23 @@ table event
 
 ----------------------------------------------------
 
+table institution
+	
+	institutionName (100)
+	latitude (100)
+	longitude (100)
+	phone (20)
+	category (50)
+	institutionID (50)
+	email (50)
+	visibility (int)
+
+-----------------------------------------------------
+
+
+
+
+
+
+
+----------------------------------------------------

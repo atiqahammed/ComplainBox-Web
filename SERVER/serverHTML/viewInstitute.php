@@ -2,7 +2,6 @@
     include 'includesAdminPanel/sessionSrartForAdmin.php';
 ?>
 
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,12 +9,10 @@
             include 'includesAdminPanel/headerPart1.php';
         ?>
         <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-        <title>Emergency Support - Complain Box</title>
+        <title>E. S. Institurtion - Complain Box</title>
     </head>
+    
     <body>
-
-
-        <!-- my navigation -->
         <nav class="navbar navbar-light" style="background-color: #009688;">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -36,6 +33,7 @@
           </div>
         </nav><!-- end of nevigation -->
 
+
         <div class="wrapper">
             <nav id="sidebar">
                 <a href="../../index.php#complainBoxDev">
@@ -47,7 +45,7 @@
 
                 <ul class="list-unstyled components">
                     <li >
-                        <a href="home.php">
+                    	<a href="home.php">
                             <i class="glyphicon glyphicon-home"></i>
                             Home
                         </a>
@@ -61,6 +59,7 @@
                         </a>
                     </li >
 
+                    <!-- active event  -->
                     <li>
                         <a href="event.php">
                             <i class="glyphicon glyphicon-calendar"></i>
@@ -87,6 +86,9 @@
                             Emergency Support
                         </a>
                     </li>
+
+                    
+
                 </ul>
             </nav>
 
@@ -100,38 +102,86 @@
                                 <i class="glyphicon glyphicon-align-left"></i>
                             </button></div>
                         <div class="col-md-5">
-                            <h1>E.S. Institute</h1>
+                            <h1>View Institution</h1>
                         </div>
 
                         <div class="col-md-2">
                         </div>
-
-
                     </div>
                     <hr>
                 </div>
 
+                <form action="../serverPHP/updateNotice.php" method="POST" enctype="multipart/form-data">
 
-                <a href="addNewInstitute.php">
-                    <button type="button" class="btn btn-primary btn-sm" style="background-color: #009688;">New Institute</button>
-                </a>
-               
-                <hr>
+                	<?php
+                		if(isset($_GET['id']) == true) {
+                			$id = $_GET['id'];
+                			require_once('../serverPHP/dbConnection.php');				
+                			$sql = "SELECT * FROM institution WHERE institutionID = '$id'";
 
-                <div id="load_data"></div>
-                <div id="load_data_message"></div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
+                    		$result = mysqli_query($db,$sql);
+                    		$row = mysqli_fetch_array($result, MYSQLI_NUM);
+                    		$name = $row[0];
+                    		mysqli_close($db);
 
 
+                    		$latitude = $row[1]; 
+							$longitude = $row[2];
+							$phone = $row[3];
+							$category = $row[4];
+							//$id = $row[5];
+
+                            $name = base64_decode($name);
+
+                    		echo '
+                    			<div class="form-group">
+                                        <label for="exampleInputEmail1">Institute Name: '.$name.'</label>
+                                </div>
+
+                                <div class="form-group">
+                                        <label for="exampleInputEmail1">Phone number: '.$phone.'</label>
+                                </div>
+                                <div class="form-group">
+                                        <label for="exampleInputEmail1">Category: '.$category.'</label>
+                                </div>
+
+                                <div class="col-sm-12 col-md-12 col-lg-12" style="border-radius: 7%;">
+		   			<div id="googleMap" style="width:100%;height:400px;"></div>
+		   			<script>
+						function myMap() {
+						var mapProp= {
+	    						center:new google.maps.LatLng('.$latitude.', '.$longitude.'),
+	    						zoom:17,
+							};
+							var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+							var location = {lat:'.$latitude.', lng:'.$longitude.'};
+							var marker = new google.maps.Marker({
+								position: location,
+								map, map
+							});
+						}
+
+						
+
+					</script>
+					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkKmJPK0oh9K4yGU1USSj7MJpzFWN9LeE&callback=myMap"></script>
+		    	</div>
+
+
+                                
+                    		';
+     					}  
+                	?>
+                	<hr>
+                                   
+                    <a href="emergencySupport.php">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                    </a>
+                </form>
             </div>
         </div>
 
-        <!-- jQuery CDN -->
          <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
          <!-- Bootstrap Js CDN -->
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -147,53 +197,4 @@
 </html>
 
 
-<script>
-    
-    $(document).ready(function(){
 
-        var limit = 5;
-        var start = 0;
-        var action = 'inactive';
-        function load_event_data(limit, start) {
-            $.ajax({
-                url: "fatchInstitute.php",
-                method: "POST",
-                data:{limit:limit, start:start},
-                cache:false,
-                success:function(data)
-                {
-                    $('#load_data').append(data);
-                    if(data == '') {
-                        $('#load_data_message').html("<hr><button type='button' class = 'btn btn-info'>No Data Found</button>");
-                        action = 'active';
-                    } else {
-                        $('#load_data_message').html("<hr><button type='button' class = 'btn btn-waiting'>Loading ...</button>");
-                        action = 'inactive';
-                    }
-                }
-            });
-        }
-
-        if(action == 'inactive') {
-            action = 'active';
-            load_event_data(limit, start);
-        }
-
-        $(window).scroll(function(){
-           
-            if($(window).scrollTop() + $(window).height() > $("#load_data").height() && action == 'inactive') {
-                    action = 'active';
-                    start = start + limit;
-                    timeOutId = setTimeout(function(){
-                        load_event_data(limit, start);
-                    }, 1000);
-            }
-
-        });
-
-
-    });
-
-
-</script>
-       

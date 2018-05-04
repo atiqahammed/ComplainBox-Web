@@ -1,76 +1,77 @@
-<?php  
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<title>JavaScript form validation - checking non-empty</title>
+<link rel='stylesheet' href='form-style.css' type='text/css' />
+
+<script>
+
     
-    require_once('../serverPHP/dbConnection.php');
-
-    //$query = "SELECT * FROM notice ORDER BY noticeID DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";
-    $id = "Test Notice 1";
-
-
-    //echo $id;
-
-    //$query = "SELECT * FROM notice WHERE noticeID = 'id'";
-    $sql = "SELECT * FROM notice WHERE noticeTitle = '$id'";
-    $result = mysqli_query($db, $sql);
-
-    /*if($result) {
-        echo "string";
-    }*/
-
-    $row=mysqli_fetch_array($result, MYSQLI_NUM);
-
-    //echo $row[0];
-
-    //echo $row[4];
-    //echo $row[0];
-    //echo $row[0];
-
-    $temp_time_segment = explode('-', $row[4]);
-    
-    $time = end($temp_time_segment);
-
-    //echo $time;
-
-    $date  = explode(" ", $temp_time_segment[0]);
-    $day = $date[0];
-    $month = $date[1];
-    $year = $date[2];
-
-
-    echo $day;
-
-    //echo $date;
-
-    //$file_actual_ext = strtolower(end($file_ext));
-
-
-/*
-    echo '
-
-        <label for="meeting">Meeting Date : </label><input id="meeting" type="date" value="2011-01-13"/>
-
-
-    ';
-    
-*/  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-    if($db) {
-        echo "string";
+function phonenumber(inputtxt)
+{
+    var phoneno = /(^(\+8801|8801|01|008801))[1|5-9]{1}(\d){8}$/;
+    if(inputtxt.value.match(phoneno)) {
+      return true;      
     }
-*/
+    
+    else
+    {
+        alert("Not a valid Phone Number");
+        //document.getElementsByName("submit").disabled = true;
+        alert(document.getElementsByName("submit").value);
+
+        return false;
+    }
+}
+
+function testFunction()
+{
+    var phoneno = /(^(\+8801|8801|01|008801))[1|5-9]{1}(\d){8}$/;
+    if(document.getElementById("phone").value.match(phoneno)) {
+      return true;      
+    }
+
+    else
+    {
+        alert("Not a valid Phone Number");
+        document.getElementById("phone").value = "";
+    }
+}
+
+
+
+
+</script>
+
+
+
+</head>
+<body onload='document.form1.text1.focus()'>
+<div class="mail">
+<h2>Input an Phone No.[xxx-xxx-xxxx, xxx.xxx.xxxx, xxx xxx xxxx] and Submit</h2>
+
+<script type="text/javascript">
+    alert("hello");
+    //document.getElementById("submit").disabled = true;
+    document.getElementById('submit').setAttribute("disabled","disabled");
+</script>
+
+<form name="form1" action="test2.php"> 
+
+<input type="text" name="text" id="phone" onblur="testFunction()" required>
+<input type="submit" name="submit" id="submit">
+
+
+
+</form>
+</div>
+<!--<script src="phoneno-international-format.js"></script>
+
+<ul>
+<li><input type='text' name='text1'/></li>
+<li>&nbsp;</li>
+<li class="submit"><input type="submit"  name="submit" value="Submit" onclick="phonenumber(document.form1.text1)" required/></li>
+<li>&nbsp;</li>
+</ul>
 
 
 
@@ -83,16 +84,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-?>
+-->
+</body>
+</html>

@@ -1,7 +1,3 @@
-<?php  
-    include 'includesAdminPanel/sessionSrartForAdmin.php';
-?>
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,8 +8,7 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 400px;
-        width: 600px;
+        height: 100%;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -91,8 +86,6 @@
     </style>
   </head>
   <body>
-    <p>ahfasdhfasdhfoaiusdhfoiausdhfoiausdhfoiausdhfoiausdhfoiauhdfoaidshfioausdhfoiausdhfiasudhfiaushfoashfoasdhfoausdhfaoushfasdhfasdhfaosdhfaosdhfaosdihfasioudfhaosfhasufhasifhaosidfh</p>
-
     <div class="pac-card" id="pac-card">
       <div>
         <div id="title">

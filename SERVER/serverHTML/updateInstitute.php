@@ -4,16 +4,38 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Place Autocomplete</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <style>
+    <head>
+
+        <?php  
+            include 'includesAdminPanel/headerPart1.php';
+        ?>
+
+
+        <title>New E.S. Institute - Complain Box</title>
+
+        <script type="text/javascript">
+            function checkPhoneNumber()
+            { 
+                var phoneno = /(^(\+8801|8801|01|008801))[1|5-9]{1}(\d){8}$/;
+                if(document.getElementById("phone").value.match(phoneno)) {
+                  return true;      
+                }
+
+                else
+                {
+                    alert("Not a valid Phone Number");
+                    document.getElementById("phone").value = "";
+                }
+            }
+        </script>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta charset="utf-8">
+        <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
         height: 400px;
-        width: 600px;
+        width: 100%;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -91,7 +113,142 @@
     </style>
   </head>
   <body>
-    <p>ahfasdhfasdhfoaiusdhfoiausdhfoiausdhfoiausdhfoiausdhfoiauhdfoaidshfioausdhfoiausdhfiasudhfiaushfoashfoasdhfoausdhfaoushfasdhfasdhfaosdhfaosdhfaosdihfasioudfhaosfhasufhasifhaosidfh</p>
+    <!-- my navigation -->
+        <nav class="navbar navbar-light" style="background-color: #009688;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="../../index.php"><img src="../pictures/icon/complain.png" id="indexLogo-complain-box"></a>
+                </div>
+            
+                <ul class="nav navbar-nav">             
+                    <li><a href="../../index.php#description-div-custom" class="nev-custom-css" id="ourAppAnc">Our App</a></li>
+                    <li><a href="../../index.php#purpose-container" class="nev-custom-css">Purpose</a></li>
+                    <li><a href="../../index.php#developers-container" class="nev-custom-css">Supervisor & Developers</a></li>
+                </ul>
+
+
+                <?php
+                    include 'includesAdminPanel/adminLogout.php';
+                ?>
+                
+          </div>
+        </nav><!-- end of nevigation -->
+
+
+        <div class="wrapper">
+            <nav id="sidebar">
+                <a href="../../index.php#complainBoxDev">
+                    <div class="sidebar-header">
+                        <h3>Complain Box</h3>
+                        <strong>CB</strong>
+                    </div>
+                </a>
+
+                <ul class="list-unstyled components">
+                    <li >
+                      <a href="home.php">
+                            <i class="glyphicon glyphicon-home"></i>
+                            Home
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="problem.php">
+                             <i class="glyphicon glyphicon-exclamation-sign"></i>
+                            Problems
+                        </a>
+                    </li >
+
+                    
+                    <li>
+                        <a href="event.php">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                            Events
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="notice.php">
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                            Notices
+                        </a>
+                    </li>
+                    <li>
+                        <a href="applicationForm.php">
+                            <i class="glyphicon glyphicon-file"></i>
+                            Application Forms
+                        </a>
+                    </li>
+
+                    <li class="active">
+                        <a href="emergencySupport.php">
+                            <i class="glyphicon glyphicon-bell"></i>
+                            Emergency Support
+                        </a>
+                    </li>
+
+                    
+
+                </ul>
+            </nav>
+
+
+            <!-- Page Content Holder -->
+            <div id="content" style="width: 100%">
+
+
+              <div class="container-fluid">
+                    <div class="row no-gutters">
+                        <div class="col-md-5" style="height: 100px;">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn" style="background-color: #009688;">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                            </button></div>
+                        <div class="col-md-5">
+                            <h1>Update Institute</h1>
+                        </div>
+
+                        <div class="col-md-2">
+                        </div>
+
+
+                    </div>
+                    <hr>
+                </div>
+
+
+
+                <form action="../serverPHP/updateInstitute.php" method="POST" enctype="multipart/form-data">
+
+                	
+                	<?php  
+
+
+
+
+
+                	?>
+
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Institute Location</label>
+                        <p style="color: black;"> Please search your institute in the following map.</p>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--donot touch this part-->
+
+
 
     <div class="pac-card" id="pac-card">
       <div>
@@ -235,9 +392,69 @@
 
      </div>
 
+     <!-- do not touch this part-->
+     				<?php  
 
-     <input type="text" id="lat" name="latitude" readonly>
-<input type="text" id="lan" name="longitude">
-<hr><hr><hr><hr><hr>
+
+     					if(isset($_GET['id']) == true) {
+        					$id = $_GET['id'];
+        					require_once('../serverPHP/dbConnection.php');
+
+        					$sql = "SELECT * FROM institution WHERE institutionID = '$id'";
+                    		$result = mysqli_query($db,$sql);
+                    		$row = mysqli_fetch_array($result, MYSQLI_NUM);
+                    		
+
+        
+        					mysqli_close($db);
+
+        
+        					$latitude = $row[1]; 
+							$longitude = $row[2];
+							$phone = $row[3];
+							$category = $row[4];
+
+							echo '
+	
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Latitude</label>
+                        <input type="text" id="lat" class="form-control" value="'.$latitude.'" name="latitude" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Longitude</label>
+                        <input type="text" id="lan" class="form-control" name="longitude" value="'.$longitude.'" readonly>
+                    </div>
+
+      
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Institute Phone Number</label>
+                        <input type="tel" name="phone" id="phone" maxlength="100" class="form-control" onblur="checkPhoneNumber()" placeholder="" value="'.$phone.'" required>
+                    </div>
+
+                    <input type="hidden" class="form-group" value="'.$id.'" name="institute_id"/>
+
+                    ';
+
+
+                    }
+                                    
+                    ?>
+
+                
+
+
+                      <button type="submit" name="submit" class="btn btn-primary" style="background-color: #009688;">Update</button>
+                        <a href="emergencySupport.php">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                        </a>
+
+  </form>
+
+   </div>
+
+
+     
   </body>
 </html>
