@@ -183,7 +183,7 @@
                 <br>
                 <div id="output">
 
-                    <?php  
+    <?php  
 
 
 
@@ -194,6 +194,7 @@
     $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
     $test = "";
 
+    $sql = "SELECT * FROM problem WHERE (visibility = 1)";
 
     $output = '';
 
@@ -201,7 +202,11 @@
         $test = "onceDone";
         $searchq = $_POST['search'];
         //$searchq = preg_replace("#[^0-9a-z]#i", "", $searchq);
-        $sql = "SELECT * FROM problem WHERE problemID = '$searchq'";
+        //$sql = "SELECT * FROM problem WHERE problemID = '$searchq'";
+
+        $sql .= " AND (problemID = '$searchq')";
+
+        /*
 
         $sql2 = "SELECT * FROM problem WHERE problemID LIKE '%$searchq%' OR category LIKE '%$searchq%' OR description LIKE '%$searchq%' OR latitude LIKE '%$searchq%' OR longitude LIKE '%$searchq%' OR wardNo Like '%$searchq%' OR priority LIKE '%$searchq%' OR status LIKE '%$searchq%' OR email LIKE '%$searchq%'";
 
@@ -252,6 +257,8 @@
         echo($output);
         return;
 
+        */
+
 
 
     } 
@@ -259,9 +266,10 @@
     if(isset($_POST['category']) && $_POST['category'] != "") {
         $searchItem = $_POST['category'];
         //echo $searchItem;
-        $sql = "SELECT * FROM problem WHERE category = '$searchItem'";
-        $result=mysqli_query($db, $sql);
-
+        //$sql = "SELECT * FROM problem WHERE category = '$searchItem'";
+        $sql .= " AND (category = '$searchItem')";
+        //$result=mysqli_query($db, $sql);
+        /*
         while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
 
            // echo $row[0].'<br>';
@@ -300,16 +308,18 @@
                 <hr>
             ';
 
-        }
+        }*/
 
 
 
     }
+
+    echo $sql;
     
 
-    else {
+    //else {
 
-        $sql = "SELECT * FROM problem WHERE (visibiloty = 1)";
+        //$sql = "SELECT * FROM problem WHERE (visibiloty = 1)";
         $result=mysqli_query($db, $sql);
 
         while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
@@ -355,7 +365,7 @@
 
 
 
-    }
+    //}
 
                     
 
