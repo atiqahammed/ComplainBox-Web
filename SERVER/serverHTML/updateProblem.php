@@ -2,7 +2,6 @@
     include 'includesAdminPanel/sessionSrartForAdmin.php';
 ?>
 
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,32 +9,11 @@
             include 'includesAdminPanel/headerPart1.php';
         ?>
         <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-
-
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>  
-
-        <script type="text/javascript">
-            
-            function searchq() {
-
-                var searchTxt = $("input[name='search']").val();
-                //alert(searchTxt);
-                $.post("problemFetch.php", {searchVal: searchTxt}, function(output){
-                    $("#output").html(output);
-                });
-
-
-            }
-        </script>      
-
+        <title>Problem - Complain Box</title>
     </head>
+    
     <body>
-
-
-        <!-- my navigation -->
         <nav class="navbar navbar-light" style="background-color: #009688;">
-        <title>Problems - Complain Box</title>
-
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="../../index.php"><img src="../pictures/icon/complain.png" id="indexLogo-complain-box"></a>
@@ -55,6 +33,7 @@
           </div>
         </nav><!-- end of nevigation -->
 
+
         <div class="wrapper">
             <nav id="sidebar">
                 <a href="../../index.php#complainBoxDev">
@@ -66,14 +45,14 @@
 
                 <ul class="list-unstyled components">
                     <li >
-                        <a href="home.php">
+                    	<a href="home.php">
                             <i class="glyphicon glyphicon-home"></i>
                             Home
                         </a>
                     </li>
 
 
-                    <li  class="active">
+                    <li class="active">
                         <a href="problem.php">
                              <i class="glyphicon glyphicon-exclamation-sign"></i>
                             Problems
@@ -107,6 +86,9 @@
                             Emergency Support
                         </a>
                     </li>
+
+                    
+
                 </ul>
             </nav>
 
@@ -120,42 +102,105 @@
                                 <i class="glyphicon glyphicon-align-left"></i>
                             </button></div>
                         <div class="col-md-5">
-                            <h1>Problems</h1>
+                            <h1>Update Problem</h1>
                         </div>
 
                         <div class="col-md-2">
-                            
                         </div>
-
-
                     </div>
                     <hr>
                 </div>
 
 
-                <a href="problemForm.php">
-                    <button type="button" class="btn btn-primary btn-sm" style="background-color: #009688;">New</button>
-                </a>
-               
-                <hr>
 
-                <div id="load_data"></div>
-                <div id="load_data_message"></div>
-                
 
-                <form action="problem.php" method="POST" >
-                    
-                    <div class="container-fluid">
+                <?php  
+
+                	if(isset($_GET['id']) == true) {
+                		$id = $_GET['id'];
+
+                		require_once('../serverPHP/dbConnection.php');				
+                		$sql = "SELECT * FROM problem WHERE problemID = '$id'";
+
+                    	$result = mysqli_query($db,$sql);
+                    	$row = mysqli_fetch_array($result, MYSQLI_NUM);
+                    	mysqli_close($db);
+
+                    	$problem_id = $row[0];
+                        $category = $row[1];
+                        $problem_file_name = $row[2];
+                        $decription = $row[3];
+                        $lat = $row[4];
+                        $lon = $row[5];
+                        $w_no = $row[6];
+                        $prio = $row[7];
+                        $status = $row[8];
+                        $email = $row[9];
+
+
+                        echo '
+
+		                <div class="container-fluid">
+		                    <div class="row">
+		                        <div class="col-md-6">
+		                            <p style="color: black;"><b>Problem ID: </b>'.$problem_id.'</p>
+                                    <p style="color: black;"><b>Problem Category: </b>'.$category.'</p>
+                                    <p style="color: black;"><b>Ward No: </b>'.$w_no.'</p>
+                                    <p style="color: black;"><b>Priority: </b>'.$prio.'</p>
+                                    <p style="color: black;"><b>Statu: </b>'.$status.'</p>
+
+		                        </div>
+		                        <div class="col-md-6">
+		                            <img style="height:100%; width: 100%;" src="../problemPicture/'.$problem_file_name.'" alt="problem picture">
+		                        </div>
+
+		                        
+		                    </div>
+		                    <hr>
+		                </div>
+
+
+		                <div class="container-fluid">
+		                    <div class="row">
+		                        <div class="col-md-6">
+		                        	<label for="exampleInputEmail1">Description</label>
+		                            <p style="color: black; text-align: justify;">'.$decription.'</p>
+		                        </div>
+		                        <div class="col-md-6">
+		                            <div id="googleMap" style="width:100%;height:250px;"></div>
+							   			<script>
+											function myMap() {
+											var mapProp= {
+						    						center:new google.maps.LatLng('.$lat.', '.$lon.'),
+						    						zoom:15,
+												};
+												var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+												var location = {lat:'.$lat.', lng:'.$lon.'};
+												var marker = new google.maps.Marker({
+													position: location,
+													map, map
+												});
+											}
+
+											
+
+										</script>
+										<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkKmJPK0oh9K4yGU1USSj7MJpzFWN9LeE&callback=myMap"></script>
+		                        </div>  
+		                    </div>
+		                    <hr>
+		                </div>
+
+
+
+                        <form action="../serverPHP/updateProblem.php" method="POST" enctype="multipart/form-data">
+
+                            <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <input type="text" name="search" class="form-control" placeholder="" >
-                                    <br>
-                                    <button type="submit" name="submit" class="btn btn-primary" style="background-color: #009688;">search</button>
-                                </div>
-                            </div>
+                            
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <select name="category"  class="form-control">
                                     <option value="">All Category</option>
                                     <option value="Road Damage">Road Damage</option>
@@ -173,7 +218,7 @@
                             
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <select name="status"  class="form-control">
                                     <option value="">All Status</option>
                                     <option value="solved">Solved</option>
@@ -182,10 +227,9 @@
                                 </select>
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <select name="priority"  class="form-control">
                                     <option value="">Priority</option>
-                                    <option value="0">Priority 0</option>
                                     <option value="1">Priority 1</option>
                                     <option value="2">Priority 2</option>
                                     <option value="3">Priority 3</option>
@@ -199,12 +243,11 @@
                                 </select>
                             </div>
 
-
+                            <input type="hidden" class="form-group" value="'.$id.'" name="problem_id"/>
 
                             <div class="col-md-3">
                                 <select name="wardNo"  class="form-control">
                                     <option value="">Ward No.</option>
-                                    <option value="0">Ward No. Not yet set</option>
                                     <option value="1">Ward No. 1</option>
                                     <option value="2">Ward No. 2</option>
                                     <option value="3">Ward No. 3</option>
@@ -267,126 +310,30 @@
                         
                         </div>
                     </div>
-                </form>
-
-                <br>
-                <div id="output">
-
-                <?php  
-
-                    define('DB_SERVER', 'localhost');
-                    define('DB_USERNAME', 'root');
-                    define('DB_PASSWORD', '');
-                    define('DB_DATABASE', 'testdb');
-                    $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-                    $test = "";
-
-                    $sql = "SELECT * FROM problem WHERE (visibility = 1)";
-
-                    $output = '';
-
-                    if(isset($_POST['search']) && $_POST['search'] != "") {
-                        $test = "onceDone";
-                        $searchq = $_POST['search'];
-                        $sql .= " AND (problemID = '$searchq')";
-                    } 
-
-                    if(isset($_POST['category']) && $_POST['category'] != "") {
-                        $searchItem = $_POST['category'];
-                        $sql .= " AND (category = '$searchItem')";
-                    }
-
-                    if(isset($_POST['status']) && $_POST['status'] != "") {
-                        $searchItem = $_POST['status'];
-                        $sql .= " AND (status = '$searchItem')";
-                    }
-
-                    if(isset($_POST['priority']) && $_POST['priority'] != "") {
-                        $searchItem = $_POST['priority'];
-                        $sql .= " AND (priority = '$searchItem')";
-                    }
-
-                    if(isset($_POST['wardNo']) && $_POST['wardNo'] != "") {
-                        $searchItem = $_POST['wardNo'];
-                        $sql .= " AND (wardNo = '$searchItem')";
-                    }
-
-                    //echo $sql;
-
-                    $sql .= " ORDER BY priority DESC, status ASC ";
-                    
-                    $result=mysqli_query($db, $sql);
-
-                    while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-
-                        $problem_id = $row[0];
-                        $category = $row[1];
-                        $problem_file_name = $row[2];
-                        $decription = $row[3];
-                        $lat = $row[4];
-                        $lon = $row[5];
-                        $w_no = $row[6];
-                        $prio = $row[7];
-                        $status = $row[8];
-                        $email = $row[9];
 
 
-                            $output .= '
+                            <hr>
 
+                            <a href="problem.php">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">back to problem list</button>
+                            </a>
 
+                            <button type="submit" name="submit" class="btn btn-primary" style="background-color: #009688;">upadte</button>
+                        </form>
 
+		                
 
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-md-8">
+                        
 
-                                            <p style="color: black;"><b>Problem ID: </b>'.$problem_id.'</p>
-                                            <p style="color: black;"><b>Problem Category: </b>'.$category.'</p>
-                                            <p style="color: black;"><b>Ward No: </b>'.$w_no.'</p>
-                                            <p style="color: black;"><b>Priority: </b>'.$prio.'</p>
-                                            <p style="color: black;"><b>Statu: </b>'.$status.'</p>
-                                            
-
-                                            <br>
-                                            <p style="color: black; text-align: justify;">'.$decription.'</p>
-
-
-                                            <a href="updateProblem.php?id='.$problem_id.'">
-                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #2E7D32;">update</button>
-                                            </a>
-
-                                            <a href="viewProblem.php?id='.$problem_id.'">
-                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #00838F;">view</button>
-                                            </a>
-
-                                            <a href="hideProblem.php?id='.$problem_id.'">
-                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #D32F2F;">hide</button>
-                                            </a>
-                                        </div>
-                                        <div class="col-md-4">
-                                            
-                                            <img style="height: 100%; width: 100%;" src="../problemPicture/'.$problem_file_name.'" alt="problem picture">
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                            ';
-
-                        }
-            
-                    echo($output);
-                    mysqli_close($db);
-
+		                ';
+		            }
                 ?>
 
-                    
-                </div>
-
+                
 
             </div>
         </div>
 
-        <!-- jQuery CDN -->
          <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
          <!-- Bootstrap Js CDN -->
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -400,3 +347,6 @@
          </script>
     </body>
 </html>
+
+
+

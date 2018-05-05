@@ -40,7 +40,7 @@
 				//$date_and_time = date('m/d/Y h:i:s a', time()+ 4*3600);
 
 				//$admin_email = $_SESSION["email"];
-				$sql="INSERT INTO problem (problemID, category, problemFileName, description, latitude, longitude, priority, status, email) values ('$id','$cat','$file_name_new', '$des', '$lat', '$lon', 0, 'in consideration', '$email')";
+				$sql="INSERT INTO problem (problemID, category, problemFileName, description, latitude, longitude, priority, status, email, visibility) values ('$id','$cat','$file_name_new', '$des', '$lat', '$lon', 0, 'in consideration', '$email', 1)";
 				$query=mysqli_query($db, $sql);
 				mysqli_close($db);
 
