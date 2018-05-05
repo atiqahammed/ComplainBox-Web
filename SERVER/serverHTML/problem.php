@@ -26,10 +26,6 @@
 
 
             }
-
-
-
-
         </script>      
 
     </head>
@@ -159,21 +155,113 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <select name="category"  class="form-control">
                                     <option value="">All Category</option>
-                                    <option value="category1">Category 1</option>
-                                    <option value="category2">Category 2</option>
-                                    <option value="category3">Category 3</option>
-                                    <option value="category4">Category 4</option>
+                                    <option value="Road Damage">Road Damage</option>
+                                    <option value="Garbage">Garbage</option>
+                                    <option value="Footpath">Footpath</option>
+                                    <option value="Drainage">Drainage</option>
+                                    <option value="Road Light">Road Light</option>
+                                    <option value="Mosquito">Mosquito</option>
+                                    <option value="Illegal Parking">Illegal Parking</option>
+                                    <option value="Curruption">Curruption</option>
+                                    <option value="Repair">Repair</option>
+                                    <option value="Others">Others</option>
                                 </select>
                                 
                             
                             </div>
+
+                            <div class="col-md-2">
+                                <select name="status"  class="form-control">
+                                    <option value="">All Status</option>
+                                    <option value="solved">Solved</option>
+                                    <option value="in progress">In Progress</option>
+                                    <option value="in consideration">In Consideration</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-2">
+                                <select name="priority"  class="form-control">
+                                    <option value="">Priority</option>
+                                    <option value="0">Priority 0</option>
+                                    <option value="1">Priority 1</option>
+                                    <option value="2">Priority 2</option>
+                                    <option value="3">Priority 3</option>
+                                    <option value="4">Priority 4</option>
+                                    <option value="5">Priority 5</option>
+                                    <option value="6">Priority 6</option>
+                                    <option value="7">Priority 7</option>
+                                    <option value="8">Priority 8</option>
+                                    <option value="9">Priority 9</option>
+                                    <option value="10">Priority 10</option>
+                                </select>
+                            </div>
+
+
+
                             <div class="col-md-3">
-                            
-
-
+                                <select name="wardNo"  class="form-control">
+                                    <option value="">Ward No.</option>
+                                    <option value="1">Ward No. 1</option>
+                                    <option value="2">Ward No. 2</option>
+                                    <option value="3">Ward No. 3</option>
+                                    <option value="4">Ward No. 4</option>
+                                    <option value="5">Ward No. 5</option>
+                                    <option value="6">Ward No. 6</option>
+                                    <option value="7">Ward No. 7</option>
+                                    <option value="8">Ward No. 8</option>
+                                    <option value="9">Ward No. 9</option>
+                                    <option value="10">Ward No. 10</option>
+                                    <option value="11">Ward No. 11</option>
+                                    <option value="12">Ward No. 12</option>
+                                    <option value="13">Ward No. 13</option>
+                                    <option value="14">Ward No. 14</option>
+                                    <option value="15">Ward No. 15</option>
+                                    <option value="16">Ward No. 16</option>
+                                    <option value="17">Ward No. 17</option>
+                                    <option value="18">Ward No. 18</option>
+                                    <option value="19">Ward No. 19</option>
+                                    <option value="20">Ward No. 20</option>
+                                    <option value="21">Ward No. 21</option>
+                                    <option value="22">Ward No. 22</option>
+                                    <option value="23">Ward No. 23</option>
+                                    <option value="24">Ward No. 24</option>
+                                    <option value="25">Ward No. 25</option>
+                                    <option value="26">Ward No. 26</option>
+                                    <option value="27">Ward No. 27</option>
+                                    <option value="28">Ward No. 28</option>
+                                    <option value="29">Ward No. 29</option>
+                                    <option value="30">Ward No. 30</option>
+                                    <option value="31">Ward No. 31</option>
+                                    <option value="32">Ward No. 32</option>
+                                    <option value="33">Ward No. 33</option>
+                                    <option value="34">Ward No. 34</option>
+                                    <option value="35">Ward No. 35</option>
+                                    <option value="36">Ward No. 36</option>
+                                    <option value="37">Ward No. 37</option>
+                                    <option value="38">Ward No. 38</option>
+                                    <option value="39">Ward No. 39</option>
+                                    <option value="40">Ward No. 40</option>
+                                    <option value="41">Ward No. 41</option>
+                                    <option value="42">Ward No. 42</option>
+                                    <option value="43">Ward No. 43</option>
+                                    <option value="44">Ward No. 44</option>
+                                    <option value="45">Ward No. 45</option>
+                                    <option value="46">Ward No. 46</option>
+                                    <option value="47">Ward No. 47</option>
+                                    <option value="48">Ward No. 48</option>
+                                    <option value="49">Ward No. 49</option>
+                                    <option value="50">Ward No. 50</option>
+                                    <option value="51">Ward No. 51</option>
+                                    <option value="52">Ward No. 52</option>
+                                    <option value="53">Ward No. 53</option>
+                                    <option value="54">Ward No. 54</option>
+                                    <option value="55">Ward No. 55</option>
+                                    
+                                    
+                                </select>
                             </div>
                         
                         </div>
@@ -183,197 +271,107 @@
                 <br>
                 <div id="output">
 
-    <?php  
+                <?php  
 
+                    define('DB_SERVER', 'localhost');
+                    define('DB_USERNAME', 'root');
+                    define('DB_PASSWORD', '');
+                    define('DB_DATABASE', 'testdb');
+                    $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+                    $test = "";
 
+                    $sql = "SELECT * FROM problem WHERE (visibility = 1)";
 
-    define('DB_SERVER', 'localhost');
-    define('DB_USERNAME', 'root');
-    define('DB_PASSWORD', '');
-    define('DB_DATABASE', 'testdb');
-    $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-    $test = "";
+                    $output = '';
 
-    $sql = "SELECT * FROM problem WHERE (visibility = 1)";
+                    if(isset($_POST['search']) && $_POST['search'] != "") {
+                        $test = "onceDone";
+                        $searchq = $_POST['search'];
+                        $sql .= " AND (problemID = '$searchq')";
+                    } 
 
-    $output = '';
+                    if(isset($_POST['category']) && $_POST['category'] != "") {
+                        $searchItem = $_POST['category'];
+                        $sql .= " AND (category = '$searchItem')";
+                    }
 
-    if(isset($_POST['search']) && $_POST['search'] != "") {
-        $test = "onceDone";
-        $searchq = $_POST['search'];
-        //$searchq = preg_replace("#[^0-9a-z]#i", "", $searchq);
-        //$sql = "SELECT * FROM problem WHERE problemID = '$searchq'";
+                    if(isset($_POST['status']) && $_POST['status'] != "") {
+                        $searchItem = $_POST['status'];
+                        $sql .= " AND (status = '$searchItem')";
+                    }
 
-        $sql .= " AND (problemID = '$searchq')";
+                    if(isset($_POST['priority']) && $_POST['priority'] != "") {
+                        $searchItem = $_POST['priority'];
+                        $sql .= " AND (priority = '$searchItem')";
+                    }
 
-        /*
+                    if(isset($_POST['wardNo']) && $_POST['wardNo'] != "") {
+                        $searchItem = $_POST['wardNo'];
+                        $sql .= " AND (wardNo = '$searchItem')";
+                    }
 
-        $sql2 = "SELECT * FROM problem WHERE problemID LIKE '%$searchq%' OR category LIKE '%$searchq%' OR description LIKE '%$searchq%' OR latitude LIKE '%$searchq%' OR longitude LIKE '%$searchq%' OR wardNo Like '%$searchq%' OR priority LIKE '%$searchq%' OR status LIKE '%$searchq%' OR email LIKE '%$searchq%'";
-
-        $result=mysqli_query($db, $sql);
-
-        while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-
-           // echo $row[0].'<br>';
-            $problem_id = $row[0];
-            $category = $row[1];
-            $problem_file_name = $row[2];
-            $decription = $row[3];
-            $lat = $row[4];
-            $lon = $row[5];
-            $w_no = $row[6];
-            $prio = $row[7];
-            $status = $row[8];
-            $email = $row[9];
-
-
-
-            $output .= '
-
-                <div>
+                    //echo $sql;
                     
-                    <p style="color: black;">Problem ID: '.$problem_id.'</p>
-                    <p style="color: black;">Problem Category: '.$category.'</p>
+                    $result=mysqli_query($db, $sql);
 
-                    
-                    <p style="color: black;">Statu: '.$status.'</p>
+                    while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
 
-                    
-                    <p style="color: black;">Priority: '.$prio.'</p>
-                    <br>
-
-                    
-                    <p style="color: black; text-align: justify;">'.$decription.'</p>
-
-                </div>
-
-                <hr>
-            ';
-
-        }
-
-        //echo "string";
-
-        echo($output);
-        return;
-
-        */
+                        $problem_id = $row[0];
+                        $category = $row[1];
+                        $problem_file_name = $row[2];
+                        $decription = $row[3];
+                        $lat = $row[4];
+                        $lon = $row[5];
+                        $w_no = $row[6];
+                        $prio = $row[7];
+                        $status = $row[8];
+                        $email = $row[9];
 
 
-
-    } 
-
-    if(isset($_POST['category']) && $_POST['category'] != "") {
-        $searchItem = $_POST['category'];
-        //echo $searchItem;
-        //$sql = "SELECT * FROM problem WHERE category = '$searchItem'";
-        $sql .= " AND (category = '$searchItem')";
-        //$result=mysqli_query($db, $sql);
-        /*
-        while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-
-           // echo $row[0].'<br>';
-            $problem_id = $row[0];
-            $category = $row[1];
-            $problem_file_name = $row[2];
-            $decription = $row[3];
-            $lat = $row[4];
-            $lon = $row[5];
-            $w_no = $row[6];
-            $prio = $row[7];
-            $status = $row[8];
-            $email = $row[9];
-
-
-
-            $output .= '
-
-                <div>
-                    
-                    <p style="color: black;">Problem ID: '.$problem_id.'</p>
-                    <p style="color: black;">Problem Category: '.$category.'</p>
-
-                    
-                    <p style="color: black;">Statu: '.$status.'</p>
-
-                    
-                    <p style="color: black;">Priority: '.$prio.'</p>
-                    <br>
-
-                    
-                    <p style="color: black; text-align: justify;">'.$decription.'</p>
-
-                </div>
-
-                <hr>
-            ';
-
-        }*/
-
-
-
-    }
-
-    echo $sql;
-    
-
-    //else {
-
-        //$sql = "SELECT * FROM problem WHERE (visibiloty = 1)";
-        $result=mysqli_query($db, $sql);
-
-        while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-
-           // echo $row[0].'<br>';
-            $problem_id = $row[0];
-            $category = $row[1];
-            $problem_file_name = $row[2];
-            $decription = $row[3];
-            $lat = $row[4];
-            $lon = $row[5];
-            $w_no = $row[6];
-            $prio = $row[7];
-            $status = $row[8];
-            $email = $row[9];
-
-
-
-            $output .= '
-
-                <div>
-                    
-                    <p style="color: black;">Problem ID: '.$problem_id.'</p>
-                    <p style="color: black;">Problem Category: '.$category.'</p>
-
-                    
-                    <p style="color: black;">Statu: '.$status.'</p>
-
-                    
-                    <p style="color: black;">Priority: '.$prio.'</p>
-                    <br>
-
-                    
-                    <p style="color: black; text-align: justify;">'.$decription.'</p>
-
-                </div>
-
-                <hr>
-            ';
-
-        }
+                            $output .= '
 
 
 
 
-    //}
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-8">
 
-                    
+                                            <p style="color: black;"><b>Problem ID: </b>'.$problem_id.'</p>
+                                            <p style="color: black;"><b>Problem Category: </b>'.$category.'</p>
+                                            <p style="color: black;"><b>Statu: </b>'.$status.'</p>
+                                            <p style="color: black;"><b>Priority: </b>'.$prio.'</p>
+                                            <br>
+                                            <p style="color: black; text-align: justify;">'.$decription.'</p>
 
-                    
-echo($output);
 
+                                            <a href="updateProblem.php?id='.$problem_id.'">
+                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #2E7D32;">update</button>
+                                            </a>
 
-?>
+                                            <a href="viewProblem.php?id='.$problem_id.'">
+                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #00838F;">view</button>
+                                            </a>
+
+                                            <a href="hideProblem.php?id='.$problem_id.'">
+                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #D32F2F;">hide</button>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            
+                                            <img style="height: 100%; width: 100%;" src="../problemPicture/'.$problem_file_name.'" alt="Girl in a jacket">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            ';
+
+                        }
+            
+                    echo($output);
+                    mysqli_close($db);
+
+                ?>
 
                     
                 </div>
@@ -396,58 +394,3 @@ echo($output);
          </script>
     </body>
 </html>
-
-
-<!--
-<script>
-    
-    $(document).ready(function(){
-
-        var limit = 5;
-        var start = 0;
-        var action = 'inactive';
-        function load_event_data(limit, start) {
-            $.ajax({
-                url: "fetchEvent.php",
-                method: "POST",
-                data:{limit:limit, start:start},
-                cache:false,
-                success:function(data)
-                {
-                    $('#load_data').append(data);
-                    if(data == '') {
-                        $('#load_data_message').html("<hr><button type='button' class = 'btn btn-info'>No Data Found</button>");
-                        action = 'active';
-                    } else {
-                        $('#load_data_message').html("<hr><button type='button' class = 'btn btn-waiting'>Loading ...</button>");
-                        action = 'inactive';
-                    }
-                }
-            });
-        }
-
-        if(action == 'inactive') {
-            action = 'active';
-            load_event_data(limit, start);
-        }
-
-        $(window).scroll(function(){
-           
-            if($(window).scrollTop() + $(window).height() > $("#load_data").height() && action == 'inactive') {
-                    action = 'active';
-                    start = start + limit;
-                    timeOutId = setTimeout(function(){
-                        load_event_data(limit, start);
-                    }, 1000);
-            }
-
-        });
-
-
-    });
-
-
-</script>
-
--->
-        
