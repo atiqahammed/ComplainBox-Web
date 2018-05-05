@@ -150,29 +150,33 @@
                 <form action="problem.php" method="POST" >
                     
                     <div class="container-fluid">
-                        <div class="row no-gutters">
+                        <div class="row">
                             <div class="col-md-3">
-
                                 <div class="form-group">
                                     <input type="text" name="search" class="form-control" placeholder="" >
                                     <br>
                                     <button type="submit" name="submit" class="btn btn-primary" style="background-color: #009688;">search</button>
                                 </div>
-                                
-                            <div class="col-md-3">
-                                
                             </div>
 
                             <div class="col-md-3">
+                                <select name="category"  class="form-control">
+                                    <option value="">All Category</option>
+                                    <option value="category1">Category 1</option>
+                                    <option value="category2">Category 2</option>
+                                    <option value="category3">Category 3</option>
+                                    <option value="category4">Category 4</option>
+                                </select>
                                 
+                            
                             </div>
-
                             <div class="col-md-3">
+                            
+
+
                             </div>
-
-
-                        </div>
                         
+                        </div>
                     </div>
                 </form>
 
@@ -188,14 +192,74 @@
     define('DB_PASSWORD', '');
     define('DB_DATABASE', 'testdb');
     $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+    $test = "";
+
 
     $output = '';
 
-    if(isset($_POST['search'])) {
+    if(isset($_POST['search']) && $_POST['search'] != "") {
+        $test = "onceDone";
         $searchq = $_POST['search'];
-        $searchq = preg_replace("#[^0-9a-z]#i", "", $searchq);
-        $sql = "SELECT * FROM problem WHERE problemID LIKE '%$searchq%' OR category LIKE '%$searchq%' OR description LIKE '%$searchq%' OR latitude LIKE '%$searchq%' OR longitude LIKE '%$searchq%' OR wardNo Like '%$searchq%' OR priority LIKE '%$searchq%' OR status LIKE '%$searchq%' OR email LIKE '%$searchq%'";
+        //$searchq = preg_replace("#[^0-9a-z]#i", "", $searchq);
+        $sql = "SELECT * FROM problem WHERE problemID = '$searchq'";
 
+        $sql2 = "SELECT * FROM problem WHERE problemID LIKE '%$searchq%' OR category LIKE '%$searchq%' OR description LIKE '%$searchq%' OR latitude LIKE '%$searchq%' OR longitude LIKE '%$searchq%' OR wardNo Like '%$searchq%' OR priority LIKE '%$searchq%' OR status LIKE '%$searchq%' OR email LIKE '%$searchq%'";
+
+        $result=mysqli_query($db, $sql);
+
+        while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+
+           // echo $row[0].'<br>';
+            $problem_id = $row[0];
+            $category = $row[1];
+            $problem_file_name = $row[2];
+            $decription = $row[3];
+            $lat = $row[4];
+            $lon = $row[5];
+            $w_no = $row[6];
+            $prio = $row[7];
+            $status = $row[8];
+            $email = $row[9];
+
+
+
+            $output .= '
+
+                <div>
+                    
+                    <p style="color: black;">Problem ID: '.$problem_id.'</p>
+                    <p style="color: black;">Problem Category: '.$category.'</p>
+
+                    
+                    <p style="color: black;">Statu: '.$status.'</p>
+
+                    
+                    <p style="color: black;">Priority: '.$prio.'</p>
+                    <br>
+
+                    
+                    <p style="color: black; text-align: justify;">'.$decription.'</p>
+
+                </div>
+
+                <hr>
+            ';
+
+        }
+
+        //echo "string";
+
+        echo($output);
+        return;
+
+
+
+    } 
+
+    if(isset($_POST['category']) && $_POST['category'] != "") {
+        $searchItem = $_POST['category'];
+        //echo $searchItem;
+        $sql = "SELECT * FROM problem WHERE category = '$searchItem'";
         $result=mysqli_query($db, $sql);
 
         while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
@@ -240,11 +304,12 @@
 
 
 
-    } 
+    }
+    
 
     else {
 
-        $sql = "SELECT * FROM problem";
+        $sql = "SELECT * FROM problem WHERE (visibiloty = 1)";
         $result=mysqli_query($db, $sql);
 
         while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
