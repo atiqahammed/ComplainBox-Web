@@ -16,6 +16,7 @@
 
 
 
+
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>  
    
 
@@ -207,9 +208,6 @@
                                     </a>
                                 </div>
 
-                                
-
-
                                 <div class="col-md-2">
                                     <a href="event.php">
                                         <div style = "box-shadow: 0 8px 6px -6px black; background-color: #dbd897; height: 150px;text-align: center;padding-top: 20px;" >
@@ -234,10 +232,9 @@
                                     
                                 </div>
 
-
-
                             </div>
                         </div>
+                        <hr>
 
                     ';
 
@@ -340,6 +337,118 @@
                         
                             <div style = "box-shadow: 0 8px 6px -6px black; background-color: #ffffff; text-align: center;">
                                 <div id="top_x_div" style="width: 100%; height: 500px;"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="container-fluid">
+                    <div class="row">
+                                
+                        <div class="col-md-12">
+
+                            <script type="text/javascript">
+                                google.charts.load('current', {'packages':['bar']});
+                                google.charts.setOnLoadCallback(drawChart);
+
+                                function drawChart() {
+                                    var data = google.visualization.arrayToDataTable([
+                                    ['Category', 'In Consideration', 'In Progress', 'Solved'],
+          
+                                    <?php  
+                                  
+                                        $categoryAndSolved = array();
+                                        $categoryAndCons = array();
+                                        $categoryAndProgress = array();
+
+                                        
+                                        $categoryAndSolved["Road Damage"] = 0;
+                                        $categoryAndSolved["Garbage"] = 0;
+                                        $categoryAndSolved["Footpath"] = 0;
+                                        $categoryAndSolved["Drainage"] = 0;
+                                        $categoryAndSolved["Road Light"] = 0;
+                                        $categoryAndSolved["Mosquito"] = 0;
+                                        $categoryAndSolved["Illegal Parking"] = 0;
+                                        $categoryAndSolved["Curruption"] = 0;
+                                        $categoryAndSolved["Repair"] = 0;
+                                        $categoryAndSolved["Others"] = 0;
+
+                                        $categoryAndProgress["Road Damage"] = 0;
+                                        $categoryAndProgress["Garbage"] = 0;
+                                        $categoryAndProgress["Footpath"] = 0;
+                                        $categoryAndProgress["Drainage"] = 0;
+                                        $categoryAndProgress["Road Light"] = 0;
+                                        $categoryAndProgress["Mosquito"] = 0;
+                                        $categoryAndProgress["Illegal Parking"] = 0;
+                                        $categoryAndProgress["Curruption"] = 0;
+                                        $categoryAndProgress["Repair"] = 0;
+                                        $categoryAndProgress["Others"] = 0;
+
+                                        $categoryAndCons["Road Damage"] = 0;
+                                        $categoryAndCons["Garbage"] = 0;
+                                        $categoryAndCons["Footpath"] = 0;
+                                        $categoryAndCons["Drainage"] = 0;
+                                        $categoryAndCons["Road Light"] = 0;
+                                        $categoryAndCons["Mosquito"] = 0;
+                                        $categoryAndCons["Illegal Parking"] = 0;
+                                        $categoryAndCons["Curruption"] = 0;
+                                        $categoryAndCons["Repair"] = 0;
+                                        $categoryAndCons["Others"] = 0;
+
+                                        
+                                        $sql = "SELECT T1.category as category, COUNT(*) as solved FROM problem T1 where T1.status='solved' GROUP BY T1.category";
+                                        $result=mysqli_query($db, $sql);
+
+                                        while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+                                            $categoryAndSolved[$row[0]] += $categoryAndSolved[$row[0]] + $row[1];  
+                                        }
+
+                                        $sql = "SELECT T1.category as category, COUNT(*) as solved FROM problem T1 where T1.status='in progress' GROUP BY T1.category";
+                                        $result=mysqli_query($db, $sql);
+
+                                        while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+                                            $categoryAndProgress[$row[0]] += $categoryAndProgress[$row[0]] + $row[1];  
+                                        }
+
+                                        $sql = "SELECT T1.category as category, COUNT(*) as solved FROM problem T1 where T1.status='in consideration' GROUP BY T1.category";
+                                        $result=mysqli_query($db, $sql);
+
+                                        while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+                                            $categoryAndCons[$row[0]] += $categoryAndCons[$row[0]] + $row[1];  
+                                        }
+
+                                        echo "['Road Damage', ".$categoryAndCons["Road Damage"].", ".$categoryAndProgress["Road Damage"].", ".$categoryAndSolved["Road Damage"]."],";
+                                        echo "['Garbage', ".$categoryAndCons["Garbage"].", ".$categoryAndProgress["Garbage"].", ".$categoryAndSolved["Garbage"]."],";
+                                        echo "['Footpath', ".$categoryAndCons["Footpath"].", ".$categoryAndProgress["Footpath"].", ".$categoryAndSolved["Footpath"]."],";
+                                        echo "['Drainage', ".$categoryAndCons["Drainage"].", ".$categoryAndProgress["Drainage"].", ".$categoryAndSolved["Drainage"]."],";
+                                        echo "['Road Light', ".$categoryAndCons["Road Light"].", ".$categoryAndProgress["Road Light"].", ".$categoryAndSolved["Road Light"]."],";
+                                        echo "['Mosquito', ".$categoryAndCons["Mosquito"].", ".$categoryAndProgress["Mosquito"].", ".$categoryAndSolved["Mosquito"]."],";
+                                        echo "['Illegal Parking', ".$categoryAndCons["Illegal Parking"].", ".$categoryAndProgress["Illegal Parking"].", ".$categoryAndSolved["Illegal Parking"]."],";
+                                        echo "['Curruption', ".$categoryAndCons["Curruption"].", ".$categoryAndProgress["Curruption"].", ".$categoryAndSolved["Curruption"]."],";
+                                        echo "['Repair', ".$categoryAndCons["Repair"].", ".$categoryAndProgress["Repair"].", ".$categoryAndSolved["Repair"]."],";
+                                        echo "['Others', ".$categoryAndCons["Others"].", ".$categoryAndProgress["Others"].", ".$categoryAndSolved["Others"]."],";
+                    
+                                    ?>
+                                ]);
+
+                                var options = {
+                                  chart: {
+                                    title: 'Problem category with status',
+                                    subtitle: 'Simple view of all status of all problems of all category.',
+                                  }
+                                };
+
+                                var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+                                chart.draw(data, google.charts.Bar.convertOptions(options));
+                            }
+                        </script>
+                        
+                            <div style = "box-shadow: 0 8px 6px -6px black; background-color: #ffffff; text-align: center;">
+                                <div id="columnchart_material" style="width: 100%; height: 500px;"></div>
                             </div>
 
                         </div>
