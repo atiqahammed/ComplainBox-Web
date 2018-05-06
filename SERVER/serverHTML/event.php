@@ -156,7 +156,7 @@
                         </div>
 
                         <div class="col-md-2">
-                            <iframe scrolling="no" frameborder="no" clocktype="html5" style="overflow:hidden;border:0;margin:0;padding:0;width:150px;height:150px;"src="https://www.clocklink.com/html5embed.php?clock=041&timezone=Bangladesh_Dhaka&color=green&size=150&Title=&Message=&Target=&From=2018,1,1,0,0,0&Color=#009688"></iframe>
+                            
                         </div>
 
 

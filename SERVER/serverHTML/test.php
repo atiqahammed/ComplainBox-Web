@@ -1,89 +1,54 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="utf-8">
-<title>JavaScript form validation - checking non-empty</title>
-<link rel='stylesheet' href='form-style.css' type='text/css' />
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
 
-<script>
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Category', 'Number of problems in particular category'],
+          
+          <?php  
+          define('DB_SERVER', 'localhost');
+                    define('DB_USERNAME', 'root');
+                    define('DB_PASSWORD', '');
+                    define('DB_DATABASE', 'testdb');
+                    $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+                    $sql = "SELECT category, COUNT(category) FROM problem GROUP BY (category)";
+                    $result=mysqli_query($db, $sql);
 
-    
-function phonenumber(inputtxt)
-{
-    var phoneno = /(^(\+8801|8801|01|008801))[1|5-9]{1}(\d){8}$/;
-    if(inputtxt.value.match(phoneno)) {
-      return true;      
-    }
-    
-    else
-    {
-        alert("Not a valid Phone Number");
-        //document.getElementsByName("submit").disabled = true;
-        alert(document.getElementsByName("submit").value);
+                    while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
 
-        return false;
-    }
-}
-
-function testFunction()
-{
-    var phoneno = /(^(\+8801|8801|01|008801))[1|5-9]{1}(\d){8}$/;
-    if(document.getElementById("phone").value.match(phoneno)) {
-      return true;      
-    }
-
-    else
-    {
-        alert("Not a valid Phone Number");
-        document.getElementById("phone").value = "";
-    }
-}
+                        echo "['".$row[0]."', ".$row[1]."],";  
+                    }
 
 
 
+          ?>
+        ]);
 
-</script>
+        var options = {
+          title: 'Bar chart of problem category',
+          width: 900,
+          legend: { position: 'none' },
+          chart: { title: 'Problem Categories',
+                   subtitle: 'popularity by percentage' },
+          bars: 'horizontal', // Required for Material Bar Charts.
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Percentage'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
 
-
-
-</head>
-<body onload='document.form1.text1.focus()'>
-<div class="mail">
-<h2>Input an Phone No.[xxx-xxx-xxxx, xxx.xxx.xxxx, xxx xxx xxxx] and Submit</h2>
-
-<script type="text/javascript">
-    alert("hello");
-    //document.getElementById("submit").disabled = true;
-    document.getElementById('submit').setAttribute("disabled","disabled");
-</script>
-
-<form name="form1" action="test2.php"> 
-
-<input type="text" name="text" id="phone" onblur="testFunction()" required>
-<input type="submit" name="submit" id="submit">
-
-
-
-</form>
-</div>
-<!--<script src="phoneno-international-format.js"></script>
-
-<ul>
-<li><input type='text' name='text1'/></li>
-<li>&nbsp;</li>
-<li class="submit"><input type="submit"  name="submit" value="Submit" onclick="phonenumber(document.form1.text1)" required/></li>
-<li>&nbsp;</li>
-</ul>
-
-
-
-
-
-
-
-
-
-
-
-
--->
-</body>
+        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+        chart.draw(data, options);
+      };
+    </script>
+  </head>
+  <body>
+    <div id="top_x_div" style="width: 900px; height: 500px;"></div>
+  </body>
 </html>

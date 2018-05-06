@@ -1,326 +1,32 @@
-<?php
-session_start();
-
-if(!isset($_SESSION["email"]))
-{
-    header("location: ../../index.php");
-}
-
+<?php  
+    include 'includesAdminPanel/sessionSrartForAdmin.php';
 ?>
-
 
 
 <!DOCTYPE html>
 <html>
     <head>
-    	<meta charset="utf-8">
-    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<title>Home - Complain Box</title>
+        <?php  
+            include 'includesAdminPanel/headerPart1.php';
+        ?>
+        <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-        <!-- customized -->
-        <link rel="icon" href="SERVER/pictures/icon/complain.png">
-        <link rel="stylesheet" type="text/css" href="SERVER/myCss/style002.css">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <link rel="icon" href="../pictures/icon/complain.png">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="../myCss/style002.css">
- 
-
-        
-       
-        
-
-
-     <style type="text/css">
-         
-
-     
-        @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #fafafa;
-        }
-
-        p {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.1em;
-            font-weight: 300;
-            line-height: 1.7em;
-            color: #999;
-        }
-
-        a, a:hover, a:focus {
-            color: inherit;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .navbar {
-            background: #fff;
-            border: none;
-            border-radius: 0;
-            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-
-        .navbar-btn {
-            box-shadow: none;
-            outline: none !important;
-            border: none;
-        }
-
-        .line {
-            width: 100%;
-            height: 1px;
-            border-bottom: 1px dashed #ddd;
-            margin: 40px 0;
-        }
-
-        i, span {
-            display: inline-block;
-        }
-
-        /* ---------------------------------------------------
-            SIDEBAR STYLE
-        ----------------------------------------------------- */
-        .wrapper {
-            display: flex;
-            align-items: stretch;
-        }
-
-        #sidebar {
-            min-width: 250px;
-            max-width: 250px;
-            background: #009688; 
-            color: #fff;
-            transition: all 0.3s;
-        }
-
-
-
-        #sidebar.active {
-            min-width: 80px;
-            max-width: 80px;
-            text-align: center;
-        }
-
-        #sidebar.active .sidebar-header h3, #sidebar.active .CTAs {
-            display: none;
-        }
-
-        #sidebar.active .sidebar-header strong {
-            display: block;
-        }
-
-        #sidebar ul li a {
-            text-align: left;
-        }
-
-        #sidebar.active ul li a {
-            padding: 20px 10px;
-            text-align: center;
-            font-size: 0.85em;
-        }
-
-        #sidebar.active ul li a i {
-            margin-right:  0;
-            display: block;
-            font-size: 1.8em;
-            margin-bottom: 5px;
-        }
-
-        #sidebar.active ul ul a {
-            padding: 10px !important;
-        }
-
-        #sidebar.active a[aria-expanded="false"]::before, #sidebar.active a[aria-expanded="true"]::before {
-            top: auto;
-            bottom: 5px;
-            right: 50%;
-            -webkit-transform: translateX(50%);
-            -ms-transform: translateX(50%);
-            transform: translateX(50%);
-        }
-
-        #sidebar .sidebar-header {
-            margin-top: -20px;
-            padding: 20px;
-            background: #00897B;
-        }
-
-        #sidebar .sidebar-header strong {
-            display: none;
-            font-size: 1.8em;
-        }
-
-        #sidebar ul.components {
-            padding: 20px 0;
-        }
-
-        #sidebar ul li a {
-            padding: 10px;
-            font-size: 1.1em;
-            display: block;
-        }
-        #sidebar ul li a:hover {
-            color: #00897B;
-            background: #fff;
-        }
-        #sidebar ul li a i {
-            margin-right: 10px;
-        }
-
-        #sidebar ul li.active > a, a[aria-expanded="true"] {
-            color: #fff;
-            background: #00897B; 
-
-        }
-
-
-        a[data-toggle="collapse"] {
-            position: relative;
-        }
-
-        a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
-            content: '\e259';
-            display: block;
-            position: absolute;
-            right: 20px;
-            font-family: 'Glyphicons Halflings';
-            font-size: 0.6em;
-        }
-        a[aria-expanded="true"]::before {
-            content: '\e260';
-        }
-
-
-        ul ul a {
-            font-size: 0.9em !important;
-            padding-left: 30px !important;
-            background: #00897B; 
-        }
-
-        ul.CTAs {
-            padding: 20px;
-        }
-
-        ul.CTAs a {
-            text-align: center;
-            font-size: 0.9em !important;
-            display: block;
-            border-radius: 5px;
-            margin-bottom: 5px;
-        }
-
-        a.download {
-            background: #fff;
-            color: #7386D5;
-        }
-
-        a.article, a.article:hover {
-            background: #6d7fcc !important;
-            color: #fff !important;
-        }
-
-        /* ---------------------------------------------------
-            CONTENT STYLE
-        ----------------------------------------------------- */
-        #content {
-            padding: 20px;
-            min-height: 100vh;
-            transition: all 0.3s;
-        }
-
-
-        /* ---------------------------------------------------
-            MEDIAQUERIES
-        ----------------------------------------------------- */
-        @media (max-width: 768px) {
-            #sidebar {
-                min-width: 80px;
-                max-width: 80px;
-                text-align: center;
-                margin-left: -80px !important ;
-            }
-            a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
-                top: auto;
-                bottom: 5px;
-                right: 50%;
-                -webkit-transform: translateX(50%);
-                -ms-transform: translateX(50%);
-                transform: translateX(50%);
-            }
-            #sidebar.active {
-                margin-left: 0 !important;
-            }
-
-            #sidebar .sidebar-header h3, #sidebar .CTAs {
-                display: none;
-            }
-
-            #sidebar .sidebar-header strong {
-                display: block;
-            }
-
-            #sidebar ul li a {
-                padding: 20px 10px;
-            }
-
-            #sidebar ul li a span {
-                font-size: 0.85em;
-            }
-            #sidebar ul li a i {
-                margin-right:  0;
-                display: block;
-            }
-
-            #sidebar ul ul a {
-                padding: 10px !important;
-            }
-
-            #sidebar ul li a i {
-                font-size: 1.3em;
-            }
-            #sidebar {
-                margin-left: 0;
-            }
-            #sidebarCollapse span {
-                display: none;
-            }
-        }
-     </style>   
-    	
-
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>  
+   
 
     </head>
     <body>
 
-        
+
         <!-- my navigation -->
         <nav class="navbar navbar-light" style="background-color: #009688;">
+        <title>Problems - Complain Box</title>
+
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="../../index.php"><img src="../pictures/icon/complain.png" id="indexLogo-complain-box"></a>
@@ -340,12 +46,8 @@ if(!isset($_SESSION["email"]))
           </div>
         </nav><!-- end of nevigation -->
 
-
-
-    <div class="wrapper">
-            <!-- Sidebar Holder -->
+        <div class="wrapper">
             <nav id="sidebar">
-                
                 <a href="../../index.php#complainBoxDev">
                     <div class="sidebar-header">
                         <h3>Complain Box</h3>
@@ -353,16 +55,12 @@ if(!isset($_SESSION["email"]))
                     </div>
                 </a>
 
-
                 <ul class="list-unstyled components">
                     <li class="active">
-
-
                         <a href="home.php">
                             <i class="glyphicon glyphicon-home"></i>
                             Home
                         </a>
-
                     </li>
 
 
@@ -371,17 +69,15 @@ if(!isset($_SESSION["email"]))
                              <i class="glyphicon glyphicon-exclamation-sign"></i>
                             Problems
                         </a>
-                        
-                    </li>
+                    </li >
+
+                    <!-- active event  -->
                     <li>
                         <a href="event.php">
                             <i class="glyphicon glyphicon-calendar"></i>
                             Events
                         </a>
                     </li>
-
-
-
 
                     <li>
                         <a href="notice.php">
@@ -402,74 +98,285 @@ if(!isset($_SESSION["email"]))
                             Emergency Support
                         </a>
                     </li>
-
-
-                    
-
-
                 </ul>
-
-
-                <!--
-                <ul class="list-unstyled CTAs">
-                    <li><a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a></li>
-                    <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li>
-                </ul> -->
             </nav>
 
             <!-- Page Content Holder -->
-            <div id="content">
-
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-
-                        <div class="navbar-header">
+            <div id="content" style="width: 100%">
+                
+                <div class="container-fluid">
+                    <div class="row no-gutters">
+                        <div class="col-md-5" style="height: 100px;">
                             <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn" style="background-color: #009688;">
                                 <i class="glyphicon glyphicon-align-left"></i>
-                                <!--<span>Toggle Sidebar</span>-->
-                            </button>
+                            </button></div>
+                        <div class="col-md-5">
+                            <h1>Home</h1>
+                        </div>
+
+                        <div class="col-md-2">
+                            <iframe scrolling="no" frameborder="no" clocktype="html5" style="overflow:hidden;border:0;margin:0;padding:0;width:150px;height:150px;"src="https://www.clocklink.com/html5embed.php?clock=041&timezone=Bangladesh_Dhaka&color=green&size=150&Title=&Message=&Target=&From=2018,1,1,0,0,0&Color=#009688"></iframe>
                             
                         </div>
 
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            
-                            <!--<h2 class="nav navbar-nav navbar-right center">Home</h2>--> 
-                            <ul class="nav navbar-nav navbar-right">
 
-                                <li><h2>Home</h2></li>
-                                <!--<li><a href="#">Page</a></li>
-                                <li><a href="#">Page</a></li>
-                                <li><a href="#">Page</a></li>
-                                <li><a href="#">Page</a></li>-->
-                            </ul>
+                    </div>
+                    <hr>
+                </div>
+
+
+                
+
+                <div id="load_data"></div>
+                <div id="load_data_message"></div>
+                
+                <hr>
+                
+
+                <?php  
+                    define('DB_SERVER', 'localhost');
+                    define('DB_USERNAME', 'root');
+                    define('DB_PASSWORD', '');
+                    define('DB_DATABASE', 'testdb');
+                    $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+
+                    $sql = "SELECT COUNT(*) FROM problem";
+                    $result=mysqli_query($db, $sql);
+                    $row = mysqli_fetch_array($result, MYSQLI_NUM);
+                    $number_of_problems = $row[0];
+
+                    $sql = "SELECT COUNT(*) FROM institution";
+                    $result=mysqli_query($db, $sql);
+                    $row = mysqli_fetch_array($result, MYSQLI_NUM);
+                    $number_of_institution = $row[0];
+
+                    $sql = "SELECT COUNT(*) FROM notice";
+                    $result=mysqli_query($db, $sql);
+                    $row = mysqli_fetch_array($result, MYSQLI_NUM);
+                    $number_of_notice = $row[0];
+
+                    $sql = "SELECT COUNT(*) FROM event";
+                    $result=mysqli_query($db, $sql);
+                    $row = mysqli_fetch_array($result, MYSQLI_NUM);
+                    $number_of_event = $row[0];
+
+                    $sql = "SELECT COUNT(*) FROM applicationform";
+                    $result=mysqli_query($db, $sql);
+                    $row = mysqli_fetch_array($result, MYSQLI_NUM);
+                    $number_of_applicationform = $row[0];
+
+
+                    echo '
+                        <div class="container-fluid">
+                            <div class="row">
+
+
+                                <div class="col-md-2">
+                                    <a href="notice.php">
+                                        <div style = "box-shadow: 0 8px 6px -6px black; background-color: #db97a1; height: 150px;text-align: center;padding-top: 20px;" >
+
+                                            <i class="glyphicon glyphicon-list-alt" style="font-size: 36px; border-width: 3px; border-style: solid; border-color: black; padding: 5px; box-shadow: 0 8px 6px -6px black; border-radius: 10px;"></i>
+                                            <font size="7" style="color:black; padding-left: 8px;">'.' '.$number_of_notice.' '.'</font>
+                                            <p style="color:black;">Provided notices</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                
+                                
+                                
+                                <div class="col-md-2">
+                                    <a href="emergencySupport.php">
+                                        <div style = "box-shadow: 0 8px 6px -6px black; background-color: #b5db97; height: 150px;text-align: center;padding-top: 20px;" >
+
+                                            <i class="glyphicon glyphicon-bell" style="font-size: 36px; border-width: 3px; border-style: solid; border-color: black; padding: 5px; box-shadow: 0 8px 6px -6px black; border-radius: 10px;"></i>
+                                            <font size="7" style="color:black; padding-left: 8px;">'.' '.$number_of_institution.' '.'</font>
+                                            <p style="color:black;">Emergency instition</p>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+
+                                <div class="col-md-4">
+                                    <a href="problem.php">
+                                        <div style = "box-shadow: 0 8px 6px -6px black; background-color: #db97d7; height: 150px;text-align: center;padding-top: 20px;" >
+
+                                            <i class="glyphicon glyphicon-exclamation-sign" style="font-size: 36px; border-width: 3px; border-style: solid; border-color: black; padding: 5px; box-shadow: 0 8px 6px -6px black; border-radius: 10px;"></i>
+                                            <font size="7" style="color:black; padding-left: 8px;">'.' '.$number_of_problems.' '.'</font>
+                                            <p style="color:black;">Submitted Problems</p>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                
+
+
+                                <div class="col-md-2">
+                                    <a href="event.php">
+                                        <div style = "box-shadow: 0 8px 6px -6px black; background-color: #dbd897; height: 150px;text-align: center;padding-top: 20px;" >
+
+                                            <i class="glyphicon glyphicon-calendar" style="font-size: 36px; border-width: 3px; border-style: solid; border-color: black; padding: 5px; box-shadow: 0 8px 6px -6px black; border-radius: 10px;"></i>
+                                            <font size="7" style="color:black; padding-left: 8px;">'.' '.$number_of_event.' '.'</font>
+                                            <p style="color:black;">Total events of DSCC</p>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+
+                                <div class="col-md-2">
+                                    <a href="applicationForm.php">
+                                        <div style = "box-shadow: 0 8px 6px -6px black; background-color: #97d7db; height: 150px;text-align: center;padding-top: 20px;" >
+
+                                            <i class="glyphicon glyphicon-file" style="font-size: 36px; border-width: 3px; border-style: solid; border-color: black; padding: 5px; box-shadow: 0 8px 6px -6px black; border-radius: 10px;"></i>
+                                            <font size="7" style="color:black; padding-left: 8px;">'.' '.$number_of_applicationform.' '.'</font>
+                                            <p style="color:black;">Total application forms</p>
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    ';
+
+                ?>
+
+                <div class="container-fluid">
+                    <div class="row">
+                                
+                        <div class="col-md-12">
+
+                            <script type="text/javascript">
+                                google.charts.load("current", {packages:["corechart"]});
+                                google.charts.setOnLoadCallback(drawChart);
+                                function drawChart() {
+                                    var data = google.visualization.arrayToDataTable([
+                                    ['Status', 'Number of Problems'],
+                                  
+                                    <?php  
+                                    $sql = "SELECT status, COUNT(status) FROM problem GROUP BY (status)";
+                                    $result=mysqli_query($db, $sql);
+
+                                    while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+
+                                        echo "['".$row[0]."', ".$row[1]."],";
+                                    }
+
+                                    ?>
+                                    
+                                    ]);
+
+                                    var options = {
+                                    title: 'Pie chart of problem status',
+                                    is3D: true,
+                                    };
+
+                                    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+                                    chart.draw(data, options);
+                                }
+                            </script>
+                        
+                            <div style = "box-shadow: 0 8px 6px -6px black; background-color: #ffffff; text-align: center;">
+                                <div id="piechart_3d" style="width: 100%; height: 500px; "></div>
+                            </div>
+
                         </div>
                     </div>
-                </nav>
+                </div>
 
-                <h2>Collapsible Sidebar Using Bootstrap 3</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <hr>
 
-                <div class="line"></div>
 
-                <h2>Lorem Ipsum Dolor</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <div class="container-fluid">
+                    <div class="row">
+                                
+                        <div class="col-md-12">
 
-                <div class="line"></div>
+                            <script type="text/javascript">
+                                google.charts.load('current', {'packages':['bar']});
+                                google.charts.setOnLoadCallback(drawStuff);
 
-                <h2>Lorem Ipsum Dolor</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                function drawStuff() {
+                                var data = new google.visualization.arrayToDataTable([
+                                    ['Category', 'Number of problems in particular category'],
+                                      
+                                    <?php  
+                                      
+                                        $sql = "SELECT category, COUNT(category) FROM problem GROUP BY (category)";
+                                        $result=mysqli_query($db, $sql);
 
-                <div class="line"></div>
+                                        while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
 
-                <h3>Lorem Ipsum Dolor</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                            echo "['".$row[0]."', ".$row[1]."],";  
+                                        }
+
+                                      ?>
+
+
+                            
+                                    ]);
+
+                                    var options = {
+                                      title: 'Bar chart of problem category',
+                                      width: 900,
+                                      legend: { position: 'none' },
+                                      chart: { title: 'Problem Categories',
+                                               subtitle: 'popularity by percentage' },
+                                      bars: 'horizontal', // Required for Material Bar Charts.
+                                      axes: {
+                                        x: {
+                                          0: { side: 'top', label: 'Percentage'} // Top x-axis.
+                                        }
+                                      },
+                                      bar: { groupWidth: "90%" }
+                                    };
+
+                                    var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+                                    chart.draw(data, options);
+                                  };
+                                </script>
+                        
+                            <div style = "box-shadow: 0 8px 6px -6px black; background-color: #ffffff; text-align: center;">
+                                <div id="top_x_div" style="width: 100%; height: 500px;"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
         </div>
-
-
-
-
 
         <!-- jQuery CDN -->
          <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -483,19 +390,5 @@ if(!isset($_SESSION["email"]))
                  });
              });
          </script>
-
-
-
-
-
-
-
-
-
-        
-
-
-
-       
     </body>
 </html>
