@@ -35,10 +35,10 @@ class MyEmail
     	} else {
     		
         	if (isset($email['path'])) {
-     			header("location: ".$email['path']);
+     			//echo "done";
+                header("location: ".$email['path']);
      		}
     	}
-    	
 	}
 }
 

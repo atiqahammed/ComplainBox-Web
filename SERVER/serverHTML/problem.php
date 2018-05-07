@@ -2,7 +2,6 @@
     include 'includesAdminPanel/sessionSrartForAdmin.php';
 ?>
 
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,27 +9,17 @@
             include 'includesAdminPanel/headerPart1.php';
         ?>
         <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-
-
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>  
-
         <script type="text/javascript">
-            
             function searchq() {
-
                 var searchTxt = $("input[name='search']").val();
-                //alert(searchTxt);
                 $.post("problemFetch.php", {searchVal: searchTxt}, function(output){
                     $("#output").html(output);
                 });
-
-
             }
         </script>      
-
     </head>
     <body>
-
 
         <!-- my navigation -->
         <nav class="navbar navbar-light" style="background-color: #009688;">
@@ -46,7 +35,6 @@
                     <li><a href="../../index.php#purpose-container" class="nev-custom-css">Purpose</a></li>
                     <li><a href="../../index.php#developers-container" class="nev-custom-css">Supervisor & Developers</a></li>
                 </ul>
-
 
                 <?php
                     include 'includesAdminPanel/adminLogout.php';
@@ -80,7 +68,7 @@
                         </a>
                     </li >
 
-                    <!-- active event  -->
+                    
                     <li>
                         <a href="event.php">
                             <i class="glyphicon glyphicon-calendar"></i>
@@ -126,30 +114,25 @@
                         <div class="col-md-2">
                             
                         </div>
-
-
                     </div>
                     <hr>
                 </div>
 
 
+                <!--
                 <a href="problemForm.php">
                     <button type="button" class="btn btn-primary btn-sm" style="background-color: #009688;">New</button>
                 </a>
-               
+            -->
                 <hr>
-
                 <div id="load_data"></div>
                 <div id="load_data_message"></div>
-                
-
                 <form action="problem.php" method="POST" >
-                    
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <input type="text" name="search" class="form-control" placeholder="" >
+                                    <input type="text" name="search" class="form-control" placeholder="Problem ID ..." >
                                     <br>
                                     <button type="submit" name="submit" class="btn btn-primary" style="background-color: #009688;">search</button>
                                 </div>
@@ -168,9 +151,7 @@
                                     <option value="Curruption">Curruption</option>
                                     <option value="Repair">Repair</option>
                                     <option value="Others">Others</option>
-                                </select>
-                                
-                            
+                                </select> 
                             </div>
 
                             <div class="col-md-2">
@@ -198,8 +179,6 @@
                                     <option value="10">Priority 10</option>
                                 </select>
                             </div>
-
-
 
                             <div class="col-md-3">
                                 <select name="wardNo"  class="form-control">
@@ -260,11 +239,9 @@
                                     <option value="53">Ward No. 53</option>
                                     <option value="54">Ward No. 54</option>
                                     <option value="55">Ward No. 55</option>
-                                    
-                                    
+                                       
                                 </select>
                             </div>
-                        
                         </div>
                     </div>
                 </form>
@@ -311,8 +288,6 @@
                         $sql .= " AND (wardNo = '$searchItem')";
                     }
 
-                    //echo $sql;
-
                     $sql .= " ORDER BY priority DESC, status ASC ";
                     
                     $result=mysqli_query($db, $sql);
@@ -329,7 +304,6 @@
                         $prio = $row[7];
                         $status = $row[8];
                         $email = $row[9];
-
 
                             $output .= '
 
@@ -378,11 +352,8 @@
                     mysqli_close($db);
 
                 ?>
-
                     
                 </div>
-
-
             </div>
         </div>
 
@@ -398,5 +369,12 @@
                  });
              });
          </script>
+
+
+        <?php  
+            include 'footer.php';
+        ?>
+
+
     </body>
 </html>

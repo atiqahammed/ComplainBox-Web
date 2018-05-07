@@ -195,8 +195,12 @@
 		                
 
 		                <a href="problem.php">
-                    		<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                    		<button type="button" class="btn btn-secondary" data-dismiss="modal">back to problem list</button>
                 		</a>
+
+                        <a href="updateProblem.php?id='.$problem_id.'">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #43A047;">update</button>
+                        </a>
 
                 		<a href="hideProblem.php?id='.$problem_id.'">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #EF5350;">hide</button>
@@ -224,6 +228,11 @@
                  });
              });
          </script>
+
+        <?php  
+            include 'footer.php';
+        ?>
+
     </body>
 </html>
 

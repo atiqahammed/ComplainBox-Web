@@ -195,7 +195,12 @@
                      $('#sidebar').toggleClass('active');
                  });
              });
-         </script>
+        </script>
+
+        <?php  
+            include 'footer.php';
+        ?>
+
     </body>
 </html>
 

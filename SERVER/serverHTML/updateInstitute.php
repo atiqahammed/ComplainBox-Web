@@ -10,9 +10,7 @@
             include 'includesAdminPanel/headerPart1.php';
         ?>
 
-
         <title>New E.S. Institute - Complain Box</title>
-
         <script type="text/javascript">
             function checkPhoneNumber()
             { 
@@ -223,6 +221,28 @@
                 	
                 	<?php  
 
+                    if(isset($_GET['id']) == true) {
+                    $id = $_GET['id'];
+                    require_once('../serverPHP/dbConnection.php');
+
+                    $sql = "SELECT * FROM institution WHERE institutionID = '$id'";
+                    $result = mysqli_query($db,$sql);
+                    $row = mysqli_fetch_array($result, MYSQLI_NUM);
+                   // mysqli_close($db);
+                    $name = base64_decode($row[0]);
+
+
+                    echo '
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Institution name: '.$name.' </label>
+                        
+                    </div>
+
+                    ';
+
+
+                }
+
 
 
 
@@ -399,7 +419,7 @@
      					if(isset($_GET['id']) == true) {
         					$id = $_GET['id'];
         					require_once('../serverPHP/dbConnection.php');
-
+                  //echo $id;
         					$sql = "SELECT * FROM institution WHERE institutionID = '$id'";
                     		$result = mysqli_query($db,$sql);
                     		$row = mysqli_fetch_array($result, MYSQLI_NUM);
@@ -453,6 +473,12 @@
   </form>
 
    </div>
+
+ </div>
+
+   <?php  
+            include 'footer.php';
+    ?>
 
 
      

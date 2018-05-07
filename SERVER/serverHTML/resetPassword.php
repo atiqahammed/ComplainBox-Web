@@ -72,11 +72,13 @@
                       } 
 
                       else {
+                          mysqli_close($db);
                           header("location: ../../index.php");
                       }
 
 
                     } else {
+                      mysqli_close($db);
                       header("location: ../../index.php");
 
                     } 
@@ -92,7 +94,7 @@
                       $enc_pass = md5($new_pass);
                       $sql = "UPDATE admin SET password = '$enc_pass' WHERE email = '$row[3]'";
                       $result = mysqli_query($db,$sql);
-
+                      mysqli_close($db);
 
                       header("location: login.php");
 
@@ -106,10 +108,10 @@
                     
 
                   ?>
-                  <input type="password" name="password" class="form-control" placeholder="" required>
+                  <input type="password" maxlength="14" name="password" class="form-control" placeholder="" required>
                 </div>
                 <div class="form-group">
-                  <input type="submit" name="submit" class="btn btn-success btn-lg btn-block btn-sm" value="Reset New Password" style="background-color: #009688;">
+                  <input type="submit" name="submit"  class="btn btn-success btn-lg btn-block btn-sm" value="Reset New Password" style="background-color: #009688;">
                 </div>
                
 

@@ -146,41 +146,47 @@
                                 </div>
 
                                 <div class="col-sm-12 col-md-12 col-lg-12" style="border-radius: 7%;">
-		   			<div id="googleMap" style="width:100%;height:400px;"></div>
-		   			<script>
-						function myMap() {
-						var mapProp= {
-	    						center:new google.maps.LatLng('.$latitude.', '.$longitude.'),
-	    						zoom:17,
-							};
-							var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+		   			                <div id="googleMap" style="width:100%;height:400px;"></div>
+                		   			<script>
+                						function myMap() {
+                						var mapProp= {
+                	    						center:new google.maps.LatLng('.$latitude.', '.$longitude.'),
+                	    						zoom:17,
+                							};
+                							var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
-							var location = {lat:'.$latitude.', lng:'.$longitude.'};
-							var marker = new google.maps.Marker({
-								position: location,
-								map, map
-							});
-						}
+                							var location = {lat:'.$latitude.', lng:'.$longitude.'};
+                							var marker = new google.maps.Marker({
+                								position: location,
+                								map, map
+                							});
+                						}
 
-						
+                						
 
-					</script>
-					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkKmJPK0oh9K4yGU1USSj7MJpzFWN9LeE&callback=myMap"></script>
-		    	</div>
+                					</script>
+					                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkKmJPK0oh9K4yGU1USSj7MJpzFWN9LeE&callback=myMap"></script>
+		    	                </div>
 
 
                                 
                     		';
      					}  
                 	?>
+
+            
                 	<hr>
-                                   
                     <a href="emergencySupport.php">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
                     </a>
+                            
                 </form>
             </div>
         </div>
+
+
+
+        
 
          <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
          <!-- Bootstrap Js CDN -->
@@ -193,7 +199,13 @@
                  });
              });
          </script>
+    
+         <?php  
+            include 'footer.php';
+        ?>
     </body>
+
+
 </html>
 
 

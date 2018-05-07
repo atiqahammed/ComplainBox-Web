@@ -7,23 +7,35 @@
 
       function drawStuff() {
         var data = new google.visualization.arrayToDataTable([
-          ['Move', 'Percentage'],
-          ["King's pawn (e4)", 44],
-          ["Queen's pawn (d4)", 31],
-          ["Knight to King 3 (Nf3)", 12],
-          ["Queen's bishop pawn (c4)", 10],
-          ['Other', 3]
+          ['Ward no. ', 'Number of Problems'],
+          <?php  
+
+          define('DB_SERVER', 'localhost');
+                    define('DB_USERNAME', 'root');
+                    define('DB_PASSWORD', '');
+                    define('DB_DATABASE', 'testdb');
+                    $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+                                      
+                                        $sql = "SELECT wardNo, COUNT(wardNo) FROM problem GROUP BY (wardNo)";
+                                        $result=mysqli_query($db, $sql);
+
+                                        while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+
+                                            echo "['Ward No. ".$row[0]."', ".$row[1]."],";  
+                                        }
+
+                                      ?>
         ]);
 
         var options = {
           width: 800,
           legend: { position: 'none' },
           chart: {
-            title: 'Chess opening moves',
-            subtitle: 'popularity by percentage' },
+            title: 'Problems in all Wards in DSCC',
+            subtitle: 'number of problems' },
           axes: {
             x: {
-              0: { side: 'top', label: 'White to move'} // Top x-axis.
+              0: { side: 'top', label: 'Wards of DSCC'} // Top x-axis.
             }
           },
           bar: { groupWidth: "90%" }
@@ -36,6 +48,6 @@
     </script>
   </head>
   <body>
-    <div id="top_ward_div" style="width: 800px; height: 600px;"></div>
+    <div id="top_ward_div" style="width: 100%; height: 600px;"></div>
   </body>
 </html>

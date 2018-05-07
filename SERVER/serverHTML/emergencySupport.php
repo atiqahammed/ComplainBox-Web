@@ -2,7 +2,6 @@
     include 'includesAdminPanel/sessionSrartForAdmin.php';
 ?>
 
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,8 +13,6 @@
     </head>
     <body>
 
-
-        <!-- my navigation -->
         <nav class="navbar navbar-light" style="background-color: #009688;">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -105,8 +102,6 @@
 
                         <div class="col-md-2">
                         </div>
-
-
                     </div>
                     <hr>
                 </div>
@@ -136,13 +131,19 @@
          <!-- Bootstrap Js CDN -->
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-         <script type="text/javascript">
-             $(document).ready(function () {
-                 $('#sidebarCollapse').on('click', function () {
-                     $('#sidebar').toggleClass('active');
-                 });
-             });
-         </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').toggleClass('active');
+                });
+            });
+        </script>
+
+        <?php  
+            include 'footer.php';
+        ?>
+
+
     </body>
 </html>
 
@@ -150,7 +151,6 @@
 <script>
     
     $(document).ready(function(){
-
         var limit = 5;
         var start = 0;
         var action = 'inactive';
@@ -188,10 +188,7 @@
                         load_event_data(limit, start);
                     }, 1000);
             }
-
         });
-
-
     });
 
 

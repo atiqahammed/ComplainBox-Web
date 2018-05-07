@@ -5,14 +5,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-
         <?php  
             include 'includesAdminPanel/headerPart1.php';
         ?>
-
-
         <title>New E.S. Institute - Complain Box</title>
-
         <script type="text/javascript">
             function checkPhoneNumber()
             { 
@@ -31,13 +27,12 @@
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
         <meta charset="utf-8">
         <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
+      
       #map {
         height: 400px;
         width: 100%;
       }
-      /* Optional: Makes the sample page fill the window. */
+      
       html, body {
         height: 100%;
         margin: 0;
@@ -361,8 +356,7 @@
           infowindow.open(map, marker);
         });
 
-        // Sets a listener on a radio button to change the filter type on Places
-        // Autocomplete.
+        
         function setupClickListener(id, types) {
           var radioButton = document.getElementById(id);
           radioButton.addEventListener('click', function() {
@@ -426,8 +420,11 @@
   </form>
 
    </div>
+   </div>
 
-
+        <?php  
+            include 'footer.php';
+        ?>
      
   </body>
 </html>
