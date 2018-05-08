@@ -1,53 +1,46 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawStuff);
+<head>
+  <title></title>
 
-      function drawStuff() {
-        var data = new google.visualization.arrayToDataTable([
-          ['Ward no. ', 'Number of Problems'],
-          <?php  
+  <style type="text/css">
+  #blanket {
+background-color:#111;
+opacity: 0.65;
+*background:none;
+position:absolute;
+z-index: 9001;
+top:0px;
+left:0px;
+width:100%;
+}
 
-          define('DB_SERVER', 'localhost');
-                    define('DB_USERNAME', 'root');
-                    define('DB_PASSWORD', '');
-                    define('DB_DATABASE', 'testdb');
-                    $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-                                      
-                                        $sql = "SELECT wardNo, COUNT(wardNo) FROM problem GROUP BY (wardNo)";
-                                        $result=mysqli_query($db, $sql);
+#popUpDiv {
+position:absolute;
+background:url(pop-back.jpg) no-repeat;
+width:400px;
+height:400px;
+border:5px solid #000;
+z-index: 9002;
+} 
 
-                                        while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
 
-                                            echo "['Ward No. ".$row[0]."', ".$row[1]."],";  
-                                        }
+  </style>
+</head>
+<body>
+ <div class="hoverWrapper">Show Div 1
+ <div id="hoverShow1">1) this is shown only on hover</div>
+</div>
 
-                                      ?>
-        ]);
 
-        var options = {
-          width: 800,
-          legend: { position: 'none' },
-          chart: {
-            title: 'Problems in all Wards in DSCC',
-            subtitle: 'number of problems' },
-          axes: {
-            x: {
-              0: { side: 'top', label: 'Wards of DSCC'} // Top x-axis.
-            }
-          },
-          bar: { groupWidth: "90%" }
-        };
+<div id="blanket" style="display:none"></div>
+<div id="popUpDiv" style="display:none">
 
-        var chart = new google.charts.Bar(document.getElementById('top_ward_div'));
-        // Convert the Classic options to Material options.
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      };
-    </script>
-  </head>
-  <body>
-    <div id="top_ward_div" style="width: 100%; height: 600px;"></div>
-  </body>
+<a href="#" onclick="popup('popUpDiv')" >Click to Close CSS Pop Up</a>
+</div>
+<a href="#" onclick="popup('popUpDiv')">Click to Open CSS Pop Up</a>
+
+<body   onload="popup('popUpDiv')">
+
+</body>
 </html>

@@ -64,11 +64,7 @@
                     }
 
 
-        if($sqlTemp != $sql) {
-        	//$sql = rtrim($sql, ',');
-
-        	//$temp = substr($sql, 0, -1);
-        	//$sql = (substr($sql,-1) == ',') ? substr($sql, 0, -1) : $sql;
+        if($sqlTemp != $sql) {s
 
         	$sql .= " WHERE problemID='$id'";
         	$query=mysqli_query($db, $sql);

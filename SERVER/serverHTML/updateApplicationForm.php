@@ -124,11 +124,13 @@
                     		mysqli_close($db);
 
                             $name = base64_decode($name);
-                            $description = base64_decode($row[2]);
+                            $description = base64_decode($row[3]);
+                            $application_form_type = $row[2];
 
                     		echo '
                     			<div class="form-group">
-                                        <label for="exampleInputEmail1">Event Name: '.$name.'</label>
+                                        <label for="exampleInputEmail1">Application Form Title: '.$name.'</label><br>
+                                        <label for="exampleInputEmail1">Application Form Type: '.$application_form_type.'</label>
                                 </div>
 
                                 <input type="hidden" class="form-group" value="'.$id.'" name="id"/>

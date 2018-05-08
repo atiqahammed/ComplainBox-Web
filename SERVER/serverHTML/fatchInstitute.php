@@ -30,21 +30,21 @@
                     <div class="row">
                         <div class="col-md-12">
 
-	                        <h3>Institution name: '.$name.'</h3>
+	                        <h3 style="color: black;"><b>Institution name:</b> '.$name.'</h3>
 	                        
-	                        <p>Category : '.$category.'</p>
-	                        <p>Phone Number: '.$phone.'</p>
+	                        <p style="color: black;"><b>Category :</b> '.$category.'</p>
+	                        <p style="color: black;"><b>Phone Number:</b> '.$phone.'</p>
 
                             <a href="updateInstitute.php?id='.$id.'">
-                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #2E7D32;">update</button>
+                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #2E7D32; border-color: #2E7D32;">update</button>
                             </a>
 
                             <a href="viewInstitute.php?id='.$id.'">
-                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #00838F;">view</button>
+                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #00838F; border-color: #00838F;">view</button>
                             </a>
 
                             <a href="hideInstitute.php?id='.$id.'">
-                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #D32F2F;">hide</button>
+                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #D32F2F; border-color: #D32F2F;">hide</button>
                             </a>
 
                             

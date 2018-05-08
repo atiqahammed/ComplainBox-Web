@@ -16,22 +16,22 @@
 			echo '
 			
 				<div>
-  					<h3>'.$row[1].'</h3>
-  					<p>Publishing date: '.$row[4].'</p>
+  					<h3 style="color: black">'.$row[1].'</h3>
+  					<p style="color: black"><b>Publishing date: </b>'.$row[4].'</p>
   					
   					<a href="../noticeFiles/'.$row[2].'">
-  						<button type="button" class="btn btn-primary btn-sm" style="background-color: #1565C0;">view</button>
+  						<button type="button" class="btn btn-primary btn-sm" style="background-color: #1565C0; border-color: #1565C0;">view</button>
   					</a>
   					<a href="../noticeFiles/'.$row[2].'" download>
-						<button type="button" class="btn btn-primary btn-sm" style="background-color: #9E9D24;">download</button>
+						<button type="button" class="btn btn-primary btn-sm" style="background-color: #9E9D24; border-color: #9E9D24;">download</button>
 					</a>
 
 					<a href="updateNotice.php?id='.$row[0].'">
-                        <button type="button" class="btn btn-primary btn-sm" style="background-color: #2E7D32;">update</button>
+                        <button type="button" class="btn btn-primary btn-sm" style="background-color: #2E7D32; border-color: #2E7D32;">update</button>
                     </a>
 
                     <a href="hideNotice.php?id='.$row[0].'">
-                      	<button type="button" class="btn btn-primary btn-sm" style="background-color: #D32F2F;">hide</button>
+                      	<button type="button" class="btn btn-primary btn-sm" style="background-color: #D32F2F; border-color: #D32F2F;">hide</button>
                     </a>
 
 

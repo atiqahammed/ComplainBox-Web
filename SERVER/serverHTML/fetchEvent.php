@@ -32,16 +32,16 @@
                     <div class="row">
                         <div class="col-md-10">
 
-	                        <h3>'.$row[1].'</h3>
-	                        <p style="text-align: justify;">'.$row[3].'<p>
-	                        <p>Published on: '.$row[4].'</p>
+	                        <h3 style="color: black;">'.$row[1].'</h3>
+	                        <p style="text-align: justify; color: black;">'.$row[3].'<p>
+	                        <p style="color: black;"><b>Published on:</b> '.$row[4].'</p>
 
                             <a href="updateEvent.php?id='.$row[0].'">
-                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #2E7D32;">update</button>
+                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #2E7D32; border-color: #2E7D32;">update</button>
                             </a>
 
                             <a href="hideEvent.php?id='.$row[0].'">
-                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #D32F2F;">hide</button>
+                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #D32F2F; border-color: #D32F2F;">hide</button>
                             </a>
                         </div>
                         <div class="col-md-2">

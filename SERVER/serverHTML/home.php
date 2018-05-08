@@ -232,6 +232,9 @@
         </div>
         <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
             <div data-p="170.00">
+                <img data-u="image" src="img/dscc.jpg" />
+            </div>
+            <div data-p="170.00">
                 <img data-u="image" src="img/img1.jpg" />
             </div>
             <div data-p="170.00">

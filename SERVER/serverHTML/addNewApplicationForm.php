@@ -132,6 +132,12 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="InstitutionCategory">Application form type</label> <br>
+                        <input type="radio" name="category" value="National Application Form" checked>  National Application Form<br>
+                        <input type="radio" name="category" value="DSCC Application Form"> DSCC Application Form<br> 
+                    </div>
+
+                    <div class="form-group">
                         <input type="file" name="file" required>
                         <small id="fileHelp" class="form-text text-muted">Please upload a pdf file.</small>
                     </div>

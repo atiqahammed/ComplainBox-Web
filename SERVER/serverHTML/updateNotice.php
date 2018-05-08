@@ -127,7 +127,7 @@
 
                     		echo '
                     			<div class="form-group">
-                                        <label for="exampleInputEmail1">Event Name: '.$name.'</label>
+                                        <label for="exampleInputEmail1">Notice Title: '.$name.'</label>
                                 </div>
 
                                 <input type="hidden" class="form-group" value="'.$id.'" name="notice_id"/>

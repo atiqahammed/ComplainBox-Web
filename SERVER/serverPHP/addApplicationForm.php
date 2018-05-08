@@ -53,8 +53,10 @@
 
 				$title = base64_encode($title);
 				$description = base64_encode($description);
+				$type = $_POST["category"];
+				$date_and_time = date('m/d/Y h:i:s a', time()+ 4*3600);
 
-				$sql="INSERT INTO applicationform (applicationTitle, applicationDescription, applicationFileName, visibility) values ('$title','$description','$fileNameNew', 1)";
+				$sql="INSERT INTO applicationform (applicationTitle, applicationDescription, applicationFileName, visibility, applicationFormType, date) values ('$title','$description','$fileNameNew', 1, '$type', '$date_and_time')";
 
 				$query=mysqli_query($db, $sql);
 

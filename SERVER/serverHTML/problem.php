@@ -326,15 +326,15 @@
 
 
                                             <a href="updateProblem.php?id='.$problem_id.'">
-                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #2E7D32;">update</button>
+                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #2E7D32; border-color: #2E7D32;">update</button>
                                             </a>
 
                                             <a href="viewProblem.php?id='.$problem_id.'">
-                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #00838F;">view</button>
+                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #00838F; border-color: #00838F;">view</button>
                                             </a>
 
                                             <a href="hideProblem.php?id='.$problem_id.'">
-                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #D32F2F;">hide</button>
+                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #D32F2F; border-color: #D32F2F;">hide</button>
                                             </a>
                                         </div>
                                         <div class="col-md-4">
