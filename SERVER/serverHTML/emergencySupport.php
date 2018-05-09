@@ -10,6 +10,22 @@
         ?>
         <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
         <title>Emergency Support - Complain Box</title>
+
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>  
+
+        <script type="text/javascript">
+            
+            function searchq() {
+                var searchTxt = $("input[name='search']").val();
+                //alert(searchTxt);
+                $.post("instituteFetch.php", {searchVal: searchTxt}, function(output){
+                    $("#output").html(output);
+                });
+            }
+        </script>
+
+
     </head>
     <body>
 
@@ -95,7 +111,8 @@
                         <div class="col-md-5" style="height: 100px;">
                             <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn" style="background-color: #009688;">
                                 <i class="glyphicon glyphicon-align-left"></i>
-                            </button></div>
+                            </button>
+                        </div>
                         <div class="col-md-5">
                             <h1>E.S. Institute</h1>
                         </div>
@@ -116,11 +133,207 @@
                 <div id="load_data"></div>
                 <div id="load_data_message"></div>
                 <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
+
+
+
+
+                <form action="emergencySupport.php" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="search" onkeydown="searchq();" class="form-control"  placeholder="Type category to search institute..." >
+                        <br>
+                        <button type="submit" name="submit" class="btn btn-primary" style="background-color: #009688;">search</button>
+                    </div>
+                    
+
+
+
+                </form>
+
+                <div id="output">
+                    
+
+
+<?php  
+    define('DB_SERVER', 'localhost');
+    define('DB_USERNAME', 'root');
+    define('DB_PASSWORD', '');
+    define('DB_DATABASE', 'testdb');
+    $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+
+    $output = '';
+
+    if(isset($_POST['search'])) {
+        $searchq = $_POST['search'];
+        $searchq = preg_replace("#[^0-9a-z]#i", "", $searchq);
+        $sql = "SELECT * FROM institution WHERE (institutionName LIKE '%$searchq%' OR instituteLocation LIKE '%$searchq%' OR category LIKE '%$searchq%') AND visibility = 1 ORDER BY institutionID DESC";
+
+        $result=mysqli_query($db, $sql);
+
+       // if($result)
+        //echo "string";
+
+        while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+
+            $name = base64_decode($row[0]);
+            $latitude = $row[1]; 
+            $longitude = $row[2];
+            $phone = $row[3];
+            $category = $row[4];
+            $id = $row[5];
+            $location = base64_decode($row[8]);
+
+
+
+
+            $output .= '
+            
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <h3 style="color: black;"><b>Institution name:</b> '.$name.'</h3>
+                            
+                            <p style="color: black;"><b>Category :</b> '.$category.'</p>
+                            <p style="color: black;"><b>Address:</b> '.$location.'</p>
+                            <p style="color: black;"><b>Phone Number:</b> '.$phone.'</p>
+
+                            <a href="updateInstitute.php?id='.$id.'">
+                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #2E7D32; border-color: #2E7D32;">update</button>
+                            </a>
+
+                            <a href="viewInstitute.php?id='.$id.'">
+                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #00838F; border-color: #00838F;">view</button>
+                            </a>
+
+                            <a href="hideInstitute.php?id='.$id.'">
+                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #D32F2F; border-color: #D32F2F;">hide</button>
+                            </a>
+
+                            
+                        </div>
+                       
+                    </div>
+                </div>  
+                <hr>
+            
+            ';
+
+        }
+
+
+
+    } 
+    else {
+        $sql = "SELECT * FROM institution WHERE visibility = 1 ORDER BY institutionID DESC";
+        $result=mysqli_query($db, $sql);
+
+        while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+
+            $name = base64_decode($row[0]);
+            $latitude = $row[1]; 
+            $longitude = $row[2];
+            $phone = $row[3];
+            $category = $row[4];
+            $id = $row[5];
+            $location = base64_decode($row[8]);
+
+
+
+
+            $output .= '
+            
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <h3 style="color: black;"><b>Institution name:</b> '.$name.'</h3>
+                            
+                            <p style="color: black;"><b>Category :</b> '.$category.'</p>
+                            <p style="color: black;"><b>Address:</b> '.$location.'</p>
+                            <p style="color: black;"><b>Phone Number:</b> '.$phone.'</p>
+
+                            <a href="updateInstitute.php?id='.$id.'">
+                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #2E7D32; border-color: #2E7D32;">update</button>
+                            </a>
+
+                            <a href="viewInstitute.php?id='.$id.'">
+                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #00838F; border-color: #00838F;">view</button>
+                            </a>
+
+                            <a href="hideInstitute.php?id='.$id.'">
+                                <button type="button" class="btn btn-primary btn-sm" style="background-color: #D32F2F; border-color: #D32F2F;">hide</button>
+                            </a>
+
+                            
+                        </div>
+                       
+                    </div>
+                </div>  
+                <hr>
+            
+            ';
+
+        }
+    }
+                    
+                    
+echo($output);
+?> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+                
 
 
             </div>
@@ -140,13 +353,17 @@
         </script>
 
         <?php  
-            include 'footer.php';
+
+        include 'footer.php';
+
         ?>
 
 
     </body>
 </html>
 
+
+<!--
 
 <script>
     
@@ -193,4 +410,6 @@
 
 
 </script>
+
+-->
        

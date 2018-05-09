@@ -27,7 +27,7 @@
 
         <!-- my navigation -->
         <nav class="navbar navbar-light" style="background-color: #009688;">
-        <title>Problems - Complain Box</title>
+        <title>Home - Complain Box</title>
 
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -665,7 +665,7 @@
                                             echo "['Ward No. ".$row[0]."', ".$row[1]."],";  
                                         }
 
-                                        mysqli_close($db);
+                                        //mysqli_close($db);
 
                                         ?>
                                     ]);
@@ -699,6 +699,80 @@
                 </div>
 
                 <hr>
+
+                <div class="container-fluid">
+                    <div class="row">
+                                
+                        <div class="col-md-12">
+
+                            <script type="text/javascript">
+                                google.charts.load("current", {packages:["corechart"]});
+                                google.charts.setOnLoadCallback(drawChart);
+                                function drawChart() {
+                                    var data = google.visualization.arrayToDataTable([
+                                    ['Category', 'number of institution'],
+                                    <?php  
+                                    $sql = "SELECT category, COUNT(category) FROM institution GROUP BY (category)";
+                                    $result=mysqli_query($db, $sql);
+
+                                    while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+
+                                        echo "['".$row[0]."', ".$row[1]."],";
+                                    }
+
+                                    ?>
+                                    ]);
+
+                                    var options = {
+                                    title: 'Pie chart of emergency institutions',
+                                    pieHole: 0.4,
+                                    };
+
+                                    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+                                    chart.draw(data, options);
+                                }
+                            </script>
+                        
+                            <div style = "box-shadow: 0 8px 6px -6px black; background-color: #ffffff; text-align: center;">
+                                <div id="donutchart" style="width: 900px; height: 500px;"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
         </div>
 

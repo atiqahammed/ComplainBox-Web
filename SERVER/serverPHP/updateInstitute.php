@@ -13,9 +13,11 @@
 		$lat = $_POST["latitude"];
 		$lon = $_POST["longitude"];
 
+		$location_description = $_POST['description']; 
 
+		$location_description = base64_encode($location_description);
 
-		$sql = "UPDATE institution SET latitude='$lat', longitude='$lon', phone='$phone_number' WHERE institutionID='$id'";
+		$sql = "UPDATE institution SET latitude='$lat', longitude='$lon', phone='$phone_number', instituteLocation='$location_description' WHERE institutionID='$id'";
 		$query=mysqli_query($db, $sql);
 		mysqli_close($db);
 

@@ -396,6 +396,12 @@
                         <input type="text" id="lan" class="form-control" name="longitude" value="90.41932574999998" readonly>
                     </div>
 
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Location Description</label>
+                        <textarea name="description" maxlength="500" class="form-control" rows="5" id="applicationFormDescription" required></textarea>
+                    </div>
+
       <!--<input type="text" id="lat" class="form-control" value="23.780691240163524" name="latitude" readonly>-->
       <!--<input type="text" id="lan" class="form-control" name="longitude" value="90.41932574999998" readonly>-->
                     <div class="form-group">

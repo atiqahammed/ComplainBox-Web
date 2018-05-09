@@ -86,9 +86,6 @@
                             Emergency Support
                         </a>
                     </li>
-
-                    
-
                 </ul>
             </nav>
 
@@ -129,13 +126,17 @@
 							$longitude = $row[2];
 							$phone = $row[3];
 							$category = $row[4];
-							//$id = $row[5];
 
                             $name = base64_decode($name);
+                            $location = base64_decode($row[8]);
 
                     		echo '
                     			<div class="form-group">
                                         <label for="exampleInputEmail1">Institute Name: '.$name.'</label>
+                                </div>
+
+                                <div class="form-group">
+                                        <label for="exampleInputEmail1">Location: '.$location.'</label>
                                 </div>
 
                                 <div class="form-group">
@@ -161,27 +162,21 @@
                 								map, map
                 							});
                 						}
-
-                						
-
                 					</script>
 					                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkKmJPK0oh9K4yGU1USSj7MJpzFWN9LeE&callback=myMap"></script>
 		    	                </div>
 
-
-                                
                     		';
      					}  
                 	?>
 
             
-                	<hr>
-                    <a href="emergencySupport.php">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
-                    </a>
-                            
+                	<hr>    
                 </form>
             </div>
+            
+
+
         </div>
 
 

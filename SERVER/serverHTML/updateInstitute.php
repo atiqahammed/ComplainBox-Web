@@ -433,6 +433,7 @@
 							$longitude = $row[2];
 							$phone = $row[3];
 							$category = $row[4];
+              $location = base64_decode($row[8]);
 
 							echo '
 	
@@ -445,6 +446,11 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Longitude</label>
                         <input type="text" id="lan" class="form-control" name="longitude" value="'.$longitude.'" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Description</label>
+                        <textarea name="description" maxlength="500" class="form-control" rows="5" id="applicationFormDescription" required>'.$location.'</textarea>
                     </div>
 
       
