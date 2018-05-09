@@ -144,22 +144,15 @@
                         <button type="submit" name="submit" class="btn btn-primary" style="background-color: #009688;">search</button>
                     </div>
                     
-
-
-
                 </form>
 
                 <div id="output">
-                    
-
-
 <?php  
     define('DB_SERVER', 'localhost');
     define('DB_USERNAME', 'root');
     define('DB_PASSWORD', '');
     define('DB_DATABASE', 'testdb');
     $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-
     $output = '';
 
     if(isset($_POST['search'])) {
@@ -168,9 +161,6 @@
         $sql = "SELECT * FROM institution WHERE (institutionName LIKE '%$searchq%' OR instituteLocation LIKE '%$searchq%' OR category LIKE '%$searchq%') AND visibility = 1 ORDER BY institutionID DESC";
 
         $result=mysqli_query($db, $sql);
-
-       // if($result)
-        //echo "string";
 
         while($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
 
@@ -182,14 +172,11 @@
             $id = $row[5];
             $location = base64_decode($row[8]);
 
-
-
-
             $output .= '
             
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12" style = "box-shadow: 0 8px 6px -6px black; background-color: #e6ecf7">
 
                             <h3 style="color: black;"><b>Institution name:</b> '.$name.'</h3>
                             
@@ -209,6 +196,8 @@
                                 <button type="button" class="btn btn-primary btn-sm" style="background-color: #D32F2F; border-color: #D32F2F;">hide</button>
                             </a>
 
+                            <p></p>
+
                             
                         </div>
                        
@@ -217,11 +206,7 @@
                 <hr>
             
             ';
-
         }
-
-
-
     } 
     else {
         $sql = "SELECT * FROM institution WHERE visibility = 1 ORDER BY institutionID DESC";
@@ -237,14 +222,11 @@
             $id = $row[5];
             $location = base64_decode($row[8]);
 
-
-
-
             $output .= '
             
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12" style = "box-shadow: 0 8px 6px -6px black; background-color: #e6ecf7">
 
                             <h3 style="color: black;"><b>Institution name:</b> '.$name.'</h3>
                             
@@ -264,7 +246,7 @@
                                 <button type="button" class="btn btn-primary btn-sm" style="background-color: #D32F2F; border-color: #D32F2F;">hide</button>
                             </a>
 
-                            
+                            <p></p>
                         </div>
                        
                     </div>
@@ -272,78 +254,21 @@
                 <hr>
             
             ';
-
         }
     }
+
                     
-                    
-echo($output);
+    mysqli_close($db);                
+    echo($output);
 ?> 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </div>
-
-
-
-
-
-                
-
-
             </div>
         </div>
 
-        <!-- jQuery CDN -->
-         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-         <!-- Bootstrap Js CDN -->
-         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#sidebarCollapse').on('click', function () {
@@ -358,58 +283,7 @@ echo($output);
 
         ?>
 
-
     </body>
 </html>
 
-
-<!--
-
-<script>
-    
-    $(document).ready(function(){
-        var limit = 5;
-        var start = 0;
-        var action = 'inactive';
-        function load_event_data(limit, start) {
-            $.ajax({
-                url: "fatchInstitute.php",
-                method: "POST",
-                data:{limit:limit, start:start},
-                cache:false,
-                success:function(data)
-                {
-                    $('#load_data').append(data);
-                    if(data == '') {
-                        $('#load_data_message').html("<hr><button type='button' class = 'btn btn-info'>No Data Found</button>");
-                        action = 'active';
-                    } else {
-                        $('#load_data_message').html("<hr><button type='button' class = 'btn btn-waiting'>Loading ...</button>");
-                        action = 'inactive';
-                    }
-                }
-            });
-        }
-
-        if(action == 'inactive') {
-            action = 'active';
-            load_event_data(limit, start);
-        }
-
-        $(window).scroll(function(){
-           
-            if($(window).scrollTop() + $(window).height() > $("#load_data").height() && action == 'inactive') {
-                    action = 'active';
-                    start = start + limit;
-                    timeOutId = setTimeout(function(){
-                        load_event_data(limit, start);
-                    }, 1000);
-            }
-        });
-    });
-
-
-</script>
-
--->
        

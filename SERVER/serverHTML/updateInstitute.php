@@ -22,7 +22,7 @@
                 else
                 {
                     alert("Not a valid Phone Number");
-                    document.getElementById("phone").value = "";
+                    document.getElementById("phone").value = document.getElementById("phoneHide").value;
                 }
             }
         </script>
@@ -460,6 +460,7 @@
                     </div>
 
                     <input type="hidden" class="form-group" value="'.$id.'" name="institute_id"/>
+                    <input type="hidden" class="form-group" id="phoneHide" value="'.$phone.'" name="phoneHidden"/>
 
                     ';
 
